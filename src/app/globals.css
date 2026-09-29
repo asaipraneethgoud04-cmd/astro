@@ -1,26 +1,173 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-outfit), system-ui, sans-serif;
+  --font-serif: var(--font-cinzel), Georgia, serif;
 }
 
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --primary-burgundy: #38070e;
+    --deep-burgundy: #230409;
+    --mystic-wine: #4a0d18;
+    --gold-accent: #c59b27;
+    --gold-light: #f3df9e;
+    --gold-glow: #e5b94c;
+    --parchment-bg: #fdfaf4;
+    --parchment-card: #f9f3e4;
+    --parchment-border: #ebdcc2;
+    --text-primary: #2a1114;
+    --text-muted: #6b585b;
+
+    /* Vertical rhythm: mobile values, stepped up at md and lg below */
+    --nav-h: 5rem;
+    --space-page-top: 1.5rem;
+    --space-section: 1.75rem;
+    --space-header: 1.5rem;
+    --space-grid: 1rem;
+    --space-card: 1.5rem;
+    --space-page-bottom: 2.25rem;
+  }
+
+  @media (min-width: 768px) {
+    :root {
+      --space-page-top: 2rem;
+      --space-section: 2.5rem;
+      --space-header: 2rem;
+      --space-grid: 1.5rem;
+      --space-card: 1.75rem;
+      --space-page-bottom: 2.75rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    :root {
+      --space-page-top: 2.5rem;
+      --space-section: 3rem;
+      --space-header: 2.5rem;
+      --space-grid: 2rem;
+      --space-card: 2rem;
+      --space-page-bottom: 3.5rem;
+    }
+  }
+
+  body {
+    background-color: var(--parchment-bg);
+    color: var(--text-primary);
+    font-family: var(--font-outfit), system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-serif-title {
+    font-family: var(--font-cinzel), Georgia, serif;
+  }
+
+  button, input, select, textarea {
+    font-family: inherit;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Vertical spacing system (tokens live in :root above) */
+@utility page-top {
+  padding-top: calc(var(--nav-h) + var(--space-page-top));
+}
+@utility page-bottom {
+  padding-bottom: var(--space-page-bottom);
+}
+@utility section-y {
+  padding-block: var(--space-section);
+}
+@utility section-t {
+  padding-top: var(--space-section);
+}
+@utility section-b {
+  padding-bottom: var(--space-section);
+}
+@utility header-gap {
+  margin-bottom: var(--space-header);
+}
+@utility content-gap {
+  margin-top: var(--space-header);
+}
+@utility grid-rows-gap {
+  row-gap: var(--space-grid);
+}
+@utility card-y {
+  padding-block: var(--space-card);
+}
+
+/* Custom Utilities for Vedic Astrological Aesthetics */
+.bg-deep-mystic {
+  background: radial-gradient(circle at 50% 20%, #4a0d18 0%, #29050b 50%, #170205 100%);
+}
+
+.bg-hero-shiva {
+  background: 
+    radial-gradient(ellipse at 50% 30%, rgba(197, 155, 39, 0.15) 0%, rgba(56, 7, 14, 0.8) 50%, #1e0307 100%),
+    linear-gradient(180deg, #240409 0%, #3a0812 40%, #1a0205 100%);
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #f7e2a9 0%, #d4af37 50%, #aa8016 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.border-gold-subtle {
+  border-color: rgba(197, 155, 39, 0.35);
+}
+
+.gold-glow {
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
+}
+
+.gold-glow-lg {
+  box-shadow: 0 0 50px rgba(212, 175, 55, 0.35);
+}
+
+/* Astrological Rotating Wheel Animation */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 120s linear infinite;
+}
+
+.animate-spin-celestial {
+  animation: spin-slow 45s linear infinite;
+}
+
+/* Floating Animation */
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: float-gentle 4s ease-in-out infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #230409;
+}
+::-webkit-scrollbar-thumb {
+  background: #8b2332;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c59b27;
 }
