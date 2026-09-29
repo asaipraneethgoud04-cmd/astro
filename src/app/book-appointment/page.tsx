@@ -71,7 +71,7 @@ export default function BookAppointmentPage() {
 
   return (
     <div className="min-h-screen bg-[#f6f0e4] text-[#2a1114] page-top page-bottom">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="site-container">
         <header className="max-w-2xl header-gap">
           <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#8b1827]">
             Private consultation

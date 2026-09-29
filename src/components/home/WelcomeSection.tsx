@@ -14,7 +14,7 @@ export default function WelcomeSection() {
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="relative z-10 site-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column: Arched Lineage Frame */}
           <div className="lg:col-span-5 flex justify-center lg:justify-start">

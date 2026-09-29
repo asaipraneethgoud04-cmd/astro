@@ -79,7 +79,7 @@ export default async function TestimonialsSection() {
 
   return (
     <section className="relative overflow-hidden bg-[#fdfbf7] section-t">
-      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+      <div className="site-container">
         <div className="mx-auto header-gap max-w-2xl space-y-3 text-center">
           <h2 className="font-serif text-3xl font-extrabold tracking-tight text-[#38070e] sm:text-4xl lg:text-5xl">
             Voices of the Blessed

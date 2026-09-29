@@ -52,7 +52,8 @@ export default function ContactPage() {
       {/* ─────────────────────────────────────────────────────────────
           1. HEADER TITLE (Strictly matching reference screenshot)
       ───────────────────────────────────────────────────────────── */}
-      <section className="page-top header-gap text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
+      <section className="site-container page-top header-gap">
+        <div className="text-center max-w-4xl mx-auto space-y-3">
         <h1 className="font-serif text-3xl sm:text-5xl lg:text-[50px] font-bold text-[#420813] tracking-tight">
           Connect With TalkAstrologer.com
         </h1>
@@ -83,12 +84,13 @@ export default function ContactPage() {
             </p>
           </div>
         </div>
+        </div>
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
           2. TWO-COLUMN MAIN CONTENT (Google Maps + Info & Actions)
       ───────────────────────────────────────────────────────────── */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 section-b w-full">
+      <section className="site-container section-b w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-6 grid-rows-gap lg:gap-x-8 items-stretch">
           {/* Left Column (7 cols): Google Maps + Location Note + "Ready to find clarity?" */}
           <div className="lg:col-span-7 flex flex-col justify-between space-y-4">
@@ -320,8 +322,9 @@ export default function ContactPage() {
       </section>
 
       {/* Send a message */}
-      <section id="send-message" className="mx-auto w-full max-w-4xl scroll-mt-28 px-4 section-b sm:px-6 lg:px-8">
-        <div className="rounded-2xl border border-[#ebdcc2] bg-white p-5 shadow-sm sm:p-8">
+      <section id="send-message" className="site-container scroll-mt-28 section-b">
+        <div className="mx-auto max-w-4xl">
+          <div className="rounded-2xl border border-[#ebdcc2] bg-white p-5 shadow-sm sm:p-8">
           <div className="mb-6 space-y-1.5 text-center sm:text-left">
             <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#8b1827]">Write to us</p>
             <h2 className="font-serif text-2xl font-bold text-[#420813] sm:text-3xl">Send a Message</h2>
@@ -331,13 +334,15 @@ export default function ContactPage() {
           </div>
           <ContactForm />
         </div>
+        </div>
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
           3. FREQUENTLY ASKED QUESTIONS SECTION (As requested)
       ───────────────────────────────────────────────────────────── */}
       <section className="section-y bg-[#faf6ee] border-t border-[#ebdcc2]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="site-container">
+          <div className="max-w-4xl mx-auto">
           <div className="text-center space-y-2.5 header-gap">
             <span className="text-[#a07421] text-xs font-semibold tracking-[0.25em] uppercase flex items-center justify-center gap-2">
               <Sparkles className="w-3.5 h-3.5 text-[#b88e39]" />
@@ -409,6 +414,7 @@ export default function ContactPage() {
               </a>
             </div>
           </div>
+        </div>
         </div>
       </section>
 

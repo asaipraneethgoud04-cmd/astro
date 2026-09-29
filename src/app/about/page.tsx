@@ -51,7 +51,7 @@ export default function AboutPage() {
         <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#240409]/60 via-[#240409]/20 to-transparent z-[5] pointer-events-none" />
 
         {/* Content Container */}
-        <div className="relative z-10 mx-auto flex h-auto w-full max-w-7xl flex-col px-6 page-top sm:px-8 lg:h-full lg:px-12 lg:pt-24">
+        <div className="relative z-10 flex h-auto w-full site-container flex-col page-top lg:h-full lg:pt-24">
           <div className="grid h-auto grid-cols-1 items-center gap-2 lg:h-full lg:grid-cols-12 lg:gap-8">
             {/* Left Content (Horizontally Centered in its column) */}
             <div className="flex flex-col items-center space-y-4 px-2 text-center sm:px-6 lg:col-span-7">
@@ -125,7 +125,7 @@ export default function AboutPage() {
           2. ABOUT TALKASTROLOGER.COM — LISTENING FIRST & COMPASSIONATE GUIDANCE
       ───────────────────────────────────────────────────────────── */}
       <section className="bg-[#faf6ee] section-t">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Narrative */}
             <div className="lg:col-span-7 space-y-6">
@@ -221,7 +221,7 @@ export default function AboutPage() {
           3. WHO WE ARE & ANCESTRAL HERITAGE (With Hanging Temple Bell)
       ───────────────────────────────────────────────────────────── */}
       <section className="section-t bg-[#faf6ee]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="site-container">
           {/* Section Divider Header */}
           <div className="mx-auto max-w-3xl text-center header-gap">
             <h2 className="text-balance font-serif text-[1.7rem] font-extrabold leading-tight tracking-tight text-[#38070e] sm:text-3xl lg:text-4xl">
@@ -273,7 +273,7 @@ export default function AboutPage() {
           4. GLOBAL REACH & MULTILINGUAL CONSULTATIONS
       ───────────────────────────────────────────────────────────── */}
       <section className="section-y bg-[#faf6ee]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="site-container">
           <div className="text-center space-y-2 max-w-2xl mx-auto header-gap">
             <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#8b1827] block">
               Experience, Heritage & Global Reach
@@ -337,7 +337,7 @@ export default function AboutPage() {
         <div className="pointer-events-none absolute -top-24 -right-16 h-64 w-64 rounded-full bg-[#c59b27]/10 blur-3xl" />
         <div className="pointer-events-none absolute -bottom-28 -left-16 h-64 w-64 rounded-full bg-[#8b1827]/5 blur-3xl" />
 
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative site-container">
           <div className="text-center space-y-4 max-w-3xl mx-auto">
             <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#8b1827] block">
               Our Guiding Principles
@@ -458,7 +458,7 @@ export default function AboutPage() {
           6. OUR METHODOLOGY & SPECIALIZATIONS (Matching Reference Layout)
       ───────────────────────────────────────────────────────────── */}
       <section className="section-t bg-[#faf6ee]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="site-container">
           {/* Section Heading */}
           <div className="text-center space-y-2 header-gap">
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#38070e] tracking-tight">
@@ -551,7 +551,7 @@ export default function AboutPage() {
           7. BEGIN YOUR JOURNEY TO CLARITY (Call to Action Banner)
       ───────────────────────────────────────────────────────────── */}
       <section className="section-y bg-[#faf6ee]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="site-container">
           <div className="rounded-2xl bg-[#2d1814] py-12 px-6 sm:px-12 text-center text-white shadow-xl space-y-6">
             <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#fdfaf4]">
               Begin Your Journey to Clarity
@@ -593,7 +593,7 @@ export default function AboutPage() {
           8. OUR GLOBAL SANCTUARIES & TEMPORARY OFFICE LOCATION
       ───────────────────────────────────────────────────────────── */}
       <section className="section-t page-bottom bg-[#faf6ee] border-t border-[#ebdcc2]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="site-container">
           {/* Heading */}
           <div className="text-center space-y-2 header-gap">
             <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-[#38070e] tracking-tight">

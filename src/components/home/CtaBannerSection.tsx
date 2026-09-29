@@ -5,7 +5,7 @@ import { Phone, Calendar, MessageSquare } from "lucide-react";
 export default function CtaBannerSection({ last = false }: { last?: boolean }) {
   return (
     <section className={`${last ? "section-t page-bottom" : "section-y"} bg-[#fdfbf7] relative`}>
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="site-container">
         <div className="relative rounded-2xl bg-gradient-to-r from-[#220409] via-[#3a0812] to-[#220409] border border-[#c59b27]/40 py-12 px-6 sm:px-12 text-center text-white shadow-xl overflow-hidden">
           {/* Subtle starry / galaxy particles */}
           <div className="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(#f6e27a_1px,transparent_1px)] [background-size:24px_24px]" />

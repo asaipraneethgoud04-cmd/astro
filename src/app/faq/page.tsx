@@ -39,7 +39,7 @@ export default function FaqPage() {
     <div className="flex flex-col min-h-screen">
       <section className="relative page-top section-b bg-[#240409] text-white overflow-hidden">
         <div className="absolute inset-0 bg-hero-shiva pointer-events-none" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+        <div className="relative z-10 site-container text-center space-y-4">
           <span className="text-[#f6e27a] text-xs font-semibold tracking-[0.3em] uppercase flex items-center justify-center gap-2">
             <Sparkles className="w-3.5 h-3.5 text-[#d4af37]" />
             Seeker Queries & Answers
@@ -56,7 +56,8 @@ export default function FaqPage() {
       </section>
 
       <section className="section-t bg-[#fdfbf7]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-rows-gap">
+        <div className="site-container">
+          <div className="max-w-4xl mx-auto grid grid-rows-gap">
           {faqs.map((faq, idx) => (
             <div
               key={idx}
@@ -73,6 +74,7 @@ export default function FaqPage() {
               </p>
             </div>
           ))}
+        </div>
         </div>
       </section>
 

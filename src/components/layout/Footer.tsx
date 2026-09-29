@@ -48,7 +48,7 @@ export default function Footer() {
       {/* ─────────────────────────────────────────────────────────────
           2. MAIN 4-COLUMN BALANCED FOOTER CONTENT
       ───────────────────────────────────────────────────────────── */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-8 pb-14 lg:pb-8 relative z-10">
+      <div className="site-container pt-8 pb-14 lg:pb-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {/* Column 1: Brand & Heritage */}
           <div className="space-y-2.5">

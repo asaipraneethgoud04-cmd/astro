@@ -115,7 +115,7 @@ export default function ServicesPage() {
       {/* ─────────────────────────────────────────────────────────────
           2. SEARCH & FILTER CONTROLS
       ───────────────────────────────────────────────────────────── */}
-      <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full space-y-4 header-gap">
+      <section className="site-container space-y-4 header-gap">
         {/* Search Bar Input strictly matching screenshot */}
         <div className="relative w-full">
           <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-[#8b1827]">
@@ -150,7 +150,7 @@ export default function ServicesPage() {
       {/* ─────────────────────────────────────────────────────────────
           3. SERVICE CARDS GRID
       ───────────────────────────────────────────────────────────── */}
-      <section id="services-grid" className="mx-auto w-full max-w-7xl scroll-mt-28 px-6 section-b sm:px-8 lg:px-12">
+      <section id="services-grid" className="site-container scroll-mt-28 section-b">
         {filteredServices.length > 0 ? (
           <>
             <div className="grid grid-cols-2 gap-x-2.5 grid-rows-gap sm:gap-x-4 lg:grid-cols-3 lg:gap-x-6">
@@ -242,7 +242,7 @@ export default function ServicesPage() {
           4. BEGIN YOUR JOURNEY TO CLARITY (CTA Banner matching screenshot)
       ───────────────────────────────────────────────────────────── */}
       <section className="page-bottom bg-[#fdfaf4]">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="site-container">
           <div className="rounded-2xl bg-[#2d1814] py-12 px-6 sm:px-12 text-center text-white shadow-xl space-y-6">
             <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#fdfaf4]">
               Begin Your Journey to Clarity

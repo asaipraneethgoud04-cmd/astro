@@ -9,7 +9,8 @@ export const metadata = {
 export default function DisclaimerPage() {
   return (
     <div className="page-top page-bottom bg-[#fdfbf7] min-h-screen">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <div className="site-container">
+        <div className="max-w-4xl mx-auto space-y-8">
         <div className="border-b border-[#ebdcc2] pb-6 space-y-2">
           <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#8b1827]">
             <AlertTriangle className="w-4 h-4 text-[#c59b27]" />
@@ -58,6 +59,7 @@ export default function DisclaimerPage() {
               faith, diligence, and karmic intensity.
             </p>
           </section>
+        </div>
         </div>
       </div>
     </div>

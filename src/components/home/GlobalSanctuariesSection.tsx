@@ -115,7 +115,7 @@ function SanctuaryCard({ city }: { city: SanctuaryCity }) {
 export default function GlobalSanctuariesSection() {
   return (
     <section className="section-t page-bottom bg-[#faf6ee] border-t border-[#ebdcc2] relative">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="site-container">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto space-y-3 header-gap">
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#38070e] tracking-tight">

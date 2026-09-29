@@ -26,7 +26,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 z-[2] bg-[#6B1E2B]/70 pointer-events-none" />
 
       {/* Content Container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full">
+      <div className="relative z-10 site-container w-full">
         <div className="max-w-3xl space-y-6">
           {/* Main Title */}
           <div className="space-y-2">

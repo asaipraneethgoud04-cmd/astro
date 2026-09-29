@@ -41,11 +41,11 @@ export default function PinnedReviewBar({ reviews }: { reviews: PinnedReview[] }
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      <div className="relative mx-auto h-full max-w-7xl px-6 sm:px-8 lg:px-12">
+      <div className="relative h-full site-container">
         {reviews.map((review, slideIndex) => (
           <p
             key={review.id}
-            className={`absolute inset-0 flex items-center justify-center px-16 sm:px-24 text-center text-xs sm:text-sm uppercase tracking-wider transition-opacity duration-700 ${slideIndex === index ? "opacity-100" : "pointer-events-none opacity-0"
+            className={`absolute inset-0 flex items-center justify-center px-12 sm:px-16 text-center text-xs sm:text-sm uppercase tracking-wider transition-opacity duration-700 ${slideIndex === index ? "opacity-100" : "pointer-events-none opacity-0"
               }`}
             aria-hidden={slideIndex !== index}
           >
@@ -56,7 +56,7 @@ export default function PinnedReviewBar({ reviews }: { reviews: PinnedReview[] }
           </p>
         ))}
         {several ? (
-          <div className="absolute inset-y-0 right-6 sm:right-8 lg:right-12 flex items-center gap-1">
+          <div className="absolute inset-y-0 right-4 sm:right-6 lg:right-8 2xl:right-10 flex items-center gap-1">
             {reviews.map((review, slideIndex) => (
               <button
                 key={review.id}

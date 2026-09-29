@@ -9,7 +9,7 @@ import ImageToneCard from "@/components/ui/ImageToneCard";
 export default function ServicesSection() {
   return (
     <section className="section-y bg-[#fdfaf4] relative" id="services">
-      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+      <div className="site-container">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 header-gap">
           <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.25em] text-[#aa8016] uppercase">

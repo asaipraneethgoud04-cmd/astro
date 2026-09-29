@@ -47,7 +47,7 @@ export default function Navbar({ offsetTop = false }: { offsetTop?: boolean }) {
           : "bg-[#240409]/95 backdrop-blur-md border-b border-[#c59b27]/30 shadow-lg"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="site-container">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 sm:gap-3.5 group">
