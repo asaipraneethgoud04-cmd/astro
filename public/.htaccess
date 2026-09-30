@@ -1,134 +1,126 @@
 # ----------------------------------------------------------------------
-# TalkAstrologer.com - Apache / LiteSpeed Configuration & Redirects
+# TalkAstrologer.com - Apache / LiteSpeed config in front of `next start`
+# (Node app listening on 127.0.0.1:3000)
 # ----------------------------------------------------------------------
 
-# 1. PREVENT DIRECTORY BROWSING
 Options -Indexes
 
-# 2. ENABLE REWRITE ENGINE
+# ----------------------------------------------------------------------
+# 1. MARK REQUESTS THAT MUST NEVER BE CACHED, REDIRECTED OR COMPRESSED
+#    - /admin (dashboard, login)       - /api
+#    - RSC fetches (header "RSC: 1")    - Server Actions ("Next-Action")
+# ----------------------------------------------------------------------
+<IfModule mod_setenvif.c>
+    SetEnvIfNoCase Request_URI "^/(admin|api)(/|$)" TA_DYNAMIC=1
+    SetEnvIfNoCase RSC "^1$" TA_DYNAMIC=1
+    SetEnvIfNoCase Next-Action ".+" TA_DYNAMIC=1
+    SetEnvIfNoCase Next-Router-State-Tree ".+" TA_DYNAMIC=1
+    SetEnvIfNoCase Request_URI "_rsc=" TA_DYNAMIC=1
+    SetEnvIf TA_DYNAMIC 1 no-gzip dont-vary
+</IfModule>
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /
 
     # ------------------------------------------------------------------
-    # A. FORCE HTTPS (SSL Redirect)
+    # A. FORCE HTTPS (GET/HEAD only - a 301 on POST breaks login & actions)
     # ------------------------------------------------------------------
-    RewriteCond %{HTTPS} off [OR]
-    RewriteCond %{HTTP:X-Forwarded-Proto} !https
-    RewriteCond %{HTTP_HOST} !^localhost [NC]
-    RewriteCond %{HTTP_HOST} !^127\.0\.0\.1 [NC]
-    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    RewriteCond %{REQUEST_METHOD} ^(GET|HEAD)$
+    RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+    RewriteCond %{HTTP_HOST} !^(localhost|127\.0\.0\.1) [NC]
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
     # ------------------------------------------------------------------
-    # B. CANONICAL REDIRECTS (Friendly URLs & Clean Navigation)
+    # B. BLOCK SENSITIVE FILES (source, env, VCS, SQL)
     # ------------------------------------------------------------------
-    # Redirect /home or /index to root /
-    RewriteRule ^(home|index|index\.html|index\.php)$ / [R=301,L]
+    RewriteRule (^|/)\.(env|git|svn|hg)(/|$) - [F,L]
+    RewriteRule ^(src|supabase|node_modules|\.next/(server|cache))(/|$) - [F,L]
+    RewriteRule \.(env|lock|md|ts|tsx|sql|bak|log)$ - [F,L]
 
-    # Redirect /about-us to /about
+    # ------------------------------------------------------------------
+    # C. FRIENDLY URL REDIRECTS (GET only; never touch /_next, /admin, /api)
+    # ------------------------------------------------------------------
+    RewriteCond %{REQUEST_METHOD} ^(GET|HEAD)$
+    RewriteRule ^(home|index|index\.html|index\.php)/?$ / [R=301,L]
+    RewriteCond %{REQUEST_METHOD} ^(GET|HEAD)$
     RewriteRule ^about-us/?$ /about [R=301,L]
-
-    # Redirect /contact-us to /contact
+    RewriteCond %{REQUEST_METHOD} ^(GET|HEAD)$
     RewriteRule ^contact-us/?$ /contact [R=301,L]
-
-    # Redirect /appointment or /book or /booking to /book-appointment
+    RewriteCond %{REQUEST_METHOD} ^(GET|HEAD)$
     RewriteRule ^(appointment|book|booking)/?$ /book-appointment [R=301,L]
-
-    # Redirect /service or /our-services to /services
+    RewriteCond %{REQUEST_METHOD} ^(GET|HEAD)$
     RewriteRule ^(service|our-services)/?$ /services [R=301,L]
 
-    # Remove trailing slash from non-directory requests
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} (.+)/$
-    RewriteRule ^ %1 [R=301,L]
-
     # ------------------------------------------------------------------
-    # C. PROTECT SENSITIVE FILES & CONFIGURATIONS
+    # D. PROXY EVERYTHING ELSE TO NEXT.JS (keeps method, body, cookies)
+    #    mod_proxy adds X-Forwarded-Host/For automatically.
     # ------------------------------------------------------------------
-    RewriteRule (^|/)\.(env|git|svn|hg) - [F,L]
-    RewriteRule \.(env|json|lock|md|ts|tsx|map|bak|config|sql)$ - [F,L]
-
-    # ------------------------------------------------------------------
-    # D. NEXT.JS NODE PROXY (When hosting with Apache reverse proxy)
-    # ------------------------------------------------------------------
-    <IfModule mod_proxy.c>
-        RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteCond %{REQUEST_FILENAME} !-d
-        RewriteRule ^(.*)$ http://127.0.0.1:3000/$1 [P,L]
+    <IfModule mod_headers.c>
+        RequestHeader set X-Forwarded-Proto "https" env=HTTPS
     </IfModule>
+    RewriteRule ^(.*)$ http://127.0.0.1:3000/$1 [P,L,QSA]
 </IfModule>
 
 # ----------------------------------------------------------------------
-# 3. SECURITY HEADERS
+# 2. HEADERS
 # ----------------------------------------------------------------------
 <IfModule mod_headers.c>
-    # Prevent clickjacking
     Header always set X-Frame-Options "SAMEORIGIN"
-
-    # Prevent MIME-type sniffing
     Header always set X-Content-Type-Options "nosniff"
-
-    # Cross-site scripting (XSS) protection
-    Header always set X-XSS-Protection "1; mode=block"
-
-    # Referrer policy
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
-
-    # Permissions policy
     Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
-    # HTTP Strict Transport Security (HSTS)
-    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+    # Dashboard, RSC and Server Action responses: always fresh
+    Header always set Cache-Control "no-store, no-cache, must-revalidate, private" env=TA_DYNAMIC
+    Header always unset Expires env=TA_DYNAMIC
+    Header always set Pragma "no-cache" env=TA_DYNAMIC
 </IfModule>
 
 # ----------------------------------------------------------------------
-# 4. BROWSER CACHING (EXPIRATION HEADERS)
+# 3. BROWSER CACHING - static assets only (HTML/RSC are never cached)
 # ----------------------------------------------------------------------
 <IfModule mod_expires.c>
     ExpiresActive On
-    ExpiresDefault "access plus 1 month"
+    ExpiresByType text/html "access plus 0 seconds"
+    ExpiresByType text/x-component "access plus 0 seconds"
+    ExpiresByType application/json "access plus 0 seconds"
 
-    # Images
     ExpiresByType image/jpg "access plus 1 year"
     ExpiresByType image/jpeg "access plus 1 year"
     ExpiresByType image/gif "access plus 1 year"
     ExpiresByType image/png "access plus 1 year"
     ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/avif "access plus 1 year"
     ExpiresByType image/svg+xml "access plus 1 year"
     ExpiresByType image/x-icon "access plus 1 year"
-
-    # Fonts
     ExpiresByType font/woff "access plus 1 year"
     ExpiresByType font/woff2 "access plus 1 year"
     ExpiresByType font/ttf "access plus 1 year"
-
-    # CSS / JavaScript
-    ExpiresByType text/css "access plus 1 month"
-    ExpiresByType application/javascript "access plus 1 month"
-    ExpiresByType text/javascript "access plus 1 month"
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType text/javascript "access plus 1 year"
 </IfModule>
 
 # ----------------------------------------------------------------------
-# 5. GZIP & DEFLATE COMPRESSION
+# 4. COMPRESSION (static text; streamed RSC/admin responses are excluded above)
 # ----------------------------------------------------------------------
 <IfModule mod_deflate.c>
-    AddOutputFilterByType DEFLATE text/plain
-    AddOutputFilterByType DEFLATE text/html
-    AddOutputFilterByType DEFLATE text/xml
-    AddOutputFilterByType DEFLATE text/css
-    AddOutputFilterByType DEFLATE text/javascript
-    AddOutputFilterByType DEFLATE application/xml
-    AddOutputFilterByType DEFLATE application/xhtml+xml
-    AddOutputFilterByType DEFLATE application/rss+xml
-    AddOutputFilterByType DEFLATE application/javascript
-    AddOutputFilterByType DEFLATE application/x-javascript
-    AddOutputFilterByType DEFLATE image/svg+xml
+    AddOutputFilterByType DEFLATE text/plain text/html text/xml text/css text/javascript
+    AddOutputFilterByType DEFLATE application/javascript application/x-javascript application/xml application/xhtml+xml application/rss+xml image/svg+xml
 </IfModule>
 
 # ----------------------------------------------------------------------
-# 6. DENY DIRECT ACCESS TO SENSITIVE HIDDEN FILES
+# 5. DENY HIDDEN FILES (Apache 2.4 + 2.2 fallback)
 # ----------------------------------------------------------------------
 <FilesMatch "^\.(env|git|htaccess|htpasswd|ini|log|sh)">
-    Order allow,deny
-    Deny from all
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
 </FilesMatch>

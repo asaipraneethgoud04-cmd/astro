@@ -3,6 +3,25 @@ import Link from "next/link";
 import Image from "next/image";
 import { Phone, Mail, MapPin, ShieldCheck, Clock } from "lucide-react";
 
+function InstagramIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+    </svg>
+  );
+}
+
 export default function Footer() {
   return (
     <footer className="relative bg-[#20050a] text-[#f5ebd9] border-t border-[#c59b27]/40 overflow-hidden">
@@ -224,6 +243,20 @@ export default function Footer() {
                   Monday – Sunday, 9:00 AM – 8:00 PM <br />
                   <span className="text-[#f6e27a] font-medium">Central Time (Texas)</span>
                 </p>
+              </div>
+
+              {/* Social Media */}
+              <div className="flex items-center gap-3 pt-2">
+                <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#f6e27a]/70">Follow Us</span>
+                <a
+                  href="https://www.instagram.com/talk_astrologer"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-center w-8 h-8 rounded-full border border-[#c59b27]/50 bg-[#240409] hover:bg-gradient-to-br hover:from-[#f09433] hover:via-[#e6683c] hover:to-[#bc1888] hover:border-transparent transition-all duration-300 shadow-[0_0_8px_rgba(212,175,55,0.2)] hover:shadow-[0_0_14px_rgba(225,48,108,0.4)]"
+                  aria-label="Follow TalkAstrologer on Instagram"
+                >
+                  <InstagramIcon className="w-3.5 h-3.5 text-[#f6e27a] group-hover:text-white transition-colors" />
+                </a>
               </div>
             </div>
           </div>
