@@ -4,8 +4,7 @@ import { Phone, ArrowRight } from "lucide-react";
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-[
-    ] text-white page-top section-b min-h-[620px] flex items-center">
+    <section className="relative overflow-hidden bg-[#38070e] text-white page-top section-b min-h-[620px] lg:min-h-[calc(100svh-var(--chrome-top,0px))] flex items-center">
       <Image
         src="/images/home page hero section.png"
         alt=""

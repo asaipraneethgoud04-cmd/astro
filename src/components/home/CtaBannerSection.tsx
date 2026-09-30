@@ -28,7 +28,7 @@ export default function CtaBannerSection({ last = false }: { last?: boolean }) {
 
               {/* Button 2: Call Us Now */}
               <a
-                href="tel:+919876543210"
+                href="tel:+12146699699"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-[#ebdcc2]/60 hover:border-white text-white hover:bg-white/10 font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300"
               >
                 <Phone className="w-4 h-4 text-[#f6e27a]" />
@@ -37,7 +37,7 @@ export default function CtaBannerSection({ last = false }: { last?: boolean }) {
 
               {/* Button 3: WhatsApp */}
               <a
-                href="https://wa.me/919876543210"
+                href="https://wa.me/+12146699699"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-xs sm:text-sm tracking-wider uppercase shadow-md hover:shadow-lg transition-all duration-300"

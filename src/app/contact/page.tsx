@@ -54,36 +54,36 @@ export default function ContactPage() {
       ───────────────────────────────────────────────────────────── */}
       <section className="site-container page-top header-gap">
         <div className="text-center max-w-4xl mx-auto space-y-3">
-        <h1 className="font-serif text-3xl sm:text-5xl lg:text-[50px] font-bold text-[#420813] tracking-tight">
-          Connect With TalkAstrologer.com
-        </h1>
+          <h1 className="font-serif text-3xl sm:text-5xl lg:text-[50px] font-bold text-[#420813] tracking-tight">
+            Connect With TalkAstrologer.com
+          </h1>
 
-        {/* Small Golden Ornament Line matching screenshot */}
-        <div className="flex items-center justify-center gap-3 pt-1 pb-1">
-          <div className="w-12 sm:w-16 h-[1px] bg-gradient-to-r from-transparent to-[#b88e39]" />
-          <div className="text-[#b88e39] flex items-center gap-1.5 text-xs">
-            <span className="text-[10px] opacity-70">‹</span>
-            <span className="text-xs">❦</span>
-            <span className="text-[10px] opacity-70">›</span>
+          {/* Small Golden Ornament Line matching screenshot */}
+          <div className="flex items-center justify-center gap-3 pt-1 pb-1">
+            <div className="w-12 sm:w-16 h-[1px] bg-gradient-to-r from-transparent to-[#b88e39]" />
+            <div className="text-[#b88e39] flex items-center gap-1.5 text-xs">
+              <span className="text-[10px] opacity-70">‹</span>
+              <span className="text-xs">❦</span>
+              <span className="text-[10px] opacity-70">›</span>
+            </div>
+            <div className="w-12 sm:w-16 h-[1px] bg-gradient-to-l from-transparent to-[#b88e39]" />
           </div>
-          <div className="w-12 sm:w-16 h-[1px] bg-gradient-to-l from-transparent to-[#b88e39]" />
-        </div>
 
-        <p className="text-xs sm:text-sm text-[#5d474b] max-w-xl mx-auto font-normal">
-          Reach out to us for spiritual guidance, inquiries, or support. We are here to illuminate your path.
-        </p>
+          <p className="text-xs sm:text-sm text-[#5d474b] max-w-xl mx-auto font-normal">
+            Reach out to us for spiritual guidance, inquiries, or support. We are here to illuminate your path.
+          </p>
 
-        {/* Start With a Conversation Section */}
-        <div className="pt-2 max-w-2xl mx-auto">
-          <div className="p-4 sm:p-5 rounded-2xl bg-[#faf2e4] border border-[#ebd6b0] text-center space-y-2 shadow-xs">
-            <h2 className="font-serif text-base sm:text-lg font-bold text-[#420813]">
-              Start With a Conversation
-            </h2>
-            <p className="text-xs sm:text-[13px] text-[#5c4549] leading-relaxed">
-              If something in your life has been weighing on your mind, you are welcome to reach out to TalkAstrologer.com. Share what you are seeking guidance about, and the team can help you choose an appropriate consultation.
-            </p>
+          {/* Start With a Conversation Section */}
+          <div className="pt-2 max-w-2xl mx-auto">
+            <div className="p-4 sm:p-5 rounded-2xl bg-[#faf2e4] border border-[#ebd6b0] text-center space-y-2 shadow-xs">
+              <h2 className="font-serif text-base sm:text-lg font-bold text-[#420813]">
+                Start With a Conversation
+              </h2>
+              <p className="text-xs sm:text-[13px] text-[#5c4549] leading-relaxed">
+                If something in your life has been weighing on your mind, you are welcome to reach out to TalkAstrologer.com. Share what you are seeking guidance about, and the team can help you choose an appropriate consultation.
+              </p>
+            </div>
           </div>
-        </div>
         </div>
       </section>
 
@@ -91,35 +91,83 @@ export default function ContactPage() {
           2. TWO-COLUMN MAIN CONTENT (Google Maps + Info & Actions)
       ───────────────────────────────────────────────────────────── */}
       <section className="site-container section-b w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-6 grid-rows-gap lg:gap-x-8 items-stretch">
-          {/* Left Column (7 cols): Google Maps + Location Note + "Ready to find clarity?" */}
-          <div className="lg:col-span-7 flex flex-col justify-between space-y-4">
-            {/* Google Maps Container */}
-            <div className="relative w-full h-[320px] sm:h-[350px] rounded-2xl overflow-hidden border border-[#ebdcc2] bg-[#f5ede0] shadow-sm group">
-              <iframe
-                title="Indian Astrologer and Psychic Gangadhar, Frisco Texas"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3339.4959032725465!2d-96.85605269999999!3d33.17485859999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864c39989a615fcb%3A0xbc65acdbe86fc29b!2sIndian%20Astrologer%20and%20Psychic%20Gangadhar!5e0!3m2!1sen!2sin!4v1790591796127!5m2!1sen!2sin"
-                className="w-full h-full border-0"
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="strict-origin-when-cross-origin"
-              />
+        <div className="grid grid-cols-1 lg:grid-cols-[1.35fr_1fr] gap-x-6 grid-rows-gap lg:gap-x-8 items-stretch">
+          {/* Left Column: Google Maps + Location Note + "Ready to find clarity?" */}
+          <div className="flex flex-col gap-4">
+            {/* Google Maps (iframe embed: styled frame only, map itself is Google's) */}
+            <figure className="relative flex flex-1 flex-col rounded-2xl border border-[#ebd6b0] bg-[#fbf4e4] p-2 shadow-[0_20px_50px_rgba(36,4,9,0.12)] sm:p-2.5">
+              {[
+                "left-1 top-1 border-l border-t rounded-tl-xl",
+                "right-1 top-1 border-r border-t rounded-tr-xl",
+                "bottom-1 left-1 border-b border-l rounded-bl-xl",
+                "bottom-1 right-1 border-b border-r rounded-br-xl",
+              ].map((corner) => (
+                <span
+                  key={corner}
+                  aria-hidden="true"
+                  className={`pointer-events-none absolute h-6 w-6 border-[#c59b27]/70 ${corner}`}
+                />
+              ))}
 
-              {/* Main Center Overlay Badge matching screenshot bottom-right */}
-              <div className="absolute bottom-3 right-3 bg-white/95 backdrop-blur-sm border border-[#ebdcc2] px-3.5 py-2 rounded-xl shadow-md flex items-center gap-2.5">
-                <div className="w-7 h-7 rounded-lg bg-[#faf2de] text-[#8b1827] flex items-center justify-center shrink-0">
-                  <MapPin className="w-4 h-4" />
-                </div>
-                <div className="text-left">
-                  <div className="text-[11px] font-bold text-[#420813] leading-tight">
-                    Main Center (Temporary)
+              {/* Location card: header above the map on phones, top-right overlay from sm (clear of Google's place link, zoom and logo) */}
+              <div className="relative z-10 mb-2 rounded-xl border border-[#e5cb9b] bg-[#fdf8ee] p-3 sm:absolute sm:right-6 sm:top-6 sm:mb-0 sm:w-[min(15.5rem,calc(100%-19rem))] sm:rounded-2xl sm:bg-[#fdf8ee]/95 sm:p-3.5 sm:shadow-[0_10px_28px_rgba(36,4,9,0.18)] sm:backdrop-blur-sm">
+                <div className="flex items-start gap-2.5">
+                  <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#d4af37] bg-[#240409] text-[#f6e27a] shadow-[0_0_10px_rgba(212,175,55,0.35)]">
+                    <MapPin className="h-4 w-4" />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#9e701e]">
+                      Current Office
+                    </p>
+                    <p className="mt-0.5 font-serif text-[13px] font-bold leading-snug text-[#420813] sm:text-sm">
+                      Indian Astrologer and Psychic Gangadhar
+                    </p>
+                    <p className="mt-0.5 text-[11px] leading-relaxed text-[#5c4549] sm:hidden">
+                      11572 Lenox Ln, Frisco, TX 75033
+                    </p>
                   </div>
-                  <div className="text-[10px] text-[#6d565b]">
-                    11572 Lenox Ln, Frisco, TX 75033
-                  </div>
                 </div>
+                <div className="my-2 hidden h-px bg-gradient-to-r from-[#c59b27]/70 via-[#c59b27]/30 to-transparent sm:block" />
+                <p className="hidden text-xs leading-relaxed text-[#5c4549] sm:block">
+                  11572 Lenox Ln,
+                  <br />
+                  Frisco, TX 75033
+                </p>
               </div>
-            </div>
+
+              <div className="relative min-h-[360px] flex-1 overflow-hidden rounded-xl border border-[rgba(180,130,35,0.35)] bg-[#f3e7d0] sm:min-h-[400px] lg:min-h-[420px]">
+                <iframe
+                  title="Indian Astrologer and Psychic Gangadhar, Frisco Texas"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3339.4959032725465!2d-96.85605269999999!3d33.17485859999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864c39989a615fcb%3A0xbc65acdbe86fc29b!2sIndian%20Astrologer%20and%20Psychic%20Gangadhar!5e0!3m2!1sen!2sin!4v1790591796127!5m2!1sen!2sin"
+                  className="absolute inset-0 h-full w-full border-0"
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                />
+
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 rounded-xl shadow-[inset_0_0_0_1px_rgba(212,175,55,0.25),inset_0_0_36px_rgba(36,4,9,0.14)]"
+                />
+              </div>
+
+              <figcaption className="mt-2 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 rounded-xl bg-[#240409] px-4 py-3 text-[#f6eedc] sm:mt-2.5">
+                <span className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] sm:text-xs">
+                  <span className="text-[#d4af37]">✦</span>
+                  Frisco · North Texas
+                  <span className="hidden text-[#f6eedc]/60 sm:inline">· Temporary location</span>
+                </span>
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&destination=Indian+Astrologer+and+Psychic+Gangadhar,+11572+Lenox+Ln,+Frisco,+TX+75033"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-[#d4af37]/60 px-3.5 py-1.5 text-xs font-semibold text-[#f6e27a] transition-colors hover:bg-[#d4af37] hover:text-[#240409] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d4af37]"
+                >
+                  <Navigation className="h-3.5 w-3.5" />
+                  Get directions
+                </a>
+              </figcaption>
+            </figure>
 
             {/* Current Location Note Banner */}
             <div className="p-3.5 sm:p-4 rounded-xl bg-[#faf6ee] border border-[#ebdcc2] text-left space-y-1">
@@ -152,17 +200,17 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Right Column (5 cols): Contact Information + Quick Actions */}
-          <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
+          {/* Right Column: Contact Information + Quick Actions */}
+          <div className="flex flex-col gap-6">
             {/* Contact Information Card (Golden Parchment style) */}
-            <div className="bg-[#fbf4e4] rounded-2xl border border-[#ebd6b0] p-6 sm:p-7 shadow-sm space-y-5">
+            <div className="flex flex-1 flex-col gap-5 bg-[#fbf4e4] rounded-2xl border border-[#ebd6b0] p-6 sm:p-7 shadow-sm">
               <h2 className="font-serif text-2xl font-bold text-[#420813]">
                 Contact Information
               </h2>
 
               <div className="w-full h-px bg-[#e5cb9b]" />
 
-              <div className="space-y-4 text-xs sm:text-sm">
+              <div className="flex flex-1 flex-col justify-between gap-4 text-xs sm:text-sm">
                 {/* Phone */}
                 <div className="flex items-start gap-3.5">
                   <div className="w-9 h-9 rounded-xl bg-white border border-[#ebd6b0] flex items-center justify-center text-[#9e701e] shrink-0 shadow-xs">
@@ -323,17 +371,17 @@ export default function ContactPage() {
 
       {/* Send a message */}
       <section id="send-message" className="site-container scroll-mt-28 section-b">
-        <div className="mx-auto max-w-4xl">
-          <div className="rounded-2xl border border-[#ebdcc2] bg-white p-5 shadow-sm sm:p-8">
-          <div className="mb-6 space-y-1.5 text-center sm:text-left">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#8b1827]">Write to us</p>
-            <h2 className="font-serif text-2xl font-bold text-[#420813] sm:text-3xl">Send a Message</h2>
-            <p className="text-xs text-[#614b4f] sm:text-sm">
-              For questions about services or support. To book a consultation, use the Book Appointment page.
-            </p>
+        <div>
+          <div className="rounded-2xl border border-[#ebdcc2] bg-white p-5 shadow-sm sm:p-8 lg:p-10">
+            <div className="mb-6 space-y-1.5 text-center sm:text-left">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#8b1827]">Write to us</p>
+              <h2 className="font-serif text-2xl font-bold text-[#420813] sm:text-3xl">Send a Message</h2>
+              <p className="text-xs text-[#614b4f] sm:text-sm">
+                For questions about services or support. To book a consultation, use the Book Appointment page.
+              </p>
+            </div>
+            <ContactForm />
           </div>
-          <ContactForm />
-        </div>
         </div>
       </section>
 
@@ -343,78 +391,70 @@ export default function ContactPage() {
       <section className="section-y bg-[#faf6ee] border-t border-[#ebdcc2]">
         <div className="site-container">
           <div className="max-w-4xl mx-auto">
-          <div className="text-center space-y-2.5 header-gap">
-            <span className="text-[#a07421] text-xs font-semibold tracking-[0.25em] uppercase flex items-center justify-center gap-2">
-              <Sparkles className="w-3.5 h-3.5 text-[#b88e39]" />
-              Clear Answers for Seekers
-              <Sparkles className="w-3.5 h-3.5 text-[#b88e39]" />
-            </span>
-            <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-[#3a0812] tracking-tight">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-xs sm:text-sm text-[#5d474b] max-w-xl mx-auto">
-              Find quick clarity regarding session procedures, remote USA consultations, and what to expect during your sacred guidance.
-            </p>
-          </div>
+            <div className="text-center space-y-2.5 header-gap">
+              <span className="text-[#a07421] text-xs font-semibold tracking-[0.25em] uppercase flex items-center justify-center gap-2">
+                <Sparkles className="w-3.5 h-3.5 text-[#b88e39]" />
+                Clear Answers for Seekers
+                <Sparkles className="w-3.5 h-3.5 text-[#b88e39]" />
+              </span>
+              <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-[#3a0812] tracking-tight">
+                Frequently Asked Questions
+              </h2>
+              <p className="text-xs sm:text-sm text-[#5d474b] max-w-xl mx-auto">
+                Find quick clarity regarding session procedures, remote USA consultations, and what to expect during your sacred guidance.
+              </p>
+            </div>
 
-          {/* Accordion FAQ List */}
-          <div className="space-y-3">
-            {contactFaqs.map((faq, idx) => {
-              const isOpen = openFaq === idx;
-              return (
-                <div
-                  key={idx}
-                  className="bg-white rounded-xl border border-[#e5d6c2] overflow-hidden transition-all shadow-xs hover:border-[#b88e39]"
-                >
-                  <button
-                    onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    className="w-full text-left px-5 py-4 flex items-center justify-between gap-4 cursor-pointer"
+            {/* Accordion FAQ List */}
+            <div className="space-y-3">
+              {contactFaqs.map((faq, idx) => {
+                const isOpen = openFaq === idx;
+                return (
+                  <div
+                    key={idx}
+                    className="bg-white rounded-xl border border-[#e5d6c2] overflow-hidden transition-all shadow-xs hover:border-[#b88e39]"
                   >
-                    <div className="flex items-center gap-3">
-                      <HelpCircle className="w-4 h-4 text-[#a07421] shrink-0" />
-                      <span className="font-serif text-sm sm:text-base font-bold text-[#3a0812]">
-                        {faq.q}
-                      </span>
-                    </div>
-                    <ChevronDown
-                      className={`w-4 h-4 text-[#8b1827] transition-transform duration-200 shrink-0 ${
-                        isOpen ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
+                    <button
+                      onClick={() => setOpenFaq(isOpen ? null : idx)}
+                      className="w-full text-left px-5 py-4 flex items-center justify-between gap-4 cursor-pointer"
+                    >
+                      <div className="flex items-center gap-3">
+                        <HelpCircle className="w-4 h-4 text-[#a07421] shrink-0" />
+                        <span className="font-serif text-sm sm:text-base font-bold text-[#3a0812]">
+                          {faq.q}
+                        </span>
+                      </div>
+                      <ChevronDown
+                        className={`w-4 h-4 text-[#8b1827] transition-transform duration-200 shrink-0 ${isOpen ? "rotate-180" : ""
+                          }`}
+                      />
+                    </button>
 
-                  {isOpen && (
-                    <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-[#584448] leading-relaxed border-t border-[#f4ede2] pl-12 bg-[#fdfbf7]">
-                      {faq.a}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+                    {isOpen && (
+                      <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-[#584448] leading-relaxed border-t border-[#f4ede2] pl-12 bg-[#fdfbf7]">
+                        {faq.a}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
 
-          {/* Bottom callout */}
-          <div className="content-gap text-center flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-[#5d474b]">
-            <span>Have a more specific or personalized question?</span>
-            <div className="flex items-center gap-3">
-              <Link
-                href="/faq"
-                className="font-semibold text-[#8b1827] hover:text-[#5a0f19] underline underline-offset-4 flex items-center gap-1"
-              >
-                View Full FAQ Library <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-              <span>•</span>
-              <a
-                href="https://wa.me/919876543210"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-[#1f7e3c] hover:underline"
-              >
-                Chat on WhatsApp
-              </a>
+            {/* Bottom callout */}
+            <div className="content-gap text-center flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-[#5d474b]">
+              <span>Have a more specific or personalized question?</span>
+              <div className="flex items-center gap-3">
+                <a
+                  href="https://wa.me/+12146699699"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-[#1f7e3c] hover:underline"
+                >
+                  Chat on WhatsApp
+                </a>
+              </div>
             </div>
           </div>
-        </div>
         </div>
       </section>
 

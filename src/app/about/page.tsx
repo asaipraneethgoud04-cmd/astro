@@ -34,7 +34,7 @@ export default function AboutPage() {
       {/* ─────────────────────────────────────────────────────────────
           1. HERO SECTION (Strictly matching reference layout)
       ───────────────────────────────────────────────────────────── */}
-      <section className="relative w-full overflow-hidden bg-[#f3e7d0] lg:flex lg:h-[560px] lg:items-center xl:h-[600px]">
+      <section className="relative w-full overflow-hidden bg-[#f3e7d0] lg:flex lg:h-[max(560px,calc(100svh-var(--chrome-top,0px)))] lg:items-center lg:[--hero-art:clamp(420px,min(calc(100svh-var(--chrome-top,0px)-120px),40vw),600px)]">
         {/* Background Image: about page hero.png */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -51,7 +51,7 @@ export default function AboutPage() {
         <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#240409]/60 via-[#240409]/20 to-transparent z-[5] pointer-events-none" />
 
         {/* Content Container */}
-        <div className="relative z-10 flex h-auto w-full site-container flex-col page-top lg:h-full lg:pt-24">
+        <div className="relative z-10 flex h-auto w-full site-container site-container--narrow flex-col page-top lg:h-full lg:pt-24">
           <div className="grid h-auto grid-cols-1 items-center gap-2 lg:h-full lg:grid-cols-12 lg:gap-8">
             {/* Left Content (Horizontally Centered in its column) */}
             <div className="flex flex-col items-center space-y-4 px-2 text-center sm:px-6 lg:col-span-7">
@@ -93,7 +93,7 @@ export default function AboutPage() {
 
             {/* Right Celestial Astrological Ring & Hand (Anchored to bottom with zero gap) */}
             <div className="relative flex h-[340px] w-full items-end justify-center sm:h-[420px] md:h-[480px] lg:col-span-5 lg:h-full">
-              <div className="absolute bottom-0 left-1/2 h-[300px] w-[300px] -translate-x-1/2 sm:h-[380px] sm:w-[380px] md:h-[440px] md:w-[440px] lg:bottom-auto lg:top-1/2 lg:h-[495px] lg:w-[495px] lg:-translate-y-[52%] xl:h-[525px] xl:w-[525px]">
+              <div className="absolute bottom-0 left-1/2 h-[300px] w-[300px] -translate-x-1/2 sm:h-[380px] sm:w-[380px] md:h-[440px] md:w-[440px] lg:h-[calc(var(--hero-art)*1.03)] lg:w-[calc(var(--hero-art)*1.03)]">
                 <div className="relative h-full w-full animate-spin-celestial">
                   <Image
                     src="/images/hero-ring-trimmed.png"
@@ -106,7 +106,7 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              <div className="pointer-events-none relative z-10 h-full w-[min(72vw,250px)] sm:w-[280px] md:w-[310px] lg:h-[485px] lg:w-[310px] xl:h-[510px] xl:w-[325px]">
+              <div className="pointer-events-none relative z-10 h-full w-[min(72vw,250px)] sm:w-[280px] md:w-[310px] lg:h-(--hero-art) lg:w-[calc(var(--hero-art)*0.64)]">
                 <Image
                   src="/images/hero-hand-trimmed.png"
                   alt="Vedic Palmistry Hand"
@@ -125,7 +125,7 @@ export default function AboutPage() {
           2. ABOUT TALKASTROLOGER.COM — LISTENING FIRST & COMPASSIONATE GUIDANCE
       ───────────────────────────────────────────────────────────── */}
       <section className="bg-[#faf6ee] section-t">
-        <div className="site-container">
+        <div className="site-container site-container--narrow">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Narrative */}
             <div className="lg:col-span-7 space-y-6">
@@ -221,7 +221,7 @@ export default function AboutPage() {
           3. WHO WE ARE & ANCESTRAL HERITAGE (With Hanging Temple Bell)
       ───────────────────────────────────────────────────────────── */}
       <section className="section-t bg-[#faf6ee]">
-        <div className="site-container">
+        <div className="site-container site-container--narrow">
           {/* Section Divider Header */}
           <div className="mx-auto max-w-3xl text-center header-gap">
             <h2 className="text-balance font-serif text-[1.7rem] font-extrabold leading-tight tracking-tight text-[#38070e] sm:text-3xl lg:text-4xl">
@@ -252,7 +252,7 @@ export default function AboutPage() {
             </div>
 
             {/* Text stays left of the bell and the floating call buttons */}
-            <div className="relative z-10 space-y-4 pr-[4.75rem] text-left sm:space-y-5 sm:pr-28 lg:max-w-3xl lg:pr-40">
+            <div className="relative z-10 space-y-4 pr-[4.75rem] text-left sm:space-y-5 sm:pr-28 lg:pr-44">
               <h3 className="font-serif text-xl font-bold leading-snug text-[#38070e] sm:text-2xl">
                 An Unbroken Connection with Traditional Jyotish
               </h3>
@@ -273,7 +273,7 @@ export default function AboutPage() {
           4. GLOBAL REACH & MULTILINGUAL CONSULTATIONS
       ───────────────────────────────────────────────────────────── */}
       <section className="section-y bg-[#faf6ee]">
-        <div className="site-container">
+        <div className="site-container site-container--narrow">
           <div className="text-center space-y-2 max-w-2xl mx-auto header-gap">
             <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#8b1827] block">
               Experience, Heritage & Global Reach
@@ -337,7 +337,7 @@ export default function AboutPage() {
         <div className="pointer-events-none absolute -top-24 -right-16 h-64 w-64 rounded-full bg-[#c59b27]/10 blur-3xl" />
         <div className="pointer-events-none absolute -bottom-28 -left-16 h-64 w-64 rounded-full bg-[#8b1827]/5 blur-3xl" />
 
-        <div className="relative site-container">
+        <div className="relative site-container site-container--narrow">
           <div className="text-center space-y-4 max-w-3xl mx-auto">
             <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#8b1827] block">
               Our Guiding Principles
@@ -458,7 +458,7 @@ export default function AboutPage() {
           6. OUR METHODOLOGY & SPECIALIZATIONS (Matching Reference Layout)
       ───────────────────────────────────────────────────────────── */}
       <section className="section-t bg-[#faf6ee]">
-        <div className="site-container">
+        <div className="site-container site-container--narrow">
           {/* Section Heading */}
           <div className="text-center space-y-2 header-gap">
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#38070e] tracking-tight">
@@ -551,7 +551,7 @@ export default function AboutPage() {
           7. BEGIN YOUR JOURNEY TO CLARITY (Call to Action Banner)
       ───────────────────────────────────────────────────────────── */}
       <section className="section-y bg-[#faf6ee]">
-        <div className="site-container">
+        <div className="site-container site-container--narrow">
           <div className="rounded-2xl bg-[#2d1814] py-12 px-6 sm:px-12 text-center text-white shadow-xl space-y-6">
             <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#fdfaf4]">
               Begin Your Journey to Clarity
@@ -593,7 +593,7 @@ export default function AboutPage() {
           8. OUR GLOBAL SANCTUARIES & TEMPORARY OFFICE LOCATION
       ───────────────────────────────────────────────────────────── */}
       <section className="section-t page-bottom bg-[#faf6ee] border-t border-[#ebdcc2]">
-        <div className="site-container">
+        <div className="site-container site-container--narrow">
           {/* Heading */}
           <div className="text-center space-y-2 header-gap">
             <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-[#38070e] tracking-tight">

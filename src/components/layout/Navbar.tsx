@@ -41,7 +41,7 @@ export default function Navbar({ offsetTop = false }: { offsetTop?: boolean }) {
 
   return (
     <header
-      className={`fixed ${offsetTop ? "top-10" : "top-0"} left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed ${offsetTop ? "top-[calc(2.5rem-1px)]" : "top-0"} left-0 right-0 z-50 transition-all duration-300 ${
         isTransparent
           ? "bg-transparent border-b border-transparent shadow-none"
           : "bg-[#240409]/95 backdrop-blur-md border-b border-[#c59b27]/30 shadow-lg"

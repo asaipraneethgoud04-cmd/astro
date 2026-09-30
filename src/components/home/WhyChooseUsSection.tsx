@@ -48,20 +48,20 @@ export default function WhyChooseUsSection() {
             return (
               <div
                 key={index}
-                className="bg-[#fbf5e8] border border-[#e6d5b8] rounded-2xl px-8 card-y text-center shadow-sm hover:shadow-md hover:border-[#c59b27] transition-all duration-300 flex flex-col items-center group"
+                className="bg-[#fbf5e8] border border-[#e6d5b8] rounded-2xl px-8 card-y text-center shadow-sm hover:-translate-y-1 hover:bg-[#38070e] hover:border-[#c59b27] hover:shadow-[0_18px_40px_rgba(36,4,9,0.28)] transition-all duration-300 flex flex-col items-center group"
               >
                 {/* Icon Container */}
-                <div className="w-16 h-16 rounded-xl bg-[#faecd1] border border-[#d8be8d] flex items-center justify-center text-[#9c182d] mb-6 shadow-inner group-hover:scale-110 group-hover:bg-[#f6e27a] transition-all duration-300">
-                  <Icon className="w-7 h-7 text-[#8b1c2b] group-hover:text-[#38070e] transition-colors" />
+                <div className="w-16 h-16 rounded-xl bg-[#faecd1] border border-[#d8be8d] flex items-center justify-center text-[#9c182d] mb-6 shadow-inner group-hover:scale-110 group-hover:bg-[#f6e27a]/10 group-hover:border-[#d4af37] group-hover:shadow-[0_0_16px_rgba(212,175,55,0.35)] transition-all duration-300">
+                  <Icon className="w-7 h-7 text-[#8b1c2b] group-hover:text-[#f6e27a] transition-colors duration-300" />
                 </div>
 
                 {/* Title */}
-                <h3 className="font-serif text-xl font-bold text-[#38070e] mb-3">
+                <h3 className="font-serif text-xl font-bold text-[#38070e] group-hover:text-white mb-3 transition-colors duration-300">
                   {item.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-xs sm:text-sm text-[#665154] leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#665154] group-hover:text-white/85 leading-relaxed transition-colors duration-300">
                   {item.description}
                 </p>
               </div>

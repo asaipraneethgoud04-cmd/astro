@@ -53,11 +53,11 @@ export default function WelcomeSection() {
 
           {/* Right Column: Welcome Description & Lineage Philosophy */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="space-y-2">
+            <div className="@container space-y-2">
               <span className="font-serif text-2xl sm:text-3xl text-[#5a111c] block font-light">
                 Welcome to
               </span>
-              <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#38070e] leading-tight tracking-tight">
+              <h2 className="font-serif text-[min(2.25rem,8.6cqw)] sm:text-[min(3rem,8.6cqw)] lg:text-[min(3.75rem,8.6cqw)] font-extrabold text-[#38070e] leading-tight tracking-tight">
                 TalkAstrologer.com
               </h2>
             </div>

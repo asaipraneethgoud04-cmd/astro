@@ -37,7 +37,7 @@ export default function PinnedReviewBar({ reviews }: { reviews: PinnedReview[] }
 
   return (
     <div
-      className="fixed inset-x-0 top-0 z-[60] h-10 border-b border-[#c59b27]/40 bg-[#240409]"
+      className="fixed inset-x-0 top-0 z-[60] h-10 bg-[#240409]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >

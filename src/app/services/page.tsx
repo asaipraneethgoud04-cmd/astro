@@ -18,7 +18,6 @@ function ServiceCardItem({ service }: { service: ServiceItem }) {
       imageAlt={service.title}
       title={service.title}
       description={service.description}
-      meta={service.category}
       href={`/book-appointment?service=${service.id}`}
       ctaLabel="Book Appointment"
       iconName={service.iconName}
@@ -257,14 +256,14 @@ export default function ServicesPage() {
                 Book Appointment
               </Link>
               <a
-                href="tel:+919876543210"
+                href="tel:+12146699699"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/60 hover:border-white text-white hover:bg-white/10 text-xs sm:text-sm tracking-wider uppercase transition-all"
               >
                 <Phone className="w-4 h-4 text-[#f6e27a]" />
                 Call Now
               </a>
               <a
-                href="https://wa.me/919876543210"
+                href="https://wa.me/+12146699699"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-xs sm:text-sm tracking-wider uppercase shadow-md transition-all"
