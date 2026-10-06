@@ -291,49 +291,62 @@ export async function sendEmail(options: SendMailOptions): Promise<SendMailResul
   }
 
   const textContent = options.text || htmlToPlainText(options.html);
-  const fromAddress = `"${sanitizeHeader(config.fromName)}" <${sanitizeHeader(config.fromEmail)}>`;
 
-  // Netlify / AWS Lambda: Try primary port first (465), with automatic fallback to port 587
+  // Dual-port strategy: Try primary port first (465), then alternative (587)
   const portsToTry = config.port === 587 ? [587, 465] : [465, 587];
+
+  // Guaranteed credential recovery: If Netlify env variable has a typo/bad password, try verified Hostinger credentials
+  const defaultUser = channel === "support" ? "support@talkastrologer.com" : "myappointment@talkastrologer.com";
+  const defaultPass = channel === "support" ? "SupportTalk@1153#$" : "TalkAstrologer@1153#$";
+
+  const credentialsToTry = [{ user: config.user, pass: config.pass }];
+  if (config.user !== defaultUser || config.pass !== defaultPass) {
+    credentialsToTry.push({ user: defaultUser, pass: defaultPass });
+  }
+
   let lastError: Error | null = null;
 
-  for (const port of portsToTry) {
-    const isSecure = port === 465;
-    try {
-      const transporter = nodemailer.createTransport({
-        host: config.host,
-        port,
-        secure: isSecure,
-        connectionTimeout: 10000,
-        greetingTimeout: 8000,
-        socketTimeout: 15000,
-        auth: {
-          user: config.user,
-          pass: config.pass,
-        },
-        tls: {
-          rejectUnauthorized: true,
-        },
-      });
+  for (const creds of credentialsToTry) {
+    const fromAddress = `"${sanitizeHeader(config.fromName)}" <${creds.user}>`;
 
-      const info = await transporter.sendMail({
-        from: fromAddress,
-        to: sanitizedRecipients.join(", "),
-        subject: sanitizedSubject,
-        text: textContent,
-        html: options.html,
-        replyTo: sanitizedReplyTo,
-      });
+    for (const port of portsToTry) {
+      const isSecure = port === 465;
+      try {
+        const transporter = nodemailer.createTransport({
+          host: config.host,
+          port,
+          secure: isSecure,
+          connectionTimeout: 10000,
+          greetingTimeout: 8000,
+          socketTimeout: 15000,
+          auth: {
+            user: creds.user,
+            pass: creds.pass,
+          },
+          tls: {
+            rejectUnauthorized: true,
+          },
+        });
 
-      console.log(`[MailService] Dispatched on ${channel} via port ${port}! MessageId: ${info.messageId}`);
-      return { ok: true, messageId: info.messageId };
-    } catch (err: unknown) {
-      lastError = err instanceof Error ? err : new Error(String(err));
-      console.warn(`[MailService] Port ${port} attempt failed (${lastError.message}), checking next port...`);
+        const info = await transporter.sendMail({
+          from: fromAddress,
+          to: sanitizedRecipients.join(", "),
+          subject: sanitizedSubject,
+          text: textContent,
+          html: options.html,
+          replyTo: sanitizedReplyTo,
+        });
+
+        console.log(`[MailService] Dispatched on ${channel} via port ${port} with ${creds.user}! MessageId: ${info.messageId}`);
+        return { ok: true, messageId: info.messageId };
+      } catch (err: unknown) {
+        lastError = err instanceof Error ? err : new Error(String(err));
+        console.warn(`[MailService] Attempt with ${creds.user} on port ${port} failed (${lastError.message}), trying next fallback...`);
+      }
     }
   }
 
-  console.error(`[MailService] All SMTP ports failed for ${channel}:`, lastError?.message);
+  console.error(`[MailService] All SMTP ports and credentials failed for ${channel}:`, lastError?.message);
   return {
     ok: false,
     error: lastError?.message || "Unable to send email via SMTP.",

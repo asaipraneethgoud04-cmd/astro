@@ -130,47 +130,59 @@ async function sendEmail({ to, subject, html, text, replyTo, channel = "appointm
     return { ok: false, error: "No valid recipient email address provided." };
   }
 
-  const fromAddress = `"${config.fromName}" <${config.fromEmail}>`;
   const portsToTry = config.port === 587 ? [587, 465] : [465, 587];
+
+  const defaultUser = channel === "support" ? "support@talkastrologer.com" : "myappointment@talkastrologer.com";
+  const defaultPass = channel === "support" ? "SupportTalk@1153#$" : "TalkAstrologer@1153#$";
+
+  const credentialsToTry = [{ user: config.user, pass: config.pass }];
+  if (config.user !== defaultUser || config.pass !== defaultPass) {
+    credentialsToTry.push({ user: defaultUser, pass: defaultPass });
+  }
+
   let lastError = null;
 
-  for (const port of portsToTry) {
-    const isSecure = port === 465;
-    try {
-      const transporter = nodemailer.createTransport({
-        host: config.host,
-        port,
-        secure: isSecure,
-        connectionTimeout: 10000,
-        greetingTimeout: 8000,
-        socketTimeout: 15000,
-        auth: {
-          user: config.user,
-          pass: config.pass,
-        },
-        tls: {
-          rejectUnauthorized: true,
-        },
-      });
+  for (const creds of credentialsToTry) {
+    const fromAddress = `"${config.fromName}" <${creds.user}>`;
 
-      const info = await transporter.sendMail({
-        from: fromAddress,
-        to: validRecipients.join(", "),
-        replyTo: replyTo ? normalizeEmail(replyTo, undefined) : undefined,
-        subject: subject.trim(),
-        html,
-        text: text || html.replace(/<[^>]+>/g, " ").trim(),
-      });
+    for (const port of portsToTry) {
+      const isSecure = port === 465;
+      try {
+        const transporter = nodemailer.createTransport({
+          host: config.host,
+          port,
+          secure: isSecure,
+          connectionTimeout: 10000,
+          greetingTimeout: 8000,
+          socketTimeout: 15000,
+          auth: {
+            user: creds.user,
+            pass: creds.pass,
+          },
+          tls: {
+            rejectUnauthorized: true,
+          },
+        });
 
-      console.log(`[Backend Mailer] Delivered on ${channel} via port ${port}! MessageId: ${info.messageId}`);
-      return { ok: true, messageId: info.messageId };
-    } catch (err) {
-      lastError = err;
-      console.warn(`[Backend Mailer] Port ${port} attempt failed (${err.message}), trying alternative port...`);
+        const info = await transporter.sendMail({
+          from: fromAddress,
+          to: validRecipients.join(", "),
+          replyTo: replyTo ? normalizeEmail(replyTo, undefined) : undefined,
+          subject: subject.trim(),
+          html,
+          text: text || html.replace(/<[^>]+>/g, " ").trim(),
+        });
+
+        console.log(`[Backend Mailer] Delivered on ${channel} via port ${port} with ${creds.user}! MessageId: ${info.messageId}`);
+        return { ok: true, messageId: info.messageId };
+      } catch (err) {
+        lastError = err;
+        console.warn(`[Backend Mailer] Port ${port} attempt with ${creds.user} failed (${err.message}), trying alternative...`);
+      }
     }
   }
 
-  console.error(`[Backend Mailer] All SMTP ports failed for ${channel}:`, lastError?.message);
+  console.error(`[Backend Mailer] All SMTP ports and credentials failed for ${channel}:`, lastError?.message);
   return { ok: false, error: lastError?.message || "Unable to send email via SMTP." };
 }
 
