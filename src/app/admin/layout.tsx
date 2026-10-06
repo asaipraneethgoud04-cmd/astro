@@ -3,10 +3,22 @@ import { getNewCounts } from "@/lib/inbox";
 import { signOutAdmin } from "./actions";
 import AdminNav from "./AdminNav";
 
-import { requireAdmin } from "./session";
+import { createClient } from "@/lib/supabase/server";
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
-  const user = await requireAdmin();
+  let user = null;
+  try {
+    const supabase = await createClient();
+    const { data } = await supabase.auth.getUser();
+    user = data?.user ?? null;
+  } catch {
+    user = null;
+  }
+
+  // If no authenticated user (e.g. on /admin/login), render children directly without the admin sidebar
+  if (!user) {
+    return <>{children}</>;
+  }
 
   const counts = await getNewCounts();
 

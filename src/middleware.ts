@@ -22,24 +22,7 @@ export function middleware(request: NextRequest) {
     }
   }
 
-  // Redirect authenticated admin away from login page
-  if (pathname === "/admin/login") {
-    const cookies = request.cookies.getAll();
-    const hasAuthToken = cookies.some(
-      (c) => c.name.startsWith("sb-") && c.name.includes("-auth-token")
-    );
-
-    if (hasAuthToken) {
-      const adminUrl = new URL("/admin", request.url);
-      const redirectRes = NextResponse.redirect(adminUrl);
-      redirectRes.headers.set(
-        "Cache-Control",
-        "private, no-cache, no-store, max-age=0, must-revalidate"
-      );
-      return redirectRes;
-    }
-  }
-
+  // Edge Security Headers (Defense-in-depth alongside next.config.ts)
   const response = NextResponse.next();
 
   // Prevent CDN / Browser caching of any admin routes
