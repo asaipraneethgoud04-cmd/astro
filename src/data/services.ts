@@ -149,7 +149,7 @@ export const servicesData: ServiceItem[] = [
     description:
       "Empathetic astrological guidance to bridge parental hesitations, family opposition, and cultural differences for love marriages.",
     category: "Love & Marriage",
-    imageUrl: "/images/services/love-marriage.png",
+    imageUrl: "/images/services/Love Marriage Specialist.png",
     iconName: "couple",
   },
 ];

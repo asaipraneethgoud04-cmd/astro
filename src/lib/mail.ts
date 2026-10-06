@@ -207,14 +207,16 @@ function getSmtpConfig(channel: MailChannel = "appointment") {
     const pass = cleanPassword(process.env.SUPPORT_SMTP_PASSWORD, "SupportTalk@1153#$");
     const fromEmail = normalizeEmail(process.env.SUPPORT_MAIL_FROM, user);
     const fromName = (process.env.SUPPORT_MAIL_FROM_NAME || "TalkAstrologer Support").trim();
-    return { host, port, secure, user, pass, fromEmail, fromName, adminAlertEmail, supportEmail };
+    const alertEmail = normalizeEmail(process.env.SUPPORT_EMAIL, "support@talkastrologer.com");
+    return { host, port, secure, user, pass, fromEmail, fromName, alertEmail };
   }
 
   const user = normalizeEmail(process.env.SMTP_USER, "myappointment@talkastrologer.com");
   const pass = cleanPassword(process.env.SMTP_PASSWORD, "TalkAstrologer@1153#$");
   const fromEmail = normalizeEmail(process.env.MAIL_FROM, user);
-  const fromName = (process.env.MAIL_FROM_NAME || "TalkAstrologer").trim();
-  return { host, port, secure, user, pass, fromEmail, fromName, adminAlertEmail, supportEmail };
+  const fromName = (process.env.MAIL_FROM_NAME || "TalkAstrologer Appointments").trim();
+  const alertEmail = normalizeEmail(process.env.ADMIN_ALERT_EMAIL, "myappointment@talkastrologer.com");
+  return { host, port, secure, user, pass, fromEmail, fromName, alertEmail };
 }
 
 /**
@@ -361,8 +363,8 @@ export async function sendEmail(options: SendMailOptions): Promise<SendMailResul
 export async function sendAppointmentNotificationEmail(
   payload: AppointmentEmailPayload
 ): Promise<SendMailResult> {
-  const config = getSmtpConfig();
-  const adminEmail = config.adminAlertEmail || config.fromEmail || "myappointment@talkastrologer.com";
+  const config = getSmtpConfig("appointment");
+  const appointmentInbox = config.alertEmail || "myappointment@talkastrologer.com";
 
   const safeFullName = escapeHtml(payload.fullName);
   const safeSecondName = payload.secondName ? escapeHtml(payload.secondName) : "Not provided";
@@ -500,24 +502,24 @@ export async function sendAppointmentNotificationEmail(
     </html>
   `;
 
-  // 1. Send alert to administration
+  // 1. Send alert ONLY to Appointments mailbox
   logMailDebug("send_appointment_alert", true);
   const adminResult = await sendEmail({
-    to: adminEmail,
+    to: appointmentInbox,
     subject: `[New Appointment] ${payload.service} - ${payload.fullName}`,
     html: adminHtml,
     channel: "appointment",
   });
   logMailDebug("send_appointment_alert_result", adminResult.ok, { messageId: adminResult.messageId });
 
-  // 2. Send receipt to client (AWAITED so Netlify serverless container does not terminate early)
+  // 2. Send receipt to client from Appointments desk
   if (isValidEmail(payload.email)) {
     try {
       await sendEmail({
         to: payload.email,
         subject: `Your Consultation Request with TalkAstrologer - ${payload.service}`,
         html: clientHtml,
-        replyTo: adminEmail,
+        replyTo: appointmentInbox,
         channel: "appointment",
       });
     } catch (err) {
@@ -536,12 +538,8 @@ export async function sendAppointmentNotificationEmail(
 export async function sendContactNotificationEmail(
   payload: ContactEmailPayload
 ): Promise<SendMailResult> {
-  const config = getSmtpConfig();
-  const supportEmail = config.supportEmail || "support@talkastrologer.com";
-  const adminEmail = config.adminAlertEmail || config.fromEmail || "myappointment@talkastrologer.com";
-
-  // Build target recipients: both support@talkastrologer.com and admin mailbox (deduplicated)
-  const alertRecipients = Array.from(new Set([supportEmail, adminEmail].filter(isValidEmail)));
+  const config = getSmtpConfig("support");
+  const supportInbox = config.alertEmail || "support@talkastrologer.com";
 
   const safeName = escapeHtml(payload.name);
   const safeEmail = escapeHtml(payload.email);
@@ -564,7 +562,7 @@ export async function sendContactNotificationEmail(
               TalkAstrologer Support Desk
             </h1>
             <p style="color: #f6e27a; margin: 6px 0 0; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;">
-              New Support Enquiry (${supportEmail})
+              New Support Enquiry (${supportInbox})
             </p>
           </div>
           
@@ -603,7 +601,7 @@ export async function sendContactNotificationEmail(
           </div>
           
           <div style="background-color: #faf6ee; padding: 16px; text-align: center; border-top: 1px solid #ebdcc2; font-size: 12px; color: #7a5f64;">
-            This support enquiry was submitted via the contact form on TalkAstrologer and routed to ${supportEmail} &amp; admin dashboard.
+            This support enquiry was submitted via the contact form on TalkAstrologer and routed to ${supportInbox}.
           </div>
         </div>
       </body>
@@ -654,23 +652,23 @@ export async function sendContactNotificationEmail(
     </html>
   `;
 
-  // 1. Send alert to administration & support inbox (using support SMTP channel)
+  // 1. Send alert ONLY to Support Desk mailbox
   const adminResult = await sendEmail({
-    to: alertRecipients.length > 0 ? alertRecipients : [supportEmail],
+    to: supportInbox,
     subject: `[Support Enquiry] ${payload.subject || "Contact Form Inquiry"} - ${payload.name}`,
     html: adminHtml,
     replyTo: payload.email,
     channel: "support",
   });
 
-  // 2. Send receipt to client from support desk (AWAITED so Netlify does not terminate early)
+  // 2. Send receipt to client from Support Desk
   if (isValidEmail(payload.email)) {
     try {
       await sendEmail({
         to: payload.email,
         subject: `We have received your support inquiry - TalkAstrologer`,
         html: clientHtml,
-        replyTo: supportEmail,
+        replyTo: supportInbox,
         channel: "support",
       });
     } catch (err) {
@@ -688,8 +686,8 @@ export async function sendContactNotificationEmail(
 export async function sendAppointmentConfirmedEmail(
   payload: AppointmentConfirmedEmailPayload
 ): Promise<SendMailResult> {
-  const config = getSmtpConfig();
-  const adminEmail = config.fromEmail;
+  const config = getSmtpConfig("appointment");
+  const adminEmail = config.fromEmail || "myappointment@talkastrologer.com";
 
   const safeClientName = escapeHtml(payload.clientName);
   const safeSecondName = payload.secondName ? escapeHtml(payload.secondName) : "";

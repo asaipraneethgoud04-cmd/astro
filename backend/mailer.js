@@ -288,11 +288,11 @@ async function sendAppointmentNotificationEmail(payload) {
 }
 
 /**
- * 2. Dispatches Contact / Support Message Notification
+ * 2. Dispatches Contact / Support Message Notification (Alert to Support Desk + Receipt to User)
  */
 async function sendContactNotificationEmail(payload) {
   const config = getSmtpConfig("support");
-  const recipients = Array.from(new Set([config.supportEmail, config.adminAlertEmail]));
+  const supportInbox = config.supportEmail || "support@talkastrologer.com";
 
   const safeName = escapeHtml(payload.name);
   const safeEmail = escapeHtml(payload.email);
@@ -304,23 +304,22 @@ async function sendContactNotificationEmail(payload) {
     <!DOCTYPE html>
     <html>
       <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #f7f3eb; margin: 0; padding: 25px 15px;">
-        <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #e7d6bc;">
+        <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #e7d6bc; box-shadow: 0 4px 15px rgba(0,0,0,0.06);">
           <div style="background-color: #38070e; padding: 22px; text-align: center; border-bottom: 2px solid #d4af37;">
-            <h1 style="color: #fcf9f2; margin: 0; font-size: 20px; font-weight: 700;">TalkAstrologer Support</h1>
-            <p style="color: #f6e27a; margin: 4px 0 0; font-size: 12px;">New Contact Desk Enquiry</p>
+            <h1 style="color: #fcf9f2; margin: 0; font-size: 20px; font-weight: 700; text-transform: uppercase;">TalkAstrologer Support Desk</h1>
+            <p style="color: #f6e27a; margin: 4px 0 0; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em;">New Support Enquiry</p>
           </div>
-          <div style="padding: 24px; font-size: 13px;">
-            <p style="color: #420813; font-size: 14px; margin-top: 0;">A new enquiry was submitted through Contact Us:</p>
-            <table style="width: 100%; border-collapse: collapse; margin: 16px 0;">
-              <tr><td style="padding: 8px 10px; border-bottom: 1px solid #f0e6d6; color: #7a5f64; width: 30%;">From</td><td style="padding: 8px 10px; border-bottom: 1px solid #f0e6d6; color: #2a1114; font-weight: 700;">${safeName}</td></tr>
-              <tr><td style="padding: 8px 10px; border-bottom: 1px solid #f0e6d6; color: #7a5f64;">Email</td><td style="padding: 8px 10px; border-bottom: 1px solid #f0e6d6; color: #2a1114;">${safeEmail}</td></tr>
-              <tr><td style="padding: 8px 10px; border-bottom: 1px solid #f0e6d6; color: #7a5f64;">Phone</td><td style="padding: 8px 10px; border-bottom: 1px solid #f0e6d6; color: #2a1114;">${safePhone}</td></tr>
+          <div style="padding: 24px;">
+            <table style="width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 13px;">
+              <tr><td style="padding: 8px 10px; border-bottom: 1px solid #f0e6d6; color: #7a5f64; width: 35%;">Sender Name</td><td style="padding: 8px 10px; border-bottom: 1px solid #f0e6d6; color: #2a1114; font-weight: 700;">${safeName}</td></tr>
+              <tr><td style="padding: 8px 10px; border-bottom: 1px solid #f0e6d6; color: #7a5f64;">Email Address</td><td style="padding: 8px 10px; border-bottom: 1px solid #f0e6d6; color: #2a1114;">${safeEmail}</td></tr>
+              <tr><td style="padding: 8px 10px; border-bottom: 1px solid #f0e6d6; color: #7a5f64;">Phone Number</td><td style="padding: 8px 10px; border-bottom: 1px solid #f0e6d6; color: #2a1114;">${safePhone}</td></tr>
               <tr><td style="padding: 8px 10px; border-bottom: 1px solid #f0e6d6; color: #7a5f64;">Subject</td><td style="padding: 8px 10px; border-bottom: 1px solid #f0e6d6; color: #8b1827; font-weight: 700;">${safeSubject}</td></tr>
               <tr><td style="padding: 8px 10px; color: #7a5f64; vertical-align: top;">Message</td><td style="padding: 8px 10px; color: #2a1114; background-color: #faf6ee;">${safeMessage}</td></tr>
             </table>
-            <div style="text-align: center; margin-top: 20px;">
-              <a href="mailto:${safeEmail}" style="display: inline-block; background-color: #38070e; color: #f6e27a; font-weight: 700; text-decoration: none; padding: 10px 20px; border-radius: 50px; font-size: 13px; border: 1px solid #d4af37;">
-                Reply Directly to Customer &rarr;
+            <div style="margin-top: 20px; text-align: center;">
+              <a href="mailto:${safeEmail}?subject=Re:%20${encodeURIComponent(payload.subject || "Support Inquiry")}" style="display: inline-block; background-color: #38070e; color: #f6e27a; font-weight: 700; text-decoration: none; padding: 10px 20px; border-radius: 50px; font-size: 13px; border: 1px solid #d4af37;">
+                Reply Directly to ${safeName} &rarr;
               </a>
             </div>
           </div>
@@ -329,12 +328,55 @@ async function sendContactNotificationEmail(payload) {
     </html>
   `;
 
-  return sendEmail({
-    to: recipients,
+  // 1. Send alert ONLY to Support mailbox
+  const adminResult = await sendEmail({
+    to: supportInbox,
     subject: `[Support Desk] ${payload.subject || "New Enquiry"} - ${payload.name}`,
     html: adminHtml,
+    replyTo: payload.email,
     channel: "support",
   });
+
+  // 2. Send acknowledgment receipt to client from Support Desk
+  if (adminResult.ok && payload.email) {
+    const clientHtml = `
+      <!DOCTYPE html>
+      <html>
+        <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #f7f3eb; margin: 0; padding: 25px 15px;">
+          <div style="max-width: 580px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #e7d6bc;">
+            <div style="background-color: #38070e; padding: 20px; text-align: center; border-bottom: 2px solid #d4af37;">
+              <h1 style="color: #fcf9f2; margin: 0; font-size: 18px; font-weight: 700;">TalkAstrologer Support</h1>
+              <p style="color: #f6e27a; margin: 4px 0 0; font-size: 12px;">We Have Received Your Message</p>
+            </div>
+            <div style="padding: 24px; color: #3b171c; font-size: 14px; line-height: 1.6;">
+              <p>Namaste <strong>${safeName}</strong>,</p>
+              <p>Thank you for reaching out to the <strong>TalkAstrologer Support Team</strong>. We have received your inquiry regarding "<strong>${safeSubject}</strong>".</p>
+              <p>Our team reviews every request attentively and will get back to you at <strong>${safeEmail}</strong> within 24 hours.</p>
+              <div style="background: #faf6ee; padding: 14px; border-radius: 8px; margin: 18px 0; font-size: 13px;">
+                <strong>Need immediate assistance?</strong><br>
+                Call or WhatsApp our desk at <a href="tel:+12146699699" style="color: #8b1827; font-weight: 700;">+1 214 669 9699</a> or write to <a href="mailto:${supportInbox}" style="color: #8b1827;">${supportInbox}</a>.
+              </div>
+              <p style="font-size: 12px; color: #7a5f64;">TalkAstrologer Support Desk • Strictly Confidential</p>
+            </div>
+          </div>
+        </body>
+      </html>
+    `;
+
+    try {
+      await sendEmail({
+        to: payload.email,
+        subject: `We have received your support inquiry - TalkAstrologer`,
+        html: clientHtml,
+        replyTo: supportInbox,
+        channel: "support",
+      });
+    } catch (e) {
+      console.warn("[Backend Mailer] Support client receipt delivery failed:", e.message);
+    }
+  }
+
+  return adminResult;
 }
 
 // ============================================================================

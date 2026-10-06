@@ -225,7 +225,7 @@ export default function AboutPage() {
           {/* Section Divider Header */}
           <div className="mx-auto max-w-3xl text-center header-gap">
             <h2 className="text-balance font-serif text-3xl font-extrabold leading-tight tracking-tight text-[#38070e] sm:text-4xl lg:text-5xl">
-              Heritage Originating in Bangalore, India
+              Heritage.
             </h2>
             <div className="mt-4 flex items-center justify-center gap-3">
               <span className="h-px w-12 bg-[#c59b27]/70 sm:w-20" />
@@ -258,7 +258,7 @@ export default function AboutPage() {
               </h3>
 
               <p className="text-sm leading-relaxed text-[#4d363a] md:text-base">
-                TalkAstrologer brings more than <strong>22 years of active consultation experience</strong> together with a revered <strong>six-generation ancestral connection</strong> originating in Bangalore, India. This heritage reflects a continuing, living dedication to Jyotish and related Indian spiritual traditions.
+                TalkAstrologer brings more than <strong>22 years of active consultation experience</strong> together with a revered <strong>six-generation ancestral connection.</strong>This heritage reflects a continuing, living dedication to Jyotish and related Indian spiritual traditions.
               </p>
 
               <p className="text-sm leading-relaxed text-[#4d363a] md:text-base">

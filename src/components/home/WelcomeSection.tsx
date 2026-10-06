@@ -66,7 +66,7 @@ export default function WelcomeSection() {
 
             <div className="space-y-4 text-base sm:text-lg text-[#4a3437] leading-relaxed">
               <p>
-                Bringing more than <strong>30+ years of dedicated consultation experience</strong> alongside an unbroken <strong>six-generation ancestral Jyotish lineage originating in Bangalore, India</strong>, TalkAstrologer is your trusted destination for supportive astrology guidance and positive life insight in Texas and throughout the USA.
+                Bringing more than <strong>30+ years of dedicated consultation experience</strong> alongside an unbroken <strong>six-generation ancestral Jyotish lineage</strong>, TalkAstrologer is your trusted destination for supportive astrology guidance and positive life insight in Texas and throughout the USA.
               </p>
               <p>
                 Our approach begins with <em>listening carefully to your specific circumstances</em> rather than offering one-size-fits-all answers. By uniting traditional Parashara principles with practical, compassionate clarity, we help individuals, couples, and professionals gain emotional wellness, relationship harmony, career direction, and confidence.
