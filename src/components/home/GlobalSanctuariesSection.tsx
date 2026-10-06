@@ -122,10 +122,10 @@ export default function GlobalSanctuariesSection() {
             <Link
               key={city.id}
               href={`/contact?location=${encodeURIComponent(city.name)}`}
-              className="group relative flex items-center justify-between px-2.5 py-1.5 sm:px-3 sm:py-2 lg:px-3.5 lg:py-2.5 rounded-full bg-gradient-to-b from-[#fefbf6] via-[#faf5eb] to-[#f6f0df] border border-[#ebdcc2] hover:border-[#c59b27] shadow-[0_2px_10px_rgba(197,155,39,0.1)] hover:shadow-[0_8px_24px_rgba(197,155,39,0.24)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300"
+              className="group relative flex items-center justify-between px-2.5 py-1.5 sm:px-3 sm:py-2 lg:px-3.5 lg:py-2.5 rounded-full bg-[#fbf5e8] border border-[#ebdcc2] hover:bg-[#38070e] hover:border-[#c59b27] shadow-[0_2px_10px_rgba(197,155,39,0.1)] hover:shadow-[0_12px_28px_rgba(56,7,14,0.32)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300"
             >
               {/* Circular City Thumbnail with Golden Ring */}
-              <div className="relative w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full overflow-hidden shrink-0 border-[1.5px] sm:border-2 border-[#c59b27] shadow-sm">
+              <div className="relative w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full overflow-hidden shrink-0 border-[1.5px] sm:border-2 border-[#c59b27] group-hover:border-[#f6e27a] shadow-sm transition-colors duration-300">
                 <Image
                   src={city.imageUrl}
                   alt={`${city.name} Vedic Astrology Guidance`}
@@ -138,14 +138,14 @@ export default function GlobalSanctuariesSection() {
 
               {/* Center: Golden MapPin + City Title */}
               <div className="flex items-center gap-1 sm:gap-1.5 min-w-0 flex-1 ml-2 sm:ml-2.5 mr-1">
-                <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#c59b27] fill-[#c59b27]/25 shrink-0 hidden xs:inline-block" />
-                <span className="font-serif text-[13px] sm:text-base lg:text-lg font-bold text-[#2d070d] group-hover:text-[#8b1827] transition-colors truncate">
+                <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#c59b27] fill-[#c59b27]/25 group-hover:text-[#f6e27a] group-hover:fill-[#f6e27a]/25 shrink-0 hidden xs:inline-block transition-colors duration-300" />
+                <span className="font-serif text-[13px] sm:text-base lg:text-lg font-bold text-[#2d070d] group-hover:text-white transition-colors duration-300 truncate">
                   {city.name}
                 </span>
               </div>
 
-              {/* Right: Golden Chevron Arrow */}
-              <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#c59b27] shrink-0 transition-transform duration-300 group-hover:translate-x-0.5" />
+              {/* Right: Chevron Arrow */}
+              <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#c59b27] group-hover:text-white shrink-0 transition-all duration-300 group-hover:translate-x-0.5" />
             </Link>
           ))}
         </div>
