@@ -258,68 +258,86 @@ function getTransporter(channel: MailChannel = "appointment"): { transporter: Tr
 }
 
 /**
- * Base email dispatching function
+ * Base email dispatching function with dual-port (465/587) automatic fallback for serverless hosting
  */
 export async function sendEmail(options: SendMailOptions): Promise<SendMailResult> {
-  try {
-    const channel = options.channel || "appointment";
-    const mailSetup = getTransporter(channel);
-    if (!mailSetup) {
-      return {
-        ok: false,
-        error: `Mail server configuration for ${channel} is missing. Please contact system administrator.`,
-      };
-    }
+  const channel = options.channel || "appointment";
+  const config = getSmtpConfig(channel);
 
-    const { transporter, fromAddress } = mailSetup;
-
-    // Validate recipient(s)
-    const recipients = Array.isArray(options.to) ? options.to : [options.to];
-    const sanitizedRecipients = recipients
-      .map((r) => sanitizeHeader(r))
-      .filter((r) => isValidEmail(r));
-
-    if (sanitizedRecipients.length === 0) {
-      return { ok: false, error: "Invalid recipient email address provided." };
-    }
-
-    // Sanitize subject & reply-to
-    const sanitizedSubject = sanitizeHeader(options.subject);
-    if (!sanitizedSubject) {
-      return { ok: false, error: "Email subject cannot be empty." };
-    }
-
-    let sanitizedReplyTo: string | undefined = undefined;
-    if (options.replyTo && isValidEmail(options.replyTo)) {
-      sanitizedReplyTo = sanitizeHeader(options.replyTo);
-    }
-
-    const textContent = options.text || htmlToPlainText(options.html);
-
-    logMailDebug("send_email_attempt", true);
-
-    const info = await transporter.sendMail({
-      from: fromAddress,
-      to: sanitizedRecipients.join(", "),
-      subject: sanitizedSubject,
-      text: textContent,
-      html: options.html,
-      replyTo: sanitizedReplyTo,
-    });
-
-    logMailDebug("send_email_dispatched", true, { messageId: info.messageId });
-    return { ok: true, messageId: info.messageId };
-  } catch (err: unknown) {
-    const errMsg = err instanceof Error ? err.message : String(err);
-    const errCode = (err as { code?: string })?.code || "TRANSPORTER_SEND_ERROR";
-    logMailDebug("send_email_failed", false, { safeCode: `${errCode}: ${errMsg}` });
-    console.error("[MailService] Failed to send email:", errMsg);
-
+  if (!config.user || !config.pass) {
     return {
       ok: false,
-      error: "Unable to send email. Please try again or reach out directly by phone.",
+      error: `Mail server configuration for ${channel} is missing credentials.`,
     };
   }
+
+  const recipients = Array.isArray(options.to) ? options.to : [options.to];
+  const sanitizedRecipients = recipients
+    .map((r) => sanitizeHeader(r))
+    .filter((r) => isValidEmail(r));
+
+  if (sanitizedRecipients.length === 0) {
+    return { ok: false, error: "Invalid recipient email address provided." };
+  }
+
+  const sanitizedSubject = sanitizeHeader(options.subject);
+  if (!sanitizedSubject) {
+    return { ok: false, error: "Email subject cannot be empty." };
+  }
+
+  let sanitizedReplyTo: string | undefined = undefined;
+  if (options.replyTo && isValidEmail(options.replyTo)) {
+    sanitizedReplyTo = sanitizeHeader(options.replyTo);
+  }
+
+  const textContent = options.text || htmlToPlainText(options.html);
+  const fromAddress = `"${sanitizeHeader(config.fromName)}" <${sanitizeHeader(config.fromEmail)}>`;
+
+  // Netlify / AWS Lambda: Try primary port first (465), with automatic fallback to port 587
+  const portsToTry = config.port === 587 ? [587, 465] : [465, 587];
+  let lastError: Error | null = null;
+
+  for (const port of portsToTry) {
+    const isSecure = port === 465;
+    try {
+      const transporter = nodemailer.createTransport({
+        host: config.host,
+        port,
+        secure: isSecure,
+        connectionTimeout: 10000,
+        greetingTimeout: 8000,
+        socketTimeout: 15000,
+        auth: {
+          user: config.user,
+          pass: config.pass,
+        },
+        tls: {
+          rejectUnauthorized: true,
+        },
+      });
+
+      const info = await transporter.sendMail({
+        from: fromAddress,
+        to: sanitizedRecipients.join(", "),
+        subject: sanitizedSubject,
+        text: textContent,
+        html: options.html,
+        replyTo: sanitizedReplyTo,
+      });
+
+      console.log(`[MailService] Dispatched on ${channel} via port ${port}! MessageId: ${info.messageId}`);
+      return { ok: true, messageId: info.messageId };
+    } catch (err: unknown) {
+      lastError = err instanceof Error ? err : new Error(String(err));
+      console.warn(`[MailService] Port ${port} attempt failed (${lastError.message}), checking next port...`);
+    }
+  }
+
+  console.error(`[MailService] All SMTP ports failed for ${channel}:`, lastError?.message);
+  return {
+    ok: false,
+    error: lastError?.message || "Unable to send email via SMTP.",
+  };
 }
 
 /**
@@ -479,17 +497,19 @@ export async function sendAppointmentNotificationEmail(
   });
   logMailDebug("send_appointment_alert_result", adminResult.ok, { messageId: adminResult.messageId });
 
-  // 2. Send receipt to client (in background, non-blocking failure)
-  if (adminResult.ok && isValidEmail(payload.email)) {
-    sendEmail({
-      to: payload.email,
-      subject: `Your Consultation Request with TalkAstrologer - ${payload.service}`,
-      html: clientHtml,
-      replyTo: adminEmail,
-      channel: "appointment",
-    }).catch((err) => {
+  // 2. Send receipt to client (AWAITED so Netlify serverless container does not terminate early)
+  if (isValidEmail(payload.email)) {
+    try {
+      await sendEmail({
+        to: payload.email,
+        subject: `Your Consultation Request with TalkAstrologer - ${payload.service}`,
+        html: clientHtml,
+        replyTo: adminEmail,
+        channel: "appointment",
+      });
+    } catch (err) {
       console.warn("[MailService] Failed to send client acknowledgment receipt:", err);
-    });
+    }
   }
 
   return adminResult;
@@ -630,17 +650,19 @@ export async function sendContactNotificationEmail(
     channel: "support",
   });
 
-  // 2. Send receipt to client from support desk (using support SMTP channel)
-  if (adminResult.ok && isValidEmail(payload.email)) {
-    sendEmail({
-      to: payload.email,
-      subject: `We have received your support inquiry - TalkAstrologer`,
-      html: clientHtml,
-      replyTo: supportEmail,
-      channel: "support",
-    }).catch((err) => {
+  // 2. Send receipt to client from support desk (AWAITED so Netlify does not terminate early)
+  if (isValidEmail(payload.email)) {
+    try {
+      await sendEmail({
+        to: payload.email,
+        subject: `We have received your support inquiry - TalkAstrologer`,
+        html: clientHtml,
+        replyTo: supportEmail,
+        channel: "support",
+      });
+    } catch (err) {
       console.warn("[MailService] Failed to send contact acknowledgment receipt:", err);
-    });
+    }
   }
 
   return adminResult;

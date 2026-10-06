@@ -118,33 +118,60 @@ function getTransporter(channel = "appointment") {
   return { transporter: cachedTransporters[channel].transporter, fromAddress, config };
 }
 
-// Base send function
+// Base send function with dual-port 465/587 auto-fallback
 async function sendEmail({ to, subject, html, text, replyTo, channel = "appointment" }) {
-  try {
-    const { transporter, fromAddress } = getTransporter(channel);
-    const recipients = Array.isArray(to) ? to : [to];
-    const validRecipients = recipients
-      .map((r) => normalizeEmail(r, ""))
-      .filter((r) => r.length > 0);
+  const config = getSmtpConfig(channel);
+  const recipients = Array.isArray(to) ? to : [to];
+  const validRecipients = recipients
+    .map((r) => normalizeEmail(r, ""))
+    .filter((r) => r.length > 0);
 
-    if (validRecipients.length === 0) {
-      return { ok: false, error: "No valid recipient email address provided." };
-    }
-
-    const info = await transporter.sendMail({
-      from: fromAddress,
-      to: validRecipients.join(", "),
-      replyTo: replyTo ? normalizeEmail(replyTo, undefined) : undefined,
-      subject: subject.trim(),
-      html,
-      text: text || html.replace(/<[^>]+>/g, " ").trim(),
-    });
-
-    return { ok: true, messageId: info.messageId };
-  } catch (err) {
-    console.error(`[Mailer Error] Failed on channel '${channel}':`, err.message);
-    return { ok: false, error: err.message };
+  if (validRecipients.length === 0) {
+    return { ok: false, error: "No valid recipient email address provided." };
   }
+
+  const fromAddress = `"${config.fromName}" <${config.fromEmail}>`;
+  const portsToTry = config.port === 587 ? [587, 465] : [465, 587];
+  let lastError = null;
+
+  for (const port of portsToTry) {
+    const isSecure = port === 465;
+    try {
+      const transporter = nodemailer.createTransport({
+        host: config.host,
+        port,
+        secure: isSecure,
+        connectionTimeout: 10000,
+        greetingTimeout: 8000,
+        socketTimeout: 15000,
+        auth: {
+          user: config.user,
+          pass: config.pass,
+        },
+        tls: {
+          rejectUnauthorized: true,
+        },
+      });
+
+      const info = await transporter.sendMail({
+        from: fromAddress,
+        to: validRecipients.join(", "),
+        replyTo: replyTo ? normalizeEmail(replyTo, undefined) : undefined,
+        subject: subject.trim(),
+        html,
+        text: text || html.replace(/<[^>]+>/g, " ").trim(),
+      });
+
+      console.log(`[Backend Mailer] Delivered on ${channel} via port ${port}! MessageId: ${info.messageId}`);
+      return { ok: true, messageId: info.messageId };
+    } catch (err) {
+      lastError = err;
+      console.warn(`[Backend Mailer] Port ${port} attempt failed (${err.message}), trying alternative port...`);
+    }
+  }
+
+  console.error(`[Backend Mailer] All SMTP ports failed for ${channel}:`, lastError?.message);
+  return { ok: false, error: lastError?.message || "Unable to send email via SMTP." };
 }
 
 // ============================================================================
@@ -231,13 +258,18 @@ async function sendAppointmentNotificationEmail(payload) {
       </html>
     `;
 
-    sendEmail({
-      to: payload.email,
-      subject: `Your Consultation Request with TalkAstrologer - ${payload.service}`,
-      html: clientHtml,
-      replyTo: adminEmail,
-      channel: "appointment",
-    }).catch(() => {});
+    // Await client receipt so serverless runtime doesn't cut it off
+    try {
+      await sendEmail({
+        to: payload.email,
+        subject: `Your Consultation Request with TalkAstrologer - ${payload.service}`,
+        html: clientHtml,
+        replyTo: adminEmail,
+        channel: "appointment",
+      });
+    } catch (e) {
+      console.warn("[Backend Mailer] Client receipt delivery failed:", e.message);
+    }
   }
 
   return adminResult;
