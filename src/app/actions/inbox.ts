@@ -62,14 +62,14 @@ export async function submitAppointment(formData: FormData): Promise<Result> {
 
   const supabase = createPublicClient();
 
-  // Idempotency / Duplicate protection: Check if an identical submission occurred in the last 60 seconds
-  const oneMinuteAgo = new Date(Date.now() - 60000).toISOString();
+  // Idempotency / Double-click protection: Check if an identical submission occurred in the last 5 seconds
+  const fiveSecondsAgo = new Date(Date.now() - 5000).toISOString();
   const { data: recentExisting } = await supabase
     .from("appointments")
     .select("id")
     .eq("email", email)
     .eq("service", service)
-    .gte("created_at", oneMinuteAgo)
+    .gte("created_at", fiveSecondsAgo)
     .limit(1);
 
   if (recentExisting && recentExisting.length > 0) {
@@ -155,13 +155,13 @@ export async function submitContactMessage(formData: FormData): Promise<Result> 
 
   const supabase = createPublicClient();
 
-  // Idempotency / Duplicate protection: Check if an identical submission occurred in the last 60 seconds
-  const oneMinuteAgo = new Date(Date.now() - 60000).toISOString();
+  // Idempotency / Double-click protection: Check if an identical submission occurred in the last 5 seconds
+  const fiveSecondsAgo = new Date(Date.now() - 5000).toISOString();
   const { data: recentExisting } = await supabase
     .from("contact_messages")
     .select("id")
     .eq("email", email)
-    .gte("created_at", oneMinuteAgo)
+    .gte("created_at", fiveSecondsAgo)
     .limit(1);
 
   if (recentExisting && recentExisting.length > 0) {
