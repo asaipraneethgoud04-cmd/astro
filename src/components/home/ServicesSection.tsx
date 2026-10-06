@@ -17,7 +17,7 @@ export default function ServicesSection() {
             Astrology & Spiritual Services
             <Sparkles className="w-3.5 h-3.5 text-[#c59b27]" />
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#38070e] tracking-tight">
+          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#38070e] tracking-tight">
             Our Sacred Services
           </h2>
           <p className="text-sm sm:text-base text-[#614b4f] leading-relaxed">
@@ -40,8 +40,8 @@ export default function ServicesSection() {
               title={service.title}
               description={service.description}
               meta={service.category}
-              href={`/services#${service.id}`}
-              ctaLabel="Read More"
+              href={`/services/${service.id}`}
+              ctaLabel="Explore Guidance"
               iconName={service.iconName}
             />
           ))}

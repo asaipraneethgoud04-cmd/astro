@@ -1,5 +1,5 @@
 import { unstable_noStore as noStore } from "next/cache";
-import { createClient } from "@/lib/supabase/server";
+import { createClient, createPublicClient } from "@/lib/supabase/server";
 
 export type ReviewStatus = "pending" | "accepted" | "rejected";
 
@@ -18,7 +18,7 @@ export type PinnedReview = Pick<Review, "id" | "name" | "city" | "quote">;
 export async function getAcceptedReviews(): Promise<Pick<Review, "id" | "name" | "city" | "quote" | "pinned">[]> {
   noStore();
   try {
-    const supabase = await createClient();
+    const supabase = createPublicClient();
     const withPin = await supabase
       .from("reviews")
       .select("id, name, city, quote, pinned")
@@ -46,7 +46,7 @@ export async function getAcceptedReviews(): Promise<Pick<Review, "id" | "name" |
 export async function getPinnedReviews(): Promise<PinnedReview[]> {
   noStore();
   try {
-    const supabase = await createClient();
+    const supabase = createPublicClient();
     const { data, error } = await supabase
       .from("reviews")
       .select("id, name, city, quote")
@@ -68,6 +68,11 @@ export async function getAllReviews(): Promise<{
 }> {
   noStore();
   const supabase = await createClient();
+  const { data: userData } = await supabase.auth.getUser();
+  if (!userData?.user) {
+    return { reviews: [], error: "Unauthorized", pinReady: false };
+  }
+
   const withPin = await supabase
     .from("reviews")
     .select("id, name, city, quote, status, pinned, created_at")

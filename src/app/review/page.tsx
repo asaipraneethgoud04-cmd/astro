@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ReviewForm from "./ReviewForm";
 
 export const metadata: Metadata = {
-  title: "Share Your Experience | TalkAstrologer.com",
+  title: "Share Your Experience | TalkAstrologer",
   description: "Share your consultation experience. Accepted reviews appear in Voices of the Blessed.",
 };
 
@@ -15,7 +15,7 @@ export default function ReviewPage() {
             Voices of the Blessed
           </p>
           <h1 className="mt-2 font-serif text-3xl sm:text-4xl font-bold text-[#38070e]">
-            Share your experience
+            Share Your Experience
           </h1>
           <p className="mt-3 text-sm leading-relaxed text-[#614b4f]">
             Tell us about your consultation. Your review is read first, and it appears on the homepage only after it is accepted.

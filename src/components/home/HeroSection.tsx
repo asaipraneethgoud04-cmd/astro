@@ -5,14 +5,18 @@ import { Phone, ArrowRight } from "lucide-react";
 export default function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-[#38070e] text-white page-top section-b min-h-[620px] lg:min-h-[calc(100svh-var(--chrome-top,0px))] flex items-center">
-      <Image
-        src="/images/home page hero section.png"
-        alt=""
-        fill
-        priority
-        unoptimized
-        className="object-cover object-center pointer-events-none"
-      />
+      {/* Hero Background Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        className="absolute inset-0 h-full w-full object-cover object-center pointer-events-none"
+      >
+        <source src="/images/hero%20section%20video.mp4" type="video/mp4" />
+        <source src="/images/hero section video.mp4" type="video/mp4" />
+      </video>
       <div className="pointer-events-none absolute top-0 right-0 z-[1] h-[min(380px,58%)] w-[min(72vw,520px)]">
         <Image
           src="/images/hero-constellation-tr.png"
@@ -22,17 +26,16 @@ export default function HeroSection() {
           className="object-contain object-right-top"
         />
       </div>
-      <div className="absolute inset-0 z-[2] bg-[#6B1E2B]/70 pointer-events-none" />
 
       {/* Content Container */}
       <div className="relative z-10 site-container w-full">
         <div className="max-w-3xl space-y-6">
           {/* Main Title */}
           <div className="space-y-2">
-            <h1 className="font-[family-name:var(--font-shivaraja)] text-[min(2.25rem,8.6vw)] sm:text-5xl md:text-6xl font-normal tracking-wide text-white leading-tight whitespace-nowrap drop-shadow-md">
-              TalkAstrologer.com
+            <h1 className="font-[family-name:var(--font-shivaraja)] text-[min(2.5rem,8.8vw)] sm:text-5xl md:text-6xl lg:text-7xl font-normal tracking-wide text-white leading-tight whitespace-nowrap drop-shadow-md">
+              TalkAstrologer
             </h1>
-            <h2 className="font-serif text-xl sm:text-2xl md:text-3xl font-medium text-[#f6e27a] tracking-wide">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-[38px] font-medium text-[#f6e27a] tracking-wide">
               Supportive Astrology Guidance & Positive Life Insight
             </h2>
           </div>
@@ -53,7 +56,7 @@ export default function HeroSection() {
               className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-[#fcfaf4] hover:bg-[#f6e27a] text-[#2c050d] font-bold text-xs sm:text-sm tracking-wider uppercase shadow-[0_4px_20px_rgba(0,0,0,0.4)] transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0"
             >
               <Phone className="w-4 h-4 text-[#2c050d]" />
-              Speak to Astrologer Now
+              Speak to Astrologer Now<br />+1 214 669 9699
             </a>
 
             <a

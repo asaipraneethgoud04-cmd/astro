@@ -131,7 +131,7 @@ export default function ReviewModeration({
                       <Clock className="h-8 w-8 text-[#c59b27]/60 mb-2" />
                       <p className="font-serif text-lg font-bold text-[#38070e]">No reviews found</p>
                       <p className="mt-1 text-xs text-[#7a585f]">
-                        There are currently no reviews matching the selected "{filter}" filter.
+                        There are currently no reviews matching the selected &quot;{filter}&quot; filter.
                       </p>
                     </div>
                   </td>

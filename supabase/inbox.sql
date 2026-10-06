@@ -1,5 +1,5 @@
 -- Appointment requests and contact messages.
--- Run this once in the Supabase SQL editor for project drzkaogmktbrgoojnguw (safe to run again).
+-- Run this once in the Supabase SQL editor for your project (safe to run again).
 -- Visitors can only create rows. Only the signed-in admin can read and update them.
 
 -- ─── Appointment requests (Book Appointment page) ───────────────────────────

@@ -11,7 +11,7 @@ export default function AdminNav({ counts }: { counts: Counts }) {
 
   const items = [
     { href: "/admin/appointments", label: "Appointments", icon: CalendarCheck, count: counts.appointments, hint: "new" },
-    { href: "/admin/messages", label: "Messages", icon: Mail, count: counts.messages, hint: "new" },
+    { href: "/admin/messages", label: "Support Enquiries", icon: Mail, count: counts.messages, hint: "new" },
     { href: "/admin", label: "Reviews", icon: MessageSquareQuote, count: counts.reviews, hint: "waiting" },
   ];
 

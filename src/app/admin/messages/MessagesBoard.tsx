@@ -67,11 +67,10 @@ export default function MessagesBoard({ messages }: { messages: ContactMessage[]
               key={tab}
               type="button"
               onClick={() => setFilter(tab)}
-              className={`rounded-2xl border p-4 text-left transition ${
-                active
+              className={`rounded-2xl border p-4 text-left transition ${active
                   ? "border-[#38070e] bg-[#38070e] text-white shadow-md"
                   : "border-[#eadcc4] bg-white text-[#38070e] hover:border-[#c59b27]"
-              }`}
+                }`}
             >
               <span className="block font-serif text-2xl font-bold">{count(tab)}</span>
               <span className={`mt-0.5 block text-xs font-medium ${active ? "text-[#f6e27a]" : "text-[#7a4816]"}`}>
@@ -98,14 +97,13 @@ export default function MessagesBoard({ messages }: { messages: ContactMessage[]
         <ul className="space-y-4">
           {visible.map((item) => {
             const busy = isPending && pendingId === item.id;
-            const replySubject = encodeURIComponent(`Re: ${item.subject || "Your message to TalkAstrologer.com"}`);
+            const replySubject = encodeURIComponent(`Re: ${item.subject || "Your message to TalkAstrologer"}`);
 
             return (
               <li
                 key={item.id}
-                className={`rounded-2xl border bg-white p-5 shadow-[0_4px_24px_rgba(56,7,14,0.05)] sm:p-6 ${
-                  item.status === "new" ? "border-[#c59b27]" : "border-[#e5d8c3]"
-                }`}
+                className={`rounded-2xl border bg-white p-5 shadow-[0_4px_24px_rgba(56,7,14,0.05)] sm:p-6 ${item.status === "new" ? "border-[#c59b27]" : "border-[#e5d8c3]"
+                  }`}
               >
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div className="flex min-w-0 items-center gap-3">

@@ -11,7 +11,7 @@ export default function CtaBannerSection({ last = false }: { last?: boolean }) {
           <div className="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(#f6e27a_1px,transparent_1px)] [background-size:24px_24px]" />
 
           <div className="relative z-10 max-w-2xl mx-auto space-y-6">
-            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold tracking-wide text-[#fdfaf4]">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-wide text-[#fdfaf4]">
               Begin Your Journey to Clarity
             </h2>
 

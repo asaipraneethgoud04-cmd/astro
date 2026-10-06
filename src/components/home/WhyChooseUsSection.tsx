@@ -31,7 +31,7 @@ export default function WhyChooseUsSection() {
       <div className="site-container relative z-10">
         {/* Section Heading */}
         <div className="text-center max-w-2xl mx-auto space-y-3 header-gap">
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#38070e] tracking-tight">
+          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#38070e] tracking-tight">
             Why Clients Choose Us
           </h2>
           <div className="flex items-center justify-center gap-2 pt-1">
@@ -56,7 +56,7 @@ export default function WhyChooseUsSection() {
                 </div>
 
                 {/* Title */}
-                <h3 className="font-serif text-xl font-bold text-[#38070e] group-hover:text-white mb-3 transition-colors duration-300">
+                <h3 className="font-serif text-2xl sm:text-[26px] font-bold text-[#38070e] group-hover:text-white mb-3 transition-colors duration-300">
                   {item.title}
                 </h3>
 

@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import {
   User,
@@ -16,27 +17,41 @@ import {
 } from "lucide-react";
 import { servicesData } from "@/data/services";
 import { submitAppointment } from "@/app/actions/inbox";
+import { validatePhoneNumber } from "@/lib/phone";
 
 const fieldClass =
   "w-full px-3.5 py-2.5 rounded-lg border border-[#e2d6c3] bg-[#fffcf7] text-sm text-[#420813] placeholder-[#a69295] focus:outline-none focus:ring-2 focus:ring-[#8b1827]/30 focus:border-[#8b1827] transition-all";
 
-export default function BookAppointmentPage() {
+function BookAppointmentForm() {
+  const searchParams = useSearchParams();
+  const rawService = searchParams.get("service") || "";
+  const validService = servicesData.some((item) => item.id === rawService) ? rawService : "";
+
   const [formData, setFormData] = useState({
     fullName: "",
     secondName: "",
     email: "",
     phone: "",
     city: "",
-    service: "",
+    service: validService,
     message: "",
   });
+
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState("");
+  const [honeypot, setHoneypot] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+
+    const phoneCheck = validatePhoneNumber(formData.phone, true);
+    if (!phoneCheck.isValid) {
+      setError(phoneCheck.error || "Please enter a valid phone number.");
+      return;
+    }
+
     setSending(true);
 
     const serviceTitle =
@@ -45,6 +60,7 @@ export default function BookAppointmentPage() {
     Object.entries({ ...formData, service: serviceTitle }).forEach(([key, value]) =>
       payload.append(key, value)
     );
+    if (honeypot) payload.append("website_hp", honeypot);
 
     const result = await submitAppointment(payload);
     setSending(false);
@@ -66,6 +82,7 @@ export default function BookAppointmentPage() {
       service: "",
       message: "",
     });
+    setHoneypot("");
     setSubmitted(false);
   };
 
@@ -98,23 +115,23 @@ export default function BookAppointmentPage() {
                 />
               </div>
               <div className="min-w-0 md:flex-1">
-              <h2 className="font-serif text-lg font-bold text-[#f6e27a]">
-                How a request is handled
-              </h2>
-              <ol className="mt-4 space-y-3 text-sm text-[#ecd9c6]">
-                {[
-                  "You send the question and the area of guidance.",
-                  "The desk replies to confirm a suitable time.",
-                  "The consultation is held by phone or online.",
-                ].map((step, index) => (
-                  <li key={step} className="flex gap-3">
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-[#c59b27]/70 text-[11px] font-semibold text-[#f6e27a]">
-                      {index + 1}
-                    </span>
-                    <span className="leading-relaxed">{step}</span>
-                  </li>
-                ))}
-              </ol>
+                <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#f6e27a]">
+                  How a request is handled
+                </h2>
+                <ol className="mt-4 space-y-3 text-sm text-[#ecd9c6]">
+                  {[
+                    "You send the question and the area of guidance.",
+                    "The desk replies to confirm a suitable time.",
+                    "The consultation is held by phone or online.",
+                  ].map((step, index) => (
+                    <li key={step} className="flex gap-3">
+                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-[#c59b27]/70 text-[11px] font-semibold text-[#f6e27a]">
+                        {index + 1}
+                      </span>
+                      <span className="leading-relaxed">{step}</span>
+                    </li>
+                  ))}
+                </ol>
               </div>
             </div>
 
@@ -124,10 +141,10 @@ export default function BookAppointmentPage() {
                   Appointment Email
                 </p>
                 <a
-                  href="mailto:myappointment@talkastrologer.com"
+                  href="mailto:myappointment@TalkAstrologer"
                   className="mt-1 block text-sm font-semibold text-[#38070e] hover:text-[#8b1827] break-all"
                 >
-                  myappointment@talkastrologer.com
+                  myappointment@TalkAstrologer
                 </a>
                 <p className="mt-1 text-xs text-[#6a5558] leading-relaxed">
                   Dedicated exclusively to clients who want to book an appointment for consulting Guruji.
@@ -159,7 +176,7 @@ export default function BookAppointmentPage() {
                   <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-[#c59b27] bg-[#faf2e4]">
                     <CheckCircle2 className="w-7 h-7 text-[#1f7a45]" />
                   </div>
-                  <h2 className="font-serif text-2xl font-bold text-[#38070e]">
+                  <h2 className="font-serif text-3xl font-bold text-[#38070e]">
                     Request received
                   </h2>
                   <p className="mx-auto max-w-md text-sm text-[#5c474b] leading-relaxed">
@@ -175,8 +192,20 @@ export default function BookAppointmentPage() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
+                  {/* Invisible honeypot field for anti-bot defense */}
+                  <div className="hidden" aria-hidden="true" style={{ display: "none" }}>
+                    <input
+                      type="text"
+                      name="website_hp"
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+                  </div>
+
                   <div>
-                    <h2 className="font-serif text-xl font-bold text-[#38070e]">
+                    <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#38070e]">
                       Consultation request
                     </h2>
                     <p className="mt-1 text-xs text-[#6a5558]">
@@ -235,7 +264,7 @@ export default function BookAppointmentPage() {
                     <div className="space-y-1.5">
                       <label className="flex items-center gap-1.5 text-xs font-semibold text-[#420813]">
                         <Phone className="w-3.5 h-3.5 text-[#9e701e]" />
-                        Phone
+                        Phone <span className="font-normal text-[#8a7478]">(US or India)</span>
                       </label>
                       <input
                         type="tel"
@@ -244,9 +273,12 @@ export default function BookAppointmentPage() {
                         onChange={(e) =>
                           setFormData({ ...formData, phone: e.target.value })
                         }
-                        placeholder="+1 214 000 0000"
+                        placeholder="+1 214 669 9699 or +91 98765 43210"
                         className={fieldClass}
                       />
+                      <p className="text-[10px] text-[#7a6467]">
+                        Accepts US (+1) 10-digit or Indian (+91) 10-digit mobile number
+                      </p>
                     </div>
                   </div>
 
@@ -335,5 +367,19 @@ export default function BookAppointmentPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function BookAppointmentPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-[#f6f0e4] flex items-center justify-center">
+          <div className="w-8 h-8 border-2 border-[#8b1827] border-t-transparent rounded-full animate-spin" />
+        </div>
+      }
+    >
+      <BookAppointmentForm />
+    </Suspense>
   );
 }

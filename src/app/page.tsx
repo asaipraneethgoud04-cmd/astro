@@ -13,7 +13,7 @@ export default function HomePage() {
       {/* 1. Hero Section strictly matching uploaded screenshot */}
       <HeroSection />
 
-      {/* 2. Welcome to TalkAstrologer.com with arched portrait & Zodiac wheel */}
+      {/* 2. Welcome to TalkAstrologer with arched portrait & Zodiac wheel */}
       <WelcomeSection />
 
       {/* 3. Astrology & Spiritual Services */}

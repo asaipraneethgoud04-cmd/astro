@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# TalkAstrologer.com - Apache / LiteSpeed config in front of `next start`
+# TalkAstrologer - Apache / LiteSpeed config in front of `next start`
 # (Node app listening on 127.0.0.1:3000)
 # ----------------------------------------------------------------------
 

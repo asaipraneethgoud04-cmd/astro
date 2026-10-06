@@ -4,13 +4,15 @@ import { createClient } from "@/lib/supabase/server";
 import LoginForm from "./LoginForm";
 
 export default async function AdminLoginPage() {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  try {
+    const supabase = await createClient();
+    const { data, error } = await supabase.auth.getUser();
 
-  if (user) {
-    redirect("/admin");
+    if (!error && data?.user) {
+      redirect("/admin");
+    }
+  } catch {
+    // Stale or invalid session, allow login page to render
   }
 
   return (

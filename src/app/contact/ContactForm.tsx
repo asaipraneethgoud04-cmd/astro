@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { CheckCircle2, Mail, MessageSquare, Phone, Send, User } from "lucide-react";
 import { submitContactMessage } from "@/app/actions/inbox";
+import { validatePhoneNumber } from "@/lib/phone";
 
 const fieldClass =
   "w-full rounded-lg border border-[#e2d6c3] bg-[#fffcf7] px-3.5 py-2.5 text-sm text-[#420813] placeholder-[#a69295] transition-all focus:border-[#8b1827] focus:outline-none focus:ring-2 focus:ring-[#8b1827]/30";
@@ -16,11 +17,18 @@ export default function ContactForm() {
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setError("");
-    setSending(true);
-
     const form = event.currentTarget;
     const data = new FormData(form);
+    const phoneRaw = String(data.get("phone") ?? "").trim();
+    if (phoneRaw) {
+      const phoneCheck = validatePhoneNumber(phoneRaw, false);
+      if (!phoneCheck.isValid) {
+        setError(phoneCheck.error || "Please enter a valid phone number.");
+        return;
+      }
+    }
+
+    setSending(true);
     const result = await submitContactMessage(data);
     setSending(false);
 
@@ -38,7 +46,7 @@ export default function ContactForm() {
         <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-[#c59b27] bg-[#faf2e4]">
           <CheckCircle2 className="h-7 w-7 text-[#1f7a45]" />
         </div>
-        <h3 className="font-serif text-2xl font-bold text-[#38070e]">Message received</h3>
+        <h3 className="font-serif text-3xl font-bold text-[#38070e]">Message received</h3>
         <p className="mx-auto max-w-md text-sm leading-relaxed text-[#5c474b]">
           Thank you, {sentTo}. The support desk will reply to you by email.
         </p>
@@ -55,6 +63,11 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={onSubmit} className="space-y-4">
+      {/* Invisible honeypot field for anti-bot defense */}
+      <div className="hidden" aria-hidden="true" style={{ display: "none" }}>
+        <input type="text" name="website_hp" tabIndex={-1} autoComplete="off" />
+      </div>
+
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div className="space-y-1.5">
           <label htmlFor="contact-name" className={labelClass}>
@@ -88,9 +101,12 @@ export default function ContactForm() {
             name="phone"
             type="tel"
             maxLength={40}
-            placeholder="+1 214 000 0000"
+            placeholder="+1 214 669 9699 or +91 98765 43210"
             className={fieldClass}
           />
+          <p className="text-[10px] text-[#7a6467]">
+            Accepts US (+1) 10-digit or Indian (+91) 10-digit mobile number
+          </p>
         </div>
         <div className="space-y-1.5">
           <label htmlFor="contact-subject" className={labelClass}>

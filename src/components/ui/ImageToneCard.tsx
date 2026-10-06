@@ -149,12 +149,12 @@ function useImageTone(src: string) {
   const [tone, setTone] = useState<ImageTone>(() => toneCache.get(src) ?? FALLBACK_TONE);
 
   useEffect(() => {
+    let cancelled = false;
     const cached = toneCache.get(src);
     if (cached) {
-      setTone(cached);
+      // Already matching initial state or previous run
       return;
     }
-    let cancelled = false;
     extractDominantTone(src).then((next) => {
       if (!cancelled) setTone(next);
     });
@@ -277,7 +277,7 @@ export default function ImageToneCard({
 
       <div className="relative z-10 mt-auto flex min-w-0 flex-col px-2.5 pb-2.5 pt-20 sm:px-5 sm:pb-5 sm:pt-28">
         <div className="flex min-w-0 flex-col items-start gap-1.5 sm:flex-row sm:items-start sm:justify-between sm:gap-3">
-          <h3 className="line-clamp-3 break-words font-serif text-[13px] font-bold leading-tight text-white sm:text-[1.35rem] sm:leading-snug">
+          <h3 className="line-clamp-3 break-words font-serif text-[16px] font-bold leading-tight text-white sm:text-[1.55rem] sm:leading-snug">
             {title}
           </h3>
           {meta ? (

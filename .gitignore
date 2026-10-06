@@ -29,6 +29,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+mail-debug.log*
+*.log
+security-reports/
 
 # Environment variables and secrets
 .env

@@ -4,12 +4,12 @@ import { Sparkles, HelpCircle, Phone, ArrowRight } from "lucide-react";
 import CtaBannerSection from "@/components/home/CtaBannerSection";
 
 export const metadata = {
-  title: "Frequently Asked Questions | TalkAstrologer.com",
+  title: "Frequently Asked Questions | TalkAstrologer",
 };
 
 const faqs = [
   {
-    q: "How can I book a session with TalkAstrologer.com?",
+    q: "How can I book a session with TalkAstrologer?",
     a: "You can easily book through our online Book Appointment form, or call/WhatsApp directly at +91 98765 43210. Our consultation team will coordinate your preferred time slot.",
   },
   {
@@ -22,7 +22,7 @@ const faqs = [
   },
   {
     q: "Are the suggested solutions fear-based or difficult?",
-    a: "No, never. TalkAstrologer.com strictly rejects fear-based predictions and unrealistic promises. Our consultations provide practical, uplifting, and motivational guidance designed to support confidence, focus, and peace of mind.",
+    a: "No, never. TalkAstrologer strictly rejects fear-based predictions and unrealistic promises. Our consultations provide practical, uplifting, and motivational guidance designed to support confidence, focus, and peace of mind.",
   },
   {
     q: "Can consultations be held online across Texas and the USA?",
@@ -58,23 +58,23 @@ export default function FaqPage() {
       <section className="section-t bg-[#fdfbf7]">
         <div className="site-container">
           <div className="max-w-4xl mx-auto grid grid-rows-gap">
-          {faqs.map((faq, idx) => (
-            <div
-              key={idx}
-              className="bg-white rounded-2xl border border-[#ebdcc2] px-6 card-y sm:px-8 shadow-sm space-y-3"
-            >
-              <div className="flex items-start gap-3">
-                <HelpCircle className="w-5 h-5 text-[#8b1827] shrink-0 mt-0.5" />
-                <h3 className="font-serif text-lg sm:text-xl font-bold text-[#38070e]">
-                  {faq.q}
-                </h3>
+            {faqs.map((faq, idx) => (
+              <div
+                key={idx}
+                className="bg-white rounded-2xl border border-[#ebdcc2] px-6 card-y sm:px-8 shadow-sm space-y-3"
+              >
+                <div className="flex items-start gap-3">
+                  <HelpCircle className="w-5 h-5 text-[#8b1827] shrink-0 mt-0.5" />
+                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#38070e]">
+                    {faq.q}
+                  </h3>
+                </div>
+                <p className="text-sm text-[#543e42] leading-relaxed pl-8">
+                  {faq.a}
+                </p>
               </div>
-              <p className="text-sm text-[#543e42] leading-relaxed pl-8">
-                {faq.a}
-              </p>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
         </div>
       </section>
 

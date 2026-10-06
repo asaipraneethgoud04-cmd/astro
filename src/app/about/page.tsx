@@ -23,9 +23,9 @@ import {
 } from "lucide-react";
 
 export const metadata = {
-  title: "About Us | TalkAstrologer.com - 22+ Years & 6 Generations of Ancestral Vedic Wisdom",
+  title: "About Us | TalkAstrologer - 30+ Years & 6 Generations of Ancestral Vedic Wisdom",
   description:
-    "Discover TalkAstrologer.com. Combining 22+ years of experience with a six-generation ancestral Jyotish lineage from Bangalore, India. Compassionate, human-centered astrology across Texas, all 50 US states, and globally.",
+    "Discover TalkAstrologer. Combining 30+ years of experience with a six-generation ancestral Jyotish lineage from Bangalore, India. Compassionate, human-centered astrology across Texas, all 50 US states, and globally.",
 };
 
 export default function AboutPage() {
@@ -122,7 +122,7 @@ export default function AboutPage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          2. ABOUT TALKASTROLOGER.COM — LISTENING FIRST & COMPASSIONATE GUIDANCE
+          2. ABOUT TalkAstrologer — LISTENING FIRST & COMPASSIONATE GUIDANCE
       ───────────────────────────────────────────────────────────── */}
       <section className="bg-[#faf6ee] section-t">
         <div className="site-container site-container--narrow">
@@ -131,16 +131,16 @@ export default function AboutPage() {
             <div className="lg:col-span-7 space-y-6">
               <div className="space-y-2">
                 <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#8b1827] block">
-                  About TalkAstrologer.com
+                  About TalkAstrologer
                 </span>
-                <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[#38070e] tracking-tight leading-[1.2]">
+                <h2 className="font-serif text-4xl sm:text-5xl lg:text-[54px] font-extrabold text-[#38070e] tracking-tight leading-[1.2]">
                   Traditional Indian Astrology Rooted in Compassionate Listening
                 </h2>
               </div>
 
               <div className="space-y-4 text-sm sm:text-base text-[#523d41] leading-relaxed">
                 <p>
-                  <strong>TalkAstrologer.com</strong> provides traditional Indian astrology and spiritual guidance for people facing personal, relationship, family, career, financial, educational, and other significant life questions.
+                  <strong>TalkAstrologer</strong> provides traditional Indian astrology and spiritual guidance for people facing personal, relationship, family, career, financial, educational, and other significant life questions.
                 </p>
                 <p>
                   Our approach begins with <em>listening carefully to the circumstances behind a person’s question</em>, rather than giving everyone the same templated answer. Every life journey has its own unique texture, nuances, and timing.
@@ -193,7 +193,7 @@ export default function AboutPage() {
               {/* Quick Pillars Grid */}
               <div className="grid grid-cols-2 items-stretch gap-2.5 sm:gap-3.5">
                 {[
-                  { value: "22+", label: "Years", detail: "Of Dedicated Practice" },
+                  { value: "30+", label: "Years", detail: "Of Dedicated Practice" },
                   { value: "6", label: "Generations", detail: "Lineage from Bangalore, India" },
                 ].map((stat) => (
                   <div
@@ -224,7 +224,7 @@ export default function AboutPage() {
         <div className="site-container site-container--narrow">
           {/* Section Divider Header */}
           <div className="mx-auto max-w-3xl text-center header-gap">
-            <h2 className="text-balance font-serif text-[1.7rem] font-extrabold leading-tight tracking-tight text-[#38070e] sm:text-3xl lg:text-4xl">
+            <h2 className="text-balance font-serif text-3xl font-extrabold leading-tight tracking-tight text-[#38070e] sm:text-4xl lg:text-5xl">
               Heritage Originating in Bangalore, India
             </h2>
             <div className="mt-4 flex items-center justify-center gap-3">
@@ -253,12 +253,12 @@ export default function AboutPage() {
 
             {/* Text stays left of the bell and the floating call buttons */}
             <div className="relative z-10 space-y-4 pr-[4.75rem] text-left sm:space-y-5 sm:pr-28 lg:pr-44">
-              <h3 className="font-serif text-xl font-bold leading-snug text-[#38070e] sm:text-2xl">
+              <h3 className="font-serif text-2xl font-bold leading-snug text-[#38070e] sm:text-3xl">
                 An Unbroken Connection with Traditional Jyotish
               </h3>
 
               <p className="text-sm leading-relaxed text-[#4d363a] md:text-base">
-                TalkAstrologer.com brings more than <strong>22 years of active consultation experience</strong> together with a revered <strong>six-generation ancestral connection</strong> originating in Bangalore, India. This heritage reflects a continuing, living dedication to Jyotish and related Indian spiritual traditions.
+                TalkAstrologer brings more than <strong>22 years of active consultation experience</strong> together with a revered <strong>six-generation ancestral connection</strong> originating in Bangalore, India. This heritage reflects a continuing, living dedication to Jyotish and related Indian spiritual traditions.
               </p>
 
               <p className="text-sm leading-relaxed text-[#4d363a] md:text-base">
@@ -278,7 +278,7 @@ export default function AboutPage() {
             <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#8b1827] block">
               Experience, Heritage & Global Reach
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-[#38070e] tracking-tight">
+            <h2 className="font-serif text-4xl sm:text-5xl font-extrabold text-[#38070e] tracking-tight">
               Serving Seekers Across the USA & Worldwide
             </h2>
             <p className="text-xs sm:text-sm text-[#5c4448]">
@@ -293,7 +293,7 @@ export default function AboutPage() {
               <div className="w-12 h-12 rounded-xl bg-[#faeed6] border border-[#d8be96] flex items-center justify-center text-[#8b1827]">
                 <MapPin className="w-6 h-6" />
               </div>
-              <h3 className="font-serif text-xl font-bold text-[#38070e]">
+              <h3 className="font-serif text-2xl sm:text-[26px] font-bold text-[#38070e]">
                 All 50 US States
               </h3>
               <p className="text-xs sm:text-sm text-[#543d41] leading-relaxed">
@@ -306,7 +306,7 @@ export default function AboutPage() {
               <div className="w-12 h-12 rounded-xl bg-[#faeed6] border border-[#d8be96] flex items-center justify-center text-[#8b1827]">
                 <Globe className="w-6 h-6" />
               </div>
-              <h3 className="font-serif text-xl font-bold text-[#38070e]">
+              <h3 className="font-serif text-2xl sm:text-[26px] font-bold text-[#38070e]">
                 International Seekers
               </h3>
               <p className="text-xs sm:text-sm text-[#543d41] leading-relaxed">
@@ -319,7 +319,7 @@ export default function AboutPage() {
               <div className="w-12 h-12 rounded-xl bg-[#faeed6] border border-[#d8be96] flex items-center justify-center text-[#8b1827]">
                 <Languages className="w-6 h-6" />
               </div>
-              <h3 className="font-serif text-xl font-bold text-[#38070e]">
+              <h3 className="font-serif text-2xl sm:text-[26px] font-bold text-[#38070e]">
                 Multilingual Guidance
               </h3>
               <p className="text-xs sm:text-sm text-[#543d41] leading-relaxed">
@@ -342,7 +342,7 @@ export default function AboutPage() {
             <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#8b1827] block">
               Our Guiding Principles
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-[#38070e] tracking-tight leading-[1.15]">
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-[52px] font-extrabold text-[#38070e] tracking-tight leading-[1.15]">
               Spiritual Philosophy: Empowering, Respectful & Supportive
             </h2>
             <div className="flex items-center justify-center gap-2">
@@ -365,7 +365,7 @@ export default function AboutPage() {
                   A birth chart is a sacred map, not a fixed verdict.
                 </p>
                 <p className="text-sm text-[#ecd9c6] leading-relaxed">
-                  TalkAstrologer.com treats astrology as a traditional system of reflection. The chart is used to explore patterns, possibilities, challenges, and life phases — then explained in language you can sit with.
+                  TalkAstrologer treats astrology as a traditional system of reflection. The chart is used to explore patterns, possibilities, challenges, and life phases — then explained in language you can sit with.
                 </p>
               </div>
               <ul className="relative mt-8 space-y-3 text-sm text-[#f7e8d4]">
@@ -436,7 +436,7 @@ export default function AboutPage() {
                         Principle {pillar.numeral}
                       </p>
                     </div>
-                    <h3 className="mt-4 font-serif text-lg font-bold text-[#38070e] leading-snug">
+                    <h3 className="mt-4 font-serif text-xl sm:text-2xl font-bold text-[#38070e] leading-snug">
                       {pillar.title}
                     </h3>
                     <p className="mt-2 text-sm text-[#543d41] leading-relaxed">
@@ -461,7 +461,7 @@ export default function AboutPage() {
         <div className="site-container site-container--narrow">
           {/* Section Heading */}
           <div className="text-center space-y-2 header-gap">
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#38070e] tracking-tight">
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#38070e] tracking-tight">
               Our Methodology & Specializations
             </h2>
             <p className="text-xs sm:text-sm text-[#5c4448] max-w-lg mx-auto">
@@ -479,7 +479,7 @@ export default function AboutPage() {
                   <div className="w-10 h-10 rounded-lg bg-[#faeed6] border border-[#d8be96] flex items-center justify-center text-[#8b1827]">
                     <LayoutGrid className="w-5 h-5" />
                   </div>
-                  <h3 className="font-serif text-2xl font-bold text-[#38070e]">
+                  <h3 className="font-serif text-2xl sm:text-[28px] font-bold text-[#38070e]">
                     Holistic Birth Chart Analysis
                   </h3>
                   <p className="text-xs sm:text-sm text-[#573f43] leading-relaxed">
@@ -493,7 +493,7 @@ export default function AboutPage() {
                 <div className="w-14 h-14 rounded-full bg-[#faeed6] border border-[#d8be96] flex items-center justify-center text-[#8b1827] mb-4 shadow-inner">
                   <Heart className="w-7 h-7 fill-[#8b1827] text-[#8b1827]" />
                 </div>
-                <h3 className="font-serif text-2xl font-bold text-[#38070e]">
+                <h3 className="font-serif text-2xl sm:text-[28px] font-bold text-[#38070e]">
                   Relationship Compatibility
                 </h3>
                 <p className="text-xs text-[#573f43] mt-2 max-w-xs">
@@ -509,7 +509,7 @@ export default function AboutPage() {
                 <div className="w-14 h-14 rounded-xl bg-[#3f241f] border border-[#c59b27]/40 flex items-center justify-center text-[#f6e27a] mb-5 shadow-inner group-hover:scale-105 transition-transform">
                   <Briefcase className="w-7 h-7" />
                 </div>
-                <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#fdfaf4]">
+                <h3 className="font-serif text-2xl sm:text-[26px] font-bold text-[#fdfaf4]">
                   Career & Finance
                 </h3>
                 <p className="text-xs text-[#e8d5be] mt-2">
@@ -522,7 +522,7 @@ export default function AboutPage() {
                 <div className="w-14 h-14 rounded-xl bg-[#f2e1c3] border border-[#d8be96] flex items-center justify-center text-[#8b1827] mb-5 shadow-inner group-hover:scale-105 transition-transform">
                   <HomeIcon className="w-7 h-7" />
                 </div>
-                <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#38070e]">
+                <h3 className="font-serif text-2xl sm:text-[26px] font-bold text-[#38070e]">
                   Vastu Shastra
                 </h3>
                 <p className="text-xs text-[#634b4f] mt-2">
@@ -535,7 +535,7 @@ export default function AboutPage() {
                 <div className="w-14 h-14 rounded-xl bg-[#fbf4e4] border border-[#d8be96] flex items-center justify-center text-[#8b1827] mb-5 shadow-inner group-hover:scale-105 transition-transform">
                   <Shield className="w-7 h-7" />
                 </div>
-                <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#38070e]">
+                <h3 className="font-serif text-2xl sm:text-[26px] font-bold text-[#38070e]">
                   Health & Wellness
                 </h3>
                 <p className="text-xs text-[#634b4f] mt-2">
@@ -553,7 +553,7 @@ export default function AboutPage() {
       <section className="section-y bg-[#faf6ee]">
         <div className="site-container site-container--narrow">
           <div className="rounded-2xl bg-[#2d1814] py-12 px-6 sm:px-12 text-center text-white shadow-xl space-y-6">
-            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#fdfaf4]">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#fdfaf4]">
               Begin Your Journey to Clarity
             </h2>
             <p className="text-xs sm:text-sm text-[#ecd9c6] max-w-lg mx-auto">
@@ -596,7 +596,7 @@ export default function AboutPage() {
         <div className="site-container site-container--narrow">
           {/* Heading */}
           <div className="text-center space-y-2 header-gap">
-            <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-[#38070e] tracking-tight">
+            <h2 className="font-serif text-4xl sm:text-5xl font-extrabold text-[#38070e] tracking-tight">
               Our Sanctuaries & Consultations
             </h2>
             <p className="text-xs sm:text-sm text-[#735a5e]">
@@ -611,7 +611,7 @@ export default function AboutPage() {
               <div className="w-12 h-12 rounded-full bg-[#faeed6] border border-[#d8be96] flex items-center justify-center text-[#8b1827]">
                 <MapPin className="w-6 h-6" />
               </div>
-              <h3 className="font-serif text-xl font-bold text-[#38070e]">
+              <h3 className="font-serif text-2xl sm:text-[26px] font-bold text-[#38070e]">
                 Frisco, Texas, USA
               </h3>
               <p className="text-xs text-[#735a5e]">11572 Lenox Ln, Frisco, TX 75033</p>
@@ -625,7 +625,7 @@ export default function AboutPage() {
               <div className="w-12 h-12 rounded-full bg-[#faeed6] border border-[#d8be96] flex items-center justify-center text-[#8b1827]">
                 <Phone className="w-6 h-6" />
               </div>
-              <h3 className="font-serif text-xl font-bold text-[#38070e]">
+              <h3 className="font-serif text-2xl sm:text-[26px] font-bold text-[#38070e]">
                 All 50 US States
               </h3>
               <p className="text-xs text-[#735a5e]">Private Phone & Online Consultations</p>
@@ -639,7 +639,7 @@ export default function AboutPage() {
               <div className="w-12 h-12 rounded-full bg-[#faeed6] border border-[#d8be96] flex items-center justify-center text-[#8b1827]">
                 <Globe className="w-6 h-6" />
               </div>
-              <h3 className="font-serif text-xl font-bold text-[#38070e]">
+              <h3 className="font-serif text-2xl sm:text-[26px] font-bold text-[#38070e]">
                 Ancestral Roots
               </h3>
               <p className="text-xs text-[#735a5e]">Bangalore, India • Europe • Australia</p>

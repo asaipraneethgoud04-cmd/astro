@@ -9,193 +9,180 @@ export interface ServiceItem {
 
 export const servicesData: ServiceItem[] = [
   {
-    id: "love-relationship-guidance",
-    title: "Love & Relationship Guidance",
+    id: "horoscope-reading",
+    title: "Horoscope Reading",
     description:
-      "Support for questions involving love, relationships, emotional uncertainty and important personal decisions.",
-    category: "Love & Marriage",
-    imageUrl: "/images/services/love and relationship guidence.png",
-    iconName: "heart",
-  },
-  {
-    id: "marriage-compatibility",
-    title: "Marriage & Compatibility",
-    description:
-      "Traditional astrological perspectives on compatibility, marriage-related questions and family considerations.",
-    category: "Love & Marriage",
-    imageUrl: "/images/services/marriage and compatability.png",
-    iconName: "marriage",
-  },
-  {
-    id: "love-marriage-family",
-    title: "Love Marriage & Family Concerns",
-    description:
-      "Guidance for people navigating love marriage decisions, family expectations and relationship concerns.",
-    category: "Love & Marriage",
-    imageUrl: "/images/services/love marriage & family concerns.png",
-    iconName: "couple",
-  },
-  {
-    id: "separation-divorce",
-    title: "Separation & Divorce-related Concerns",
-    description:
-      "A confidential space to reflect on difficult relationship periods and seek an astrological perspective.",
-    category: "Love & Marriage",
-    imageUrl: "/images/services/divorce.png",
-    iconName: "separation",
-  },
-  {
-    id: "career-education-job",
-    title: "Career, Education & Job Guidance",
-    description:
-      "Astrological perspective for career choices, professional changes, educational decisions and important transitions.",
-    category: "Career & Business",
-    imageUrl: "/images/services/career.png",
-    iconName: "briefcase",
-  },
-  {
-    id: "business-financial",
-    title: "Business & Financial Matters",
-    description:
-      "Traditional astrological perspective for business decisions, financial concerns and periods requiring careful planning.",
-    category: "Career & Business",
-    imageUrl: "/images/services/Business & Financial Matters.png",
-    iconName: "finance",
-  },
-  {
-    id: "family-parents-children",
-    title: "Family, Parents & Children",
-    description:
-      "Supportive consultation for family relationships, parenting concerns and challenges involving parents and children.",
-    category: "Family & Personal",
-    imageUrl: "/images/services/Family, Parents & Children.png",
-    iconName: "family",
-  },
-  {
-    id: "future-guidance",
-    title: "Future-oriented Guidance",
-    description:
-      "Traditional interpretation of possible periods, tendencies and themes reflected in the horoscope.",
+      "Personalized interpretation of birth chart, planetary alignments, and wider astrological blueprint for life guidance.",
     category: "Astrology & Charts",
-    imageUrl: "/images/services/future -orientiend.png",
-    iconName: "future",
-  },
-  {
-    id: "horoscope-kundli",
-    title: "Horoscope & Kundli Reading",
-    description:
-      "Personalized interpretation of birth information and the wider chart rather than relying on one isolated factor.",
-    category: "Astrology & Charts",
-    imageUrl: "/images/services/horoscope& kundli reading.png",
+    imageUrl: "/images/services/Horoscope.png",
     iconName: "chart",
   },
   {
-    id: "dosha-guidance",
-    title: "Dosha Guidance",
+    id: "divorce-problem-solution",
+    title: "Divorce problem solution",
     description:
-      "Context-based interpretation of relevant Doshas and other chart factors, with traditional remedies discussed where appropriate.",
+      "Confidential Vedic consultation and astrological perspective to navigate marital conflicts, legal separation, and emotional reconciliation.",
+    category: "Love & Marriage",
+    imageUrl: "/images/services/Divorce.png",
+    iconName: "separation",
+  },
+  {
+    id: "evil-spirits-removal",
+    title: "Evil Spirits Removal",
+    description:
+      "Sacred Vedic rituals, protective kavach, and energetic cleansing to dissolve negative entities, psychic disturbances, and heavy auras.",
+    category: "Spiritual & Wellness",
+    imageUrl: "/images/services/Evil.png",
+    iconName: "energy",
+  },
+  {
+    id: "fortune-teller",
+    title: "Fortune Teller",
+    description:
+      "Traditional Jyotish forecasting of upcoming planetary transits, auspicious windows, and significant life milestones.",
     category: "Astrology & Charts",
-    imageUrl: "/images/services/Dosha Guidance.png",
+    imageUrl: "/images/services/Fortune teller.png",
+    iconName: "future",
+  },
+  {
+    id: "psychic-reading",
+    title: "Psychic Reading",
+    description:
+      "Intuitive celestial readings and higher spiritual discernment to illuminate uncertain crossroads and unrevealed truths.",
+    category: "Spiritual & Wellness",
+    imageUrl: "/images/services/Psychic.png",
+    iconName: "psychic",
+  },
+  {
+    id: "vashikaran-specialist",
+    title: "Vashikaran Specialist",
+    description:
+      "Authentic, pure sattvic positive energy alignment and relationship harmonization to soften bitter conflicts and restore love.",
+    category: "Love & Marriage",
+    imageUrl: "/images/services/Vashikaran.png",
+    iconName: "heart",
+  },
+  {
+    id: "tarot-reading",
+    title: "Tarot Reading",
+    description:
+      "Intuitive card spread consultations revealing hidden patterns, crossroads, and immediate clarity for love, finance, and career.",
+    category: "Astrology & Charts",
+    imageUrl: "/images/services/Tarot Reading.png",
+    iconName: "numerology",
+  },
+  {
+    id: "curse-removal",
+    title: "Curse Removal",
+    description:
+      "Traditional shastric remedies and planetary Shanti to clear generational doshas, evil eye (drishti), and recurring karmic blockages.",
+    category: "Spiritual & Wellness",
+    imageUrl: "/images/services/Curse removal.png",
     iconName: "dosha",
   },
   {
-    id: "vastu-shastra",
-    title: "Vastu Shastra",
+    id: "business-problem-solution",
+    title: "Business Problem Solution",
     description:
-      "Traditional Vastu-based guidance concerning homes, workplaces and living environments.",
-    category: "Family & Personal",
-    imageUrl: "/images/services/Vastu Shastra.png",
-    iconName: "vastu",
+      "Strategic Vedic business counsel, partnership compatibility, launch Muhurat, and remedies for commercial turnaround.",
+    category: "Career & Business",
+    imageUrl: "/images/services/Business.png",
+    iconName: "finance",
   },
   {
-    id: "numerology",
-    title: "Numerology",
+    id: "education-employment",
+    title: "Education & Employment",
     description:
-      "Traditional numerological interpretation offered as an additional perspective.",
-    category: "Astrology & Charts",
-    imageUrl: "/images/services/numerology.png",
-    iconName: "numerology",
+      "Vedic career guidance, academic direction, competitive examination timing, and solutions for job stability and promotions.",
+    category: "Career & Business",
+    imageUrl: "/images/services/Education.png",
+    iconName: "briefcase",
+  },
+  {
+    id: "financial-problem-solution",
+    title: "Financial Problem Solution",
+    description:
+      "Ancient Dhana Yoga activations and Lakshmi stotrams to overcome debt traps, cash flow blockages, and financial instability.",
+    category: "Career & Business",
+    imageUrl: "/images/services/Financial.png",
+    iconName: "finance",
+  },
+  {
+    id: "health-problem-solution",
+    title: "Health Problem Solution",
+    description:
+      "Vedic astrological analysis of physical vitality, 6th house roga indications, and sacred Maha Mrityunjaya healing remedies.",
+    category: "Spiritual & Wellness",
+    imageUrl: "/images/services/Health.png",
+    iconName: "family",
+  },
+  {
+    id: "spiritual-reading",
+    title: "Spiritual Reading",
+    description:
+      "Sacred Vedic spiritual reflection, puja guidance, and higher soul consciousness practices to cultivate inner serenity.",
+    category: "Spiritual & Wellness",
+    imageUrl: "/images/services/Spiritual reading.png",
+    iconName: "puja",
+  },
+  {
+    id: "kundali-matching",
+    title: "Kundali matching",
+    description:
+      "Comprehensive Ashta Kuta, Navamsha, and Mangal Dosha synastry to assess lifelong harmony and marital prosperity.",
+    category: "Love & Marriage",
+    imageUrl: "/images/services/Kundali.png",
+    iconName: "marriage",
   },
   {
     id: "palm-reading",
     title: "Palm Reading",
-    description: "Traditional palmistry-based reflection and guidance.",
+    description:
+      "Classical Hastarekha palmistry analysis decoding major life lines, mount energies, and divine markings.",
     category: "Astrology & Charts",
-    imageUrl: "/images/services/palm reading.png",
+    imageUrl: "/images/services/Palm Reading.png",
     iconName: "palm",
   },
   {
-    id: "face-aura-reading",
-    title: "Face & Aura Reading",
+    id: "love-marriage-specialist",
+    title: "Love Marriage Specialist",
     description:
-      "Traditional interpretive practices approached respectfully and without presenting them as scientific diagnosis.",
-    category: "Astrology & Charts",
-    imageUrl:
-      "/images/services/Face & Aura Reading.png",
-    iconName: "face",
-  },
-  {
-    id: "psychic-intuitive",
-    title: "Psychic / Intuitive Guidance",
-    description:
-      "Reflective intuitive guidance for people seeking another perspective during uncertain times.",
-    category: "Spiritual & Wellness",
-    imageUrl: "/images/services/Psychic  Intuitive Guidance.png",
-    iconName: "psychic",
-  },
-  {
-    id: "puja-spiritual",
-    title: "Puja & Spiritual Guidance",
-    description:
-      "Traditional spiritual and puja-related guidance intended to support prayer, reflection and connection with one's spiritual beliefs.",
-    category: "Spiritual & Wellness",
-    imageUrl: "/images/services/Puja & Spiritual Guidance.png",
-    iconName: "puja",
-  },
-  {
-    id: "negative-energy",
-    title: "Negative-energy / Spiritual Concerns",
-    description:
-      "Compassionate discussion of spiritual concerns, with traditional practices or remedies considered according to individual beliefs.",
-    category: "Spiritual & Wellness",
-    imageUrl: "/images/services/Negative-energy  Spiritual Concerns.png",
-    iconName: "energy",
-  },
-  {
-    id: "inter-caste-marriage",
-    title: "Inter-caste Marriage Concerns",
-    description:
-      "Guidance for relationship and family situations involving different cultural or social backgrounds.",
+      "Empathetic astrological guidance to bridge parental hesitations, family opposition, and cultural differences for love marriages.",
     category: "Love & Marriage",
-    imageUrl: "/images/services/Inter-caste Marriage Concerns.png",
+    imageUrl: "/images/services/love-marriage.png",
     iconName: "couple",
   },
-  {
-    id: "overseas-abroad",
-    title: "Overseas / Abroad-related Concerns",
-    description:
-      "Astrological guidance for questions related to overseas opportunities, relocation or life abroad.",
-    category: "Career & Business",
-    imageUrl: "/images/services/Overseas  Abroad-related Concerns.png",
-    iconName: "abroad",
-  },
-  {
-    id: "film-entertainment",
-    title: "Film & Entertainment Career Concerns",
-    description:
-      "Astrological perspective for people working toward or navigating careers in film and entertainment.",
-    category: "Career & Business",
-    imageUrl:
-      "/images/services/Film & Entertainment Career Concerns.png",
-    iconName: "film",
-  },
 ];
+
+export const navbarServicesColumns = {
+  column1: [
+    { id: "horoscope-reading", title: "Horoscope Reading", icon: "chart" },
+    { id: "divorce-problem-solution", title: "Divorce problem solution", icon: "separation" },
+    { id: "evil-spirits-removal", title: "Evil Spirits Removal", icon: "energy" },
+    { id: "fortune-teller", title: "Fortune Teller", icon: "future" },
+    { id: "psychic-reading", title: "Psychic Reading", icon: "psychic" },
+    { id: "vashikaran-specialist", title: "Vashikaran Specialist", icon: "heart" },
+  ],
+  column2: [
+    { id: "tarot-reading", title: "Tarot Reading", icon: "numerology" },
+    { id: "curse-removal", title: "Curse Removal", icon: "dosha" },
+    { id: "business-problem-solution", title: "Business Problem Solution", icon: "finance" },
+    { id: "education-employment", title: "Education & Employment", icon: "briefcase" },
+    { id: "financial-problem-solution", title: "Financial Problem Solution", icon: "finance" },
+  ],
+  column3: [
+    { id: "health-problem-solution", title: "Health Problem Solution", icon: "family" },
+    { id: "spiritual-reading", title: "Spiritual Reading", icon: "puja" },
+    { id: "kundali-matching", title: "Kundali matching", icon: "marriage" },
+    { id: "palm-reading", title: "Palm Reading", icon: "palm" },
+    { id: "love-marriage-specialist", title: "Love Marriage Specialist", icon: "couple" },
+  ],
+};
 
 export const serviceCategories = [
   "All",
   "Love & Marriage",
   "Career & Business",
-  "Family & Personal",
   "Astrology & Charts",
   "Spiritual & Wellness",
 ];

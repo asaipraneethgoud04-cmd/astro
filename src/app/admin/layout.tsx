@@ -1,23 +1,12 @@
 import Image from "next/image";
-import { createClient } from "@/lib/supabase/server";
 import { getNewCounts } from "@/lib/inbox";
 import { signOutAdmin } from "./actions";
 import AdminNav from "./AdminNav";
 
+import { requireAdmin } from "./session";
+
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
-  let user: { email?: string } | null = null;
-
-  try {
-    const supabase = await createClient();
-    const { data } = await supabase.auth.getUser();
-    user = data.user;
-  } catch {
-    user = null;
-  }
-
-  if (!user) {
-    return <>{children}</>;
-  }
+  const user = await requireAdmin();
 
   const counts = await getNewCounts();
 

@@ -33,11 +33,6 @@ function ReviewCard({
           <Quote className="h-4 w-4 fill-current rotate-180" />
         </div>
 
-        {/* Top subtle golden shimmer line */}
-        <div
-          className={`absolute inset-x-8 top-0 h-[2px] bg-gradient-to-r from-transparent pointer-events-none ${pinned ? "via-[#c59b27] opacity-100" : "via-[#c59b27]/60"
-            } to-transparent`}
-        />
 
         {/* Card Content */}
         <div>
@@ -54,9 +49,9 @@ function ReviewCard({
           </blockquote>
         </div>
 
-        {/* Footer: Divider & Author Details */}
-        <div className="mt-6 pt-5 border-t border-[#ebdcc7]/60">
-          <h3 className="font-serif text-lg font-bold tracking-wide text-[#38070e] capitalize">
+        {/* Footer: Author Details */}
+        <div className="mt-6 pt-2">
+          <h3 className="font-serif text-xl sm:text-2xl font-bold tracking-wide text-[#38070e] capitalize">
             {name}
           </h3>
           <p className="mt-0.5 text-xs font-semibold uppercase tracking-wider text-[#8b1827]">
@@ -81,7 +76,7 @@ export default async function TestimonialsSection() {
     <section className="relative overflow-hidden bg-[#fdfbf7] section-t">
       <div className="site-container">
         <div className="mx-auto header-gap max-w-2xl space-y-3 text-center">
-          <h2 className="font-serif text-3xl font-extrabold tracking-tight text-[#38070e] sm:text-4xl lg:text-5xl">
+          <h2 className="font-serif text-4xl font-extrabold tracking-tight text-[#38070e] sm:text-5xl lg:text-6xl">
             Voices of the Blessed
           </h2>
           <div className="flex items-center justify-center gap-2 pt-1">

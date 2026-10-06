@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
-import { Cinzel, Outfit } from "next/font/google";
+import { Cormorant_Garamond, Cinzel, Outfit } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import SiteChrome from "@/components/layout/SiteChrome";
 import { getPinnedReviews } from "@/lib/reviews";
+
+const cormorant = Cormorant_Garamond({
+  variable: "--font-serif",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 const cinzel = Cinzel({
   variable: "--font-cinzel",
@@ -24,7 +30,8 @@ const shivaraja = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "TalkAstrologer.com | Six Generations of Ancestral Vedic Astrology | Texas, USA",
+  metadataBase: new URL("https://TalkAstrologer"),
+  title: "TalkAstrologer | Six Generations of Ancestral Vedic Astrology | Texas, USA",
   description:
     "Rooted in a revered six-generation ancestral Vedic lineage. Supportive astrology guidance, horoscope reading, marriage compatibility, career direction, and spiritual wellness in Texas and across the USA.",
   keywords: [
@@ -53,7 +60,7 @@ export default async function RootLayout({
   const pinnedReviews = await getPinnedReviews();
 
   return (
-    <html lang="en" className={`${cinzel.variable} ${outfit.variable} ${shivaraja.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${cormorant.variable} ${cinzel.variable} ${outfit.variable} ${shivaraja.variable}`} suppressHydrationWarning>
       <body
         className="min-h-screen flex flex-col bg-[#fdfaf4] text-[#2a1114] antialiased"
         suppressHydrationWarning

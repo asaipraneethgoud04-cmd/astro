@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/browser";
+import { checkLoginRateLimit } from "../actions";
 
 export default function LoginForm() {
   const router = useRouter();
@@ -15,6 +16,13 @@ export default function LoginForm() {
     event.preventDefault();
     setError("");
     setSending(true);
+
+    const rate = await checkLoginRateLimit();
+    if (!rate.allowed) {
+      setSending(false);
+      setError(`Too many failed login attempts from your IP. Please wait ${rate.retryAfterSeconds} seconds before trying again.`);
+      return;
+    }
 
     const supabase = createClient();
     const { error: signInError } = await supabase.auth.signInWithPassword({

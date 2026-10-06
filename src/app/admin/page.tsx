@@ -12,7 +12,7 @@ export default async function AdminPage() {
         <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#aa8016]">Voices of the Blessed</p>
         <h1 className="mt-2 font-serif text-4xl font-bold text-[#38070e]">Reviews Management</h1>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#614b4f]">
-          Moderate client testimonials. Accepted reviews appear on the homepage. Reviews with "Above Header" enabled rotate in the top announcement bar.
+          Moderate client testimonials. Accepted reviews appear on the homepage. Reviews with &quot;Above Header&quot; enabled rotate in the top announcement bar.
         </p>
       </header>
 

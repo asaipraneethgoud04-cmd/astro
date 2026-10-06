@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
-import { MapPin, Building2 } from "lucide-react";
+import Link from "next/link";
+import { MapPin, ChevronRight } from "lucide-react";
 
 export interface SanctuaryCity {
   id: string;
@@ -16,124 +17,146 @@ export const sanctuariesData: SanctuaryCity[] = [
     id: "frisco",
     name: "Frisco",
     landmark: "The Star",
-    imageUrl:
-      "https://images.unsplash.com/photo-1691635187988-d03b9ac5e045?auto=format&fit=crop&w=600&q=80",
+    imageUrl: "/images/locations/frisco.png",
   },
   {
     id: "plano",
     name: "Plano",
     landmark: "Legacy West",
-    imageUrl:
-      "https://images.unsplash.com/photo-1604329003703-dcd7f21527e2?auto=format&fit=crop&w=600&q=80",
+    imageUrl: "/images/locations/plano.png",
   },
   {
     id: "the-colony",
     name: "The Colony",
     landmark: "Grandscape",
-    imageUrl:
-      "https://images.unsplash.com/photo-1691635188006-78cfe07dadcc?auto=format&fit=crop&w=600&q=80",
+    imageUrl: "/images/locations/the-colony.png",
   },
   {
     id: "little-elm",
     name: "Little Elm",
     landmark: "Little Elm Park",
-    imageUrl:
-      "https://images.unsplash.com/photo-1730749219049-b5c5fef792ba?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    id: "allen",
-    name: "Allen",
-    landmark: "Watters Creek",
-    imageUrl:
-      "https://images.unsplash.com/photo-1621904878414-d4ca4756bd7e?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    id: "mckinney",
-    name: "McKinney",
-    landmark: "Historic Downtown",
-    imageUrl:
-      "https://images.unsplash.com/photo-1563219125-60d10ffe8877?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    id: "prosper",
-    name: "Prosper",
-    landmark: "Downtown Prosper",
-    imageUrl:
-      "https://images.unsplash.com/photo-1623621029767-913a0c0038b4?auto=format&fit=crop&w=600&q=80",
+    imageUrl: "/images/locations/little-elm.png",
   },
   {
     id: "dallas",
     name: "Dallas",
     landmark: "Downtown",
-    imageUrl:
-      "https://images.unsplash.com/photo-1754592326881-745afc0f9c84?auto=format&fit=crop&w=600&q=80",
+    imageUrl: "/images/locations/dallas.png",
+  },
+  {
+    id: "irving",
+    name: "Irving",
+    landmark: "Las Colinas",
+    imageUrl: "/images/locations/irving.png",
+  },
+  {
+    id: "fort-worth",
+    name: "Fort Worth",
+    landmark: "Sundance Square",
+    imageUrl: "/images/locations/fort-worth.png",
+  },
+  {
+    id: "houston",
+    name: "Houston",
+    landmark: "Downtown Houston",
+    imageUrl: "/images/locations/houston.png",
   },
 ];
 
-function SanctuaryCard({ city }: { city: SanctuaryCity }) {
-  const [imageError, setImageError] = useState(false);
-
-  return (
-    <article className="group relative aspect-[4/5] overflow-hidden rounded-[22px] bg-[#1c1917] shadow-[0_14px_32px_rgba(24,16,12,0.16)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(24,16,12,0.24)]">
-      {!imageError ? (
-        <Image
-          src={city.imageUrl}
-          alt={`${city.name} - ${city.landmark}`}
-          fill
-          sizes="(max-width: 640px) 50vw, 25vw"
-          className="object-cover object-center transition-transform duration-300 group-hover:scale-[1.03]"
-          onError={() => setImageError(true)}
-          unoptimized
-        />
-      ) : (
-        <div className="absolute inset-0 flex items-center justify-center bg-[#241c1a]">
-          <Building2 className="h-8 w-8 text-white/80" />
-        </div>
-      )}
-
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-
-      {/* {city.id === "frisco" ? (
-        <span className="absolute left-3 top-3 rounded-full bg-white/95 px-2.5 py-1 text-[11px] font-medium text-[#1c1917] shadow-sm">
-          Our studio
-        </span>
-      ) : null} */}
-
-      <div className="absolute inset-x-0 bottom-0 p-3.5 sm:p-4">
-        <h3 className="font-serif text-base sm:text-lg font-bold leading-tight text-white">
-          {city.name}
-        </h3>
-        <p className="mt-1 flex items-center gap-1 text-xs text-white/80">
-          <MapPin className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-          <span>{city.landmark}</span>
-        </p>
-      </div>
-    </article>
-  );
-}
-
 export default function GlobalSanctuariesSection() {
   return (
-    <section className="section-t page-bottom bg-[#faf6ee] border-t border-[#ebdcc2] relative">
-      <div className="site-container">
+    <section className="relative overflow-hidden bg-[#faf6ee] pt-14 pb-20 sm:pt-16 sm:pb-24 border-t border-[#ebdcc2]">
+      {/* ─────────────────────────────────────────────────────────────
+          1. CELESTIAL BACKGROUND: CLOUDS, STARS & ZODIAC CHARTS
+      ───────────────────────────────────────────────────────────── */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+        {/* Full celestial backdrop with clouds, zodiac wheels, and stars */}
+        <Image
+          src="/images/locations-bg.png"
+          alt=""
+          fill
+          unoptimized
+          priority
+          className="object-cover object-bottom opacity-85"
+        />
+
+        {/* Soft overall parchment overlay to ensure high contrast */}
+        <div className="absolute inset-0 bg-[#faf6ee]/65 pointer-events-none" />
+
+        {/* Dedicated radial scrim behind header text */}
+        <div className="absolute inset-x-0 top-0 h-72 sm:h-80 bg-[radial-gradient(ellipse_at_top,rgba(250,246,238,0.95)_0%,rgba(250,246,238,0.75)_55%,transparent_100%)] pointer-events-none" />
+
+        {/* Ambient warm glow in center */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#d4af37]/10 blur-[100px] rounded-full" />
+      </div>
+
+      {/* ─────────────────────────────────────────────────────────────
+          2. SECTION CONTENT CONTAINER
+      ───────────────────────────────────────────────────────────── */}
+      <div className="site-container relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto space-y-3 header-gap">
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#38070e] tracking-tight">
-            Our Global Sanctuaries
+        <div className="text-center max-w-2xl mx-auto space-y-3 header-gap relative">
+          {/* Main Title: "Our Locations" with enhanced contrast */}
+          <h2 className="font-serif text-5xl sm:text-6xl lg:text-[64px] font-extrabold tracking-tight text-[#2d070d] leading-none drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)]">
+            Our <span className="text-[#a06f15] font-serif font-extrabold">Locations</span>
           </h2>
-          <div className="flex items-center justify-center gap-1 text-[#c59b27]">
-            <span className="text-xs">▲</span>
-          </div>
-          <p className="text-xs sm:text-sm text-[#665154] tracking-wide uppercase">
-            Communities around our Frisco studio in North Texas
+
+          {/* Subtitle */}
+          <p className="text-sm sm:text-base text-[#473034] font-medium tracking-wide drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]">
+            Astrology guidance, wherever you are
           </p>
+
+          {/* Golden Star Divider below Subtitle */}
+          <div className="flex items-center justify-center gap-2 pt-1">
+            <span className="w-14 sm:w-24 h-px bg-gradient-to-r from-transparent via-[#c59b27]/70 to-[#c59b27]" />
+            <span className="text-[#b3821a] text-xs sm:text-sm">✦</span>
+            <span className="w-14 sm:w-24 h-px bg-gradient-to-l from-transparent via-[#c59b27]/70 to-[#c59b27]" />
+          </div>
         </div>
 
-        {/* 8 City Cards Grid (2 rows of 4 columns) strictly matching screenshot */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 grid-rows-gap sm:gap-x-5">
+        {/* ─────────────────────────────────────────────────────────────
+            3. 8 LOCATION PILLS IN RESPONSIVE GRID (2 cols on mobile, 4 cols on tablet & desktop)
+        ───────────────────────────────────────────────────────────── */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-3.5 lg:gap-5">
           {sanctuariesData.map((city) => (
-            <SanctuaryCard key={city.id} city={city} />
+            <Link
+              key={city.id}
+              href={`/contact?location=${encodeURIComponent(city.name)}`}
+              className="group relative flex items-center justify-between px-2.5 py-1.5 sm:px-3 sm:py-2 lg:px-3.5 lg:py-2.5 rounded-full bg-gradient-to-b from-[#fefbf6] via-[#faf5eb] to-[#f6f0df] border border-[#ebdcc2] hover:border-[#c59b27] shadow-[0_2px_10px_rgba(197,155,39,0.1)] hover:shadow-[0_8px_24px_rgba(197,155,39,0.24)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300"
+            >
+              {/* Circular City Thumbnail with Golden Ring */}
+              <div className="relative w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full overflow-hidden shrink-0 border-[1.5px] sm:border-2 border-[#c59b27] shadow-sm">
+                <Image
+                  src={city.imageUrl}
+                  alt={`${city.name} Vedic Astrology Guidance`}
+                  fill
+                  sizes="(max-width: 640px) 36px, 48px"
+                  unoptimized
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+
+              {/* Center: Golden MapPin + City Title */}
+              <div className="flex items-center gap-1 sm:gap-1.5 min-w-0 flex-1 ml-2 sm:ml-2.5 mr-1">
+                <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#c59b27] fill-[#c59b27]/25 shrink-0 hidden xs:inline-block" />
+                <span className="font-serif text-[13px] sm:text-base lg:text-lg font-bold text-[#2d070d] group-hover:text-[#8b1827] transition-colors truncate">
+                  {city.name}
+                </span>
+              </div>
+
+              {/* Right: Golden Chevron Arrow */}
+              <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#c59b27] shrink-0 transition-transform duration-300 group-hover:translate-x-0.5" />
+            </Link>
           ))}
+        </div>
+
+        {/* ─────────────────────────────────────────────────────────────
+            4. BOTTOM ORNAMENTAL STAR DIVIDER
+        ───────────────────────────────────────────────────────────── */}
+        <div className="flex items-center justify-center gap-2 pt-8 sm:pt-10">
+          <span className="w-14 sm:w-24 h-px bg-gradient-to-r from-transparent via-[#c59b27]/60 to-[#c59b27]/90" />
+          <span className="text-[#c59b27] text-xs sm:text-sm">✦</span>
+          <span className="w-14 sm:w-24 h-px bg-gradient-to-l from-transparent via-[#c59b27]/60 to-[#c59b27]/90" />
         </div>
       </div>
     </section>

@@ -55,7 +55,7 @@ export default function ContactPage() {
       <section className="site-container page-top header-gap">
         <div className="text-center max-w-4xl mx-auto space-y-3">
           <h1 className="font-serif text-3xl sm:text-5xl lg:text-[50px] font-bold text-[#420813] tracking-tight">
-            Connect With TalkAstrologer.com
+            Connect With TalkAstrologer
           </h1>
 
           {/* Small Golden Ornament Line matching screenshot */}
@@ -76,11 +76,11 @@ export default function ContactPage() {
           {/* Start With a Conversation Section */}
           <div className="pt-2 max-w-2xl mx-auto">
             <div className="p-4 sm:p-5 rounded-2xl bg-[#faf2e4] border border-[#ebd6b0] text-center space-y-2 shadow-xs">
-              <h2 className="font-serif text-base sm:text-lg font-bold text-[#420813]">
+              <h2 className="font-serif text-lg sm:text-xl font-bold text-[#420813]">
                 Start With a Conversation
               </h2>
               <p className="text-xs sm:text-[13px] text-[#5c4549] leading-relaxed">
-                If something in your life has been weighing on your mind, you are welcome to reach out to TalkAstrologer.com. Share what you are seeking guidance about, and the team can help you choose an appropriate consultation.
+                If something in your life has been weighing on your mind, you are welcome to reach out to TalkAstrologer. Share what you are seeking guidance about, and the team can help you choose an appropriate consultation.
               </p>
             </div>
           </div>
@@ -182,7 +182,7 @@ export default function ContactPage() {
 
             {/* "Ready to find clarity?" Card */}
             <div className="bg-white rounded-2xl border border-[#ebdcc2] p-6 sm:p-8 text-center space-y-3.5 shadow-sm flex flex-col items-center justify-center">
-              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#420813]">
+              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#420813]">
                 Ready to find clarity?
               </h2>
               <p className="text-xs sm:text-sm text-[#614b4f] max-w-md mx-auto">
@@ -204,7 +204,7 @@ export default function ContactPage() {
           <div className="flex flex-col gap-6">
             {/* Contact Information Card (Golden Parchment style) */}
             <div className="flex flex-1 flex-col gap-5 bg-[#fbf4e4] rounded-2xl border border-[#ebd6b0] p-6 sm:p-7 shadow-sm">
-              <h2 className="font-serif text-2xl font-bold text-[#420813]">
+              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#420813]">
                 Contact Information
               </h2>
 
@@ -243,10 +243,10 @@ export default function ContactPage() {
                         Support Email
                       </div>
                       <a
-                        href="mailto:support@talkastrologer.com"
+                        href="mailto:support@TalkAstrologer"
                         className="text-xs sm:text-sm font-semibold text-[#420813] hover:text-[#8b1827] transition-colors break-all"
                       >
-                        support@talkastrologer.com
+                        support@TalkAstrologer
                       </a>
                       <p className="text-[11px] text-[#735d61] leading-relaxed pt-0.5">
                         Used for technical and non-technical discussions, including initiating, coordinating and resolving service-related queries.
@@ -257,10 +257,10 @@ export default function ContactPage() {
                         Appointment Email
                       </div>
                       <a
-                        href="mailto:myappointment@talkastrologer.com"
+                        href="mailto:myappointment@TalkAstrologer"
                         className="text-xs sm:text-sm font-semibold text-[#8b1827] hover:underline transition-colors break-all"
                       >
-                        myappointment@talkastrologer.com
+                        myappointment@TalkAstrologer
                       </a>
                       <p className="text-[11px] text-[#735d61] leading-relaxed pt-0.5">
                         Dedicated exclusively to clients who want to book an appointment for consulting Guruji.
@@ -311,7 +311,7 @@ export default function ContactPage() {
 
             {/* Quick Actions Card */}
             <div className="bg-white rounded-2xl border border-[#ebdcc2] p-5 sm:p-6 shadow-sm space-y-4">
-              <h2 className="font-serif text-xl font-bold text-[#420813] text-center">
+              <h2 className="font-serif text-2xl font-bold text-[#420813] text-center">
                 Quick Actions
               </h2>
 
@@ -342,7 +342,7 @@ export default function ContactPage() {
 
                 {/* 3. Email Us */}
                 <a
-                  href="mailto:myappointment@talkastrologer.com"
+                  href="mailto:myappointment@TalkAstrologer"
                   className="flex flex-col items-center justify-center py-3.5 px-3 rounded-xl border border-[#ebdcc2] hover:border-[#b88e39] hover:bg-[#faf6ee] transition-all group cursor-pointer text-center"
                 >
                   <Mail className="w-4 h-4 text-[#8b1827] group-hover:scale-110 transition-transform mb-1.5" />
@@ -375,7 +375,7 @@ export default function ContactPage() {
           <div className="rounded-2xl border border-[#ebdcc2] bg-white p-5 shadow-sm sm:p-8 lg:p-10">
             <div className="mb-6 space-y-1.5 text-center sm:text-left">
               <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#8b1827]">Write to us</p>
-              <h2 className="font-serif text-2xl font-bold text-[#420813] sm:text-3xl">Send a Message</h2>
+              <h2 className="font-serif text-3xl font-bold text-[#420813] sm:text-4xl">Send a Message</h2>
               <p className="text-xs text-[#614b4f] sm:text-sm">
                 For questions about services or support. To book a consultation, use the Book Appointment page.
               </p>
@@ -397,7 +397,7 @@ export default function ContactPage() {
                 Clear Answers for Seekers
                 <Sparkles className="w-3.5 h-3.5 text-[#b88e39]" />
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-[#3a0812] tracking-tight">
+              <h2 className="font-serif text-4xl sm:text-5xl font-extrabold text-[#3a0812] tracking-tight">
                 Frequently Asked Questions
               </h2>
               <p className="text-xs sm:text-sm text-[#5d474b] max-w-xl mx-auto">

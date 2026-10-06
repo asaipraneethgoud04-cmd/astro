@@ -7,12 +7,9 @@ import type { PinnedReview } from "@/lib/reviews";
 const SLIDE_MS = 5000;
 
 function usePinnedSlide(count: number) {
-  const [index, setIndex] = useState(0);
+  const [rawIndex, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
-
-  useEffect(() => {
-    setIndex((current) => (count === 0 ? 0 : current % count));
-  }, [count]);
+  const index = count === 0 ? 0 : rawIndex % count;
 
   useEffect(() => {
     if (count < 2 || paused) return;

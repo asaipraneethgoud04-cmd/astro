@@ -3,9 +3,9 @@ import Image from "next/image";
 
 export default function WelcomeSection() {
   return (
-    <section className="relative section-t bg-[#fdfbf7] overflow-hidden">
-      {/* Background Zodiac Wheel using user asset */}
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] lg:w-[750px] aspect-square pointer-events-none opacity-20">
+    <section className="relative section-y bg-[#fdfbf7] overflow-hidden">
+      {/* Background Zodiac Wheel using user asset - comfortably sized within section */}
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] sm:w-[480px] lg:w-[540px] max-h-[92%] aspect-square pointer-events-none opacity-15">
         <Image
           src="/images/home page about section bg.png"
           alt="Sacred Sun Zodiac Wheel"
@@ -54,11 +54,11 @@ export default function WelcomeSection() {
           {/* Right Column: Welcome Description & Lineage Philosophy */}
           <div className="lg:col-span-7 space-y-6">
             <div className="@container space-y-2">
-              <span className="font-serif text-2xl sm:text-3xl text-[#5a111c] block font-light">
+              <span className="font-serif text-3xl sm:text-4xl text-[#5a111c] block font-light">
                 Welcome to
               </span>
-              <h2 className="font-serif text-[min(2.25rem,8.6cqw)] sm:text-[min(3rem,8.6cqw)] lg:text-[min(3.75rem,8.6cqw)] font-extrabold text-[#38070e] leading-tight tracking-tight">
-                TalkAstrologer.com
+              <h2 className="font-serif text-[min(2.75rem,9.5cqw)] sm:text-[min(3.75rem,9.5cqw)] lg:text-[min(4.5rem,9.5cqw)] font-extrabold text-[#38070e] leading-tight tracking-tight">
+                TalkAstrologer
               </h2>
             </div>
 
@@ -66,7 +66,7 @@ export default function WelcomeSection() {
 
             <div className="space-y-4 text-base sm:text-lg text-[#4a3437] leading-relaxed">
               <p>
-                Bringing more than <strong>22+ years of dedicated consultation experience</strong> alongside an unbroken <strong>six-generation ancestral Jyotish lineage originating in Bangalore, India</strong>, TalkAstrologer.com is your trusted destination for supportive astrology guidance and positive life insight in Texas and throughout the USA.
+                Bringing more than <strong>30+ years of dedicated consultation experience</strong> alongside an unbroken <strong>six-generation ancestral Jyotish lineage originating in Bangalore, India</strong>, TalkAstrologer is your trusted destination for supportive astrology guidance and positive life insight in Texas and throughout the USA.
               </p>
               <p>
                 Our approach begins with <em>listening carefully to your specific circumstances</em> rather than offering one-size-fits-all answers. By uniting traditional Parashara principles with practical, compassionate clarity, we help individuals, couples, and professionals gain emotional wellness, relationship harmony, career direction, and confidence.
@@ -78,12 +78,10 @@ export default function WelcomeSection() {
               <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#f6eee0] border border-[#d4af37]/60 shadow-xs">
                 <span className="text-[#c59b27] font-bold text-sm">✦</span>
                 <span className="font-serif font-bold text-[#38070e] text-xs sm:text-sm tracking-wide">
-                  22+ Years of Practice • 6 Generations Ancestral Heritage
+                  30+ Years of Practice • 6 Generations Ancestral Heritage
                 </span>
               </div>
               <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-white border border-[#ebdcc2] shadow-xs text-xs text-[#523d41]">
-                <span>Bangalore, India Lineage</span>
-                <span>•</span>
                 <span>Serving All 50 US States</span>
               </div>
             </div>

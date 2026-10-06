@@ -1,4 +1,4 @@
--- Run this once in the Supabase SQL editor for project drzkaogmktbrgoojnguw.
+-- Run this once in the Supabase SQL editor for your project.
 -- Then create one admin user in Authentication → Users (email + password).
 -- Turn off public sign-ups in Authentication → Providers so only that user can moderate reviews.
 

@@ -18,8 +18,8 @@ function ServiceCardItem({ service }: { service: ServiceItem }) {
       imageAlt={service.title}
       title={service.title}
       description={service.description}
-      href={`/book-appointment?service=${service.id}`}
-      ctaLabel="Book Appointment"
+      href={`/services/${service.id}`}
+      ctaLabel="Explore Details"
       iconName={service.iconName}
     />
   );
@@ -243,7 +243,7 @@ export default function ServicesPage() {
       <section className="page-bottom bg-[#fdfaf4]">
         <div className="site-container">
           <div className="rounded-2xl bg-[#2d1814] py-12 px-6 sm:px-12 text-center text-white shadow-xl space-y-6">
-            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#fdfaf4]">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#fdfaf4]">
               Begin Your Journey to Clarity
             </h2>
 
