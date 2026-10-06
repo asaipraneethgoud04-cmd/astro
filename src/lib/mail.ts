@@ -170,29 +170,50 @@ function escapeHtml(str: string): string {
 }
 
 /**
+ * Normalizes email address and fixes missing domain extensions
+ */
+function normalizeEmail(email: string | undefined, defaultEmail: string): string {
+  if (!email || !email.trim()) return defaultEmail;
+  let trimmed = email.trim().replace(/^["']|["']$/g, "");
+  if (trimmed.toLowerCase().endsWith("@talkastrologer")) {
+    trimmed = `${trimmed}.com`;
+  }
+  return isValidEmail(trimmed) ? trimmed.toLowerCase() : defaultEmail;
+}
+
+/**
+ * Cleans passwords and strips accidental wrapping quotes
+ */
+function cleanPassword(pass: string | undefined, fallback: string): string {
+  if (!pass) return fallback;
+  const cleaned = pass.trim().replace(/^["']|["']$/g, "");
+  return cleaned || fallback;
+}
+
+/**
  * Resolves Hostinger SMTP configuration for appointment or support channels.
  */
 function getSmtpConfig(channel: MailChannel = "appointment") {
   loadEnvFallback();
 
-  const host = process.env.SMTP_HOST || "smtp.hostinger.com";
+  const host = (process.env.SMTP_HOST || "smtp.hostinger.com").trim();
   const port = parseInt(process.env.SMTP_PORT || "465", 10);
   const secure = process.env.SMTP_SECURE !== "false";
-  const adminAlertEmail = process.env.ADMIN_ALERT_EMAIL || "myappointment@talkastrologer.com";
-  const supportEmail = process.env.SUPPORT_EMAIL || "support@talkastrologer.com";
+  const adminAlertEmail = normalizeEmail(process.env.ADMIN_ALERT_EMAIL, "myappointment@talkastrologer.com");
+  const supportEmail = normalizeEmail(process.env.SUPPORT_EMAIL, "support@talkastrologer.com");
 
   if (channel === "support") {
-    const user = process.env.SUPPORT_SMTP_USER || "support@talkastrologer.com";
-    const pass = process.env.SUPPORT_SMTP_PASSWORD || "";
-    const fromEmail = process.env.SUPPORT_MAIL_FROM || user;
-    const fromName = process.env.SUPPORT_MAIL_FROM_NAME || "TalkAstrologer Support";
+    const user = normalizeEmail(process.env.SUPPORT_SMTP_USER, "support@talkastrologer.com");
+    const pass = cleanPassword(process.env.SUPPORT_SMTP_PASSWORD, "SupportTalk@1153#$");
+    const fromEmail = normalizeEmail(process.env.SUPPORT_MAIL_FROM, user);
+    const fromName = (process.env.SUPPORT_MAIL_FROM_NAME || "TalkAstrologer Support").trim();
     return { host, port, secure, user, pass, fromEmail, fromName, adminAlertEmail, supportEmail };
   }
 
-  const user = process.env.SMTP_USER || "myappointment@talkastrologer.com";
-  const pass = process.env.SMTP_PASSWORD || "";
-  const fromEmail = process.env.MAIL_FROM || user;
-  const fromName = process.env.MAIL_FROM_NAME || "TalkAstrologer";
+  const user = normalizeEmail(process.env.SMTP_USER, "myappointment@talkastrologer.com");
+  const pass = cleanPassword(process.env.SMTP_PASSWORD, "TalkAstrologer@1153#$");
+  const fromEmail = normalizeEmail(process.env.MAIL_FROM, user);
+  const fromName = (process.env.MAIL_FROM_NAME || "TalkAstrologer").trim();
   return { host, port, secure, user, pass, fromEmail, fromName, adminAlertEmail, supportEmail };
 }
 
@@ -218,6 +239,9 @@ function getTransporter(channel: MailChannel = "appointment"): { transporter: Tr
       host: config.host,
       port: config.port,
       secure: config.secure,
+      connectionTimeout: 15000,
+      greetingTimeout: 10000,
+      socketTimeout: 20000,
       auth: {
         user: config.user,
         pass: config.pass,

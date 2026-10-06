@@ -104,7 +104,9 @@ export async function submitAppointment(formData: FormData): Promise<Result> {
   });
 
   if (!emailResult.ok) {
-    console.warn("[Appointments] Email notification dispatch warning:", emailResult.error);
+    console.error("[Appointments] Email notification dispatch FAILED:", emailResult.error);
+  } else {
+    console.log("[Appointments] Email notification dispatch SUCCESS! MessageId:", emailResult.messageId);
   }
 
   revalidatePath("/admin", "layout");
