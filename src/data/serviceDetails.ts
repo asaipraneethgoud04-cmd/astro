@@ -5825,7 +5825,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Love Marriage Specialist",
     "shortDescription": "Guidance for people navigating love marriage decisions, family expectations and relationship concerns.",
     "category": "Love & Marriage",
-    "imageUrl": "/images/services/love-marriage.png",
+    "imageUrl": "/images/services/love marriage specialist.png",
     "iconName": "couple",
     "heroTagline": "Bridge Hearts and Lineages: Sacred Guidance for Love Marriages & Parental Approval",
     "overview": [
