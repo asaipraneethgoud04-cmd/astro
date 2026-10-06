@@ -32,6 +32,8 @@ yarn-error.log*
 mail-debug.log*
 *.log
 security-reports/
+send-sai-alert.js
+scratch_*.js
 
 # Environment variables and secrets
 .env
