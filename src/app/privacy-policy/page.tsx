@@ -67,10 +67,10 @@ export default function PrivacyPolicyPage() {
                 If you have any questions or wish to delete your birth chart records
                 following your consultation, please write to{" "}
                 <a
-                  href="mailto:consult@TalkAstrologer"
+                  href="mailto:support@talkastrologer.com"
                   className="text-[#8b1827] font-semibold underline"
                 >
-                  consult@TalkAstrologer
+                  support@talkastrologer.com
                 </a>
                 .
               </p>

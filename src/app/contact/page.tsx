@@ -243,10 +243,10 @@ export default function ContactPage() {
                         Support Email
                       </div>
                       <a
-                        href="mailto:support@TalkAstrologer"
+                        href="mailto:support@talkastrologer.com"
                         className="text-xs sm:text-sm font-semibold text-[#420813] hover:text-[#8b1827] transition-colors break-all"
                       >
-                        support@TalkAstrologer
+                        support@talkastrologer.com
                       </a>
                       <p className="text-[11px] text-[#735d61] leading-relaxed pt-0.5">
                         Used for technical and non-technical discussions, including initiating, coordinating and resolving service-related queries.
@@ -257,10 +257,10 @@ export default function ContactPage() {
                         Appointment Email
                       </div>
                       <a
-                        href="mailto:myappointment@TalkAstrologer"
+                        href="mailto:myappointment@talkastrologer.com"
                         className="text-xs sm:text-sm font-semibold text-[#8b1827] hover:underline transition-colors break-all"
                       >
-                        myappointment@TalkAstrologer
+                        myappointment@talkastrologer.com
                       </a>
                       <p className="text-[11px] text-[#735d61] leading-relaxed pt-0.5">
                         Dedicated exclusively to clients who want to book an appointment for consulting Guruji.
@@ -342,7 +342,7 @@ export default function ContactPage() {
 
                 {/* 3. Email Us */}
                 <a
-                  href="mailto:myappointment@TalkAstrologer"
+                  href="mailto:myappointment@talkastrologer.com"
                   className="flex flex-col items-center justify-center py-3.5 px-3 rounded-xl border border-[#ebdcc2] hover:border-[#b88e39] hover:bg-[#faf6ee] transition-all group cursor-pointer text-center"
                 >
                   <Mail className="w-4 h-4 text-[#8b1827] group-hover:scale-110 transition-transform mb-1.5" />

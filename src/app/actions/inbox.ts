@@ -177,7 +177,7 @@ export async function submitContactMessage(formData: FormData): Promise<Result> 
 
   if (dbError) {
     console.error("[Contact] Database insert error:", dbError.message);
-    return { ok: false, error: "We could not send your message yet. Please try again or email support@TalkAstrologer." };
+    return { ok: false, error: "We could not send your message yet. Please try again or email support@talkastrologer.com." };
   }
 
   // Trigger centralized Nodemailer email notification

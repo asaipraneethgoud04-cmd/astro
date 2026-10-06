@@ -141,10 +141,10 @@ function BookAppointmentForm() {
                   Appointment Email
                 </p>
                 <a
-                  href="mailto:myappointment@TalkAstrologer"
+                  href="mailto:myappointment@talkastrologer.com"
                   className="mt-1 block text-sm font-semibold text-[#38070e] hover:text-[#8b1827] break-all"
                 >
-                  myappointment@TalkAstrologer
+                  myappointment@talkastrologer.com
                 </a>
                 <p className="mt-1 text-xs text-[#6a5558] leading-relaxed">
                   Dedicated exclusively to clients who want to book an appointment for consulting Guruji.

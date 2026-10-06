@@ -10,10 +10,10 @@ export default async function AdminMessagesPage() {
   return (
     <div className="mx-auto max-w-6xl">
       <header>
-        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#aa8016]">support@TalkAstrologer</p>
+        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#aa8016]">support@talkastrologer.com</p>
         <h1 className="mt-2 font-serif text-3xl font-bold text-[#38070e] sm:text-4xl">Support & Contact Enquiries</h1>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#614b4f]">
-          Direct enquiries submitted from the Contact Us page and support desk. Notifications are routed to support@TalkAstrologer and admin mail. Reply directly by email or update enquiry status.
+          Direct enquiries submitted from the Contact Us page and support desk. Notifications are routed to support@talkastrologer.com and admin mail. Reply directly by email or update enquiry status.
         </p>
       </header>
 

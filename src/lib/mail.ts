@@ -178,18 +178,18 @@ function getSmtpConfig(channel: MailChannel = "appointment") {
   const host = process.env.SMTP_HOST || "smtp.hostinger.com";
   const port = parseInt(process.env.SMTP_PORT || "465", 10);
   const secure = process.env.SMTP_SECURE !== "false";
-  const adminAlertEmail = process.env.ADMIN_ALERT_EMAIL || "myappointment@TalkAstrologer";
-  const supportEmail = process.env.SUPPORT_EMAIL || "support@TalkAstrologer";
+  const adminAlertEmail = process.env.ADMIN_ALERT_EMAIL || "myappointment@talkastrologer.com";
+  const supportEmail = process.env.SUPPORT_EMAIL || "support@talkastrologer.com";
 
   if (channel === "support") {
-    const user = process.env.SUPPORT_SMTP_USER || "support@TalkAstrologer";
+    const user = process.env.SUPPORT_SMTP_USER || "support@talkastrologer.com";
     const pass = process.env.SUPPORT_SMTP_PASSWORD || "";
     const fromEmail = process.env.SUPPORT_MAIL_FROM || user;
     const fromName = process.env.SUPPORT_MAIL_FROM_NAME || "TalkAstrologer Support";
     return { host, port, secure, user, pass, fromEmail, fromName, adminAlertEmail, supportEmail };
   }
 
-  const user = process.env.SMTP_USER || "myappointment@TalkAstrologer";
+  const user = process.env.SMTP_USER || "myappointment@talkastrologer.com";
   const pass = process.env.SMTP_PASSWORD || "";
   const fromEmail = process.env.MAIL_FROM || user;
   const fromName = process.env.MAIL_FROM_NAME || "TalkAstrologer";
@@ -307,7 +307,7 @@ export async function sendAppointmentNotificationEmail(
   payload: AppointmentEmailPayload
 ): Promise<SendMailResult> {
   const config = getSmtpConfig();
-  const adminEmail = config.adminAlertEmail || config.fromEmail || "myappointment@TalkAstrologer";
+  const adminEmail = config.adminAlertEmail || config.fromEmail || "myappointment@talkastrologer.com";
 
   const safeFullName = escapeHtml(payload.fullName);
   const safeSecondName = payload.secondName ? escapeHtml(payload.secondName) : "Not provided";
@@ -480,10 +480,10 @@ export async function sendContactNotificationEmail(
   payload: ContactEmailPayload
 ): Promise<SendMailResult> {
   const config = getSmtpConfig();
-  const supportEmail = config.supportEmail || "support@TalkAstrologer";
-  const adminEmail = config.adminAlertEmail || config.fromEmail || "myappointment@TalkAstrologer";
+  const supportEmail = config.supportEmail || "support@talkastrologer.com";
+  const adminEmail = config.adminAlertEmail || config.fromEmail || "myappointment@talkastrologer.com";
 
-  // Build target recipients: both support@TalkAstrologer and admin mailbox (deduplicated)
+  // Build target recipients: both support@talkastrologer.com and admin mailbox (deduplicated)
   const alertRecipients = Array.from(new Set([supportEmail, adminEmail].filter(isValidEmail)));
 
   const safeName = escapeHtml(payload.name);
@@ -827,7 +827,7 @@ export async function sendAppointmentConfirmedEmail(
           <tr>
             <td style="background-color: #38070e; padding: 20px 24px; text-align: center; border-top: 1px solid #5a141f; color: #e5d0ad; font-size: 11.5px; line-height: 1.6;">
               <strong>TalkAstrologer</strong> • Frisco, TX &amp; Serving Clients Nationwide Across the USA<br>
-              Direct Phone: +1 214 669 9699 • Email: myappointment@TalkAstrologer<br>
+              Direct Phone: +1 214 669 9699 • Email: myappointment@talkastrologer.com<br>
               <span style="color: #c9b189; font-size: 10.5px;">All consultations are strictly private, personal, and 100% confidential.</span>
             </td>
           </tr>

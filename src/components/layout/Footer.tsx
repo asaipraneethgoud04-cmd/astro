@@ -230,16 +230,16 @@ export default function Footer() {
                 <Mail className="w-4 h-4 text-[#f6e27a] mt-0.5 shrink-0" />
                 <div className="flex flex-col gap-1">
                   <a
-                    href="mailto:myappointment@TalkAstrologer"
+                    href="mailto:myappointment@talkastrologer.com"
                     className="text-[#ffffff] hover:text-[#f6e27a] text-sm font-semibold transition-colors break-all"
                   >
-                    myappointment@TalkAstrologer
+                    myappointment@talkastrologer.com
                   </a>
                   <a
-                    href="mailto:support@TalkAstrologer"
+                    href="mailto:support@talkastrologer.com"
                     className="text-[#f0e2d3] hover:text-[#f6e27a] text-sm font-medium transition-colors break-all"
                   >
-                    support@TalkAstrologer
+                    support@talkastrologer.com
                   </a>
                 </div>
               </div>
