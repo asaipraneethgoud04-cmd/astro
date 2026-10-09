@@ -32,7 +32,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
                 src="/images/logo.png"
                 alt="Talk Astrologer Logo"
                 fill
-                unoptimized
+                sizes="44px"
                 className="object-cover object-center"
               />
             </div>

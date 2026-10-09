@@ -10,6 +10,9 @@ export default function WelcomeSection() {
           src="/images/home page about section bg.png"
           alt="Sacred Sun Zodiac Wheel"
           fill
+          loading="lazy"
+          decoding="async"
+          sizes="(max-width: 640px) 420px, (max-width: 1024px) 480px, 540px"
           className="object-contain animate-spin-slow"
         />
       </div>
@@ -33,8 +36,9 @@ export default function WelcomeSection() {
                     src="/images/home page about section.png"
                     alt="Vedic Astrology Sacred Heritage"
                     fill
-                    priority
-                    unoptimized
+                    loading="lazy"
+                    decoding="async"
+                    sizes="(max-width: 640px) 340px, 380px"
                     className="object-cover object-center"
                   />
                   {/* Subtle dark gradient overlay at bottom for badge legibility */}

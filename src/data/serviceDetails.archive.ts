@@ -1024,7 +1024,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     heroTagline: "Discover Your True Professional Calling & Unlock Auspicious Timing for Career Breakthroughs",
     overview: [
       "In the Vedic philosophy, career is not merely a means of earning a paycheck—it is your Karma Kshetra (field of purposeful action) and Swadharma (innate spiritual duty). When career choices misalign with your planetary blueprint, fatigue, stagnation, and frustration inevitably follow.",
-      "With 22+ years of professional experience and a six-generation ancestral lineage, Guruji decodes the 10th House (Karma Bhava), the Dashamsha (D10 divisional chart), and your Amatyakaraka to reveal the industries, roles, and environments where you are destined to excel.",
+      "With 30+ years of professional experience and a six-generation ancestral lineage, Guruji decodes the 10th House (Karma Bhava), the Dashamsha (D10 divisional chart), and your Amatyakaraka to reveal the industries, roles, and environments where you are destined to excel.",
       "Whether you are choosing a college major, preparing for competitive exams, navigating corporate politics, facing unexpected layoffs, or seeking promotions, this guidance illuminates your most rewarding professional path."
     ],
     specialistArticle: {
@@ -2069,7 +2069,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     overview: [
       "Everything in the manifest universe vibrates at a specific mathematical frequency. In the Vedic and Chaldean traditions, numbers are living energetic forces governed by specific celestial deities and planets. When your personal or business name numbers harmonize with your birth numbers, life unfolds with natural grace and flow.",
       "Conversely, when your name vibrates to a conflicting number (such as an aggressive Mars vibration against a gentle Moon birth number), you may experience persistent hurdles, misunderstandings, and missed opportunities despite great effort.",
-      "Combining 22+ years of practice with ancestral insight, Guruji provides precise Chaldean and Vedic numerological analysis for individuals, newborns, businesses, and digital brands—ensuring your name becomes an engine of luck and magnetism."
+      "Combining 30+ years of practice with ancestral insight, Guruji provides precise Chaldean and Vedic numerological analysis for individuals, newborns, businesses, and digital brands—ensuring your name becomes an engine of luck and magnetism."
     ],
     astrologicalSignificance: {
       title: "The Triad of Numbers: Mulank, Bhagyank & Namaank",
@@ -3022,7 +3022,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     overview: [
       "Leaving one's motherland to build a new life in a foreign country is one of the most transformative decisions a human being can make. For immigrants, expatriates, and international professionals across the United States, life abroad brings immense opportunities alongside legal delays, cultural shifts, and longing for roots.",
       "In classical Vedic astrology, foreign travel and permanent settlement are governed by specific combinations known as Videsha Gamana Yogas. Whether a seeker flourishes abroad or faces persistent obstacles is written clearly in the 9th and 12th houses.",
-      "With over 22 years of experience guiding thousands of individuals and families across the US, UK, Canada, and Australia, Guruji provides precise astrological forecasts for visa approvals (H-1B, Green Card, PR), foreign job transitions, and international investments."
+      "With 30+ years of experience guiding thousands of individuals and families across the US, UK, Canada, and Australia, Guruji provides precise astrological forecasts for visa approvals (H-1B, Green Card, PR), foreign job transitions, and international investments."
     ],
     specialistArticle: {
       title: "Overseas & Abroad-Related Concerns",

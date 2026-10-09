@@ -110,7 +110,7 @@ function BookAppointmentForm() {
                   alt="Astrology consultation emblem"
                   fill
                   priority
-                  unoptimized
+                  sizes="(max-width: 768px) 144px, 176px"
                   className="object-contain md:[transform:scaleX(-1)] lg:[transform:none]"
                 />
               </div>

@@ -9,18 +9,21 @@ const cormorant = Cormorant_Garamond({
   variable: "--font-serif",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
 
 const cinzel = Cinzel({
   variable: "--font-cinzel",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800", "900"],
+  display: "swap",
 });
 
 const outfit = Outfit({
   variable: "--font-outfit",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
 });
 
 const shivaraja = localFont({

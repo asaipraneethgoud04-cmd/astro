@@ -3352,7 +3352,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "overview": [
       "Leaving one's motherland to build a new life in a foreign country is one of the most transformative decisions a human being can make. For immigrants, expatriates, and international professionals across the United States, life abroad brings immense opportunities alongside legal delays, cultural shifts, and longing for roots.",
       "In classical Vedic astrology, foreign travel and permanent settlement are governed by specific combinations known as Videsha Gamana Yogas. Whether a seeker flourishes abroad or faces persistent obstacles is written clearly in the 9th and 12th houses.",
-      "With over 22 years of experience guiding thousands of individuals and families across the US, UK, Canada, and Australia, Guruji provides precise astrological forecasts for visa approvals (H-1B, Green Card, PR), foreign job transitions, and international investments."
+      "With 30+ years of experience guiding thousands of individuals and families across the US, UK, Canada, and Australia, Guruji provides precise astrological forecasts for visa approvals (H-1B, Green Card, PR), foreign job transitions, and international investments."
     ],
     "specialistArticle": {
       "title": "Overseas & Abroad-Related Concerns",

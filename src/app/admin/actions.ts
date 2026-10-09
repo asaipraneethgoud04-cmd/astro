@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { createClient as createSupabaseClient } from "@supabase/supabase-js";
 import { createClient } from "@/lib/supabase/server";
 import type { ReviewStatus } from "@/lib/reviews";
 import {
@@ -191,6 +192,41 @@ export async function setReviewPinned(id: string, pinned: boolean) {
   revalidatePath("/", "layout");
   revalidatePath("/admin");
   return { error: null };
+}
+
+export async function deleteReview(id: string) {
+  if (!id) return { error: "Review ID is required." };
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    redirect("/admin/login");
+  }
+
+  let error;
+  if (process.env.SUPABASE_SERVICE_ROLE_KEY) {
+    const adminClient = createSupabaseClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY,
+      { auth: { persistSession: false } }
+    );
+    const res = await adminClient.from("reviews").delete().eq("id", id);
+    error = res.error;
+  } else {
+    const res = await supabase.from("reviews").delete().eq("id", id);
+    error = res.error;
+  }
+
+  if (error) {
+    console.error("[deleteReview error]", error);
+    return { error: error.message || "This review could not be deleted." };
+  }
+
+  revalidatePath("/", "layout");
+  revalidatePath("/admin");
+  return { error: null, success: true };
 }
 
 export async function signOutAdmin() {

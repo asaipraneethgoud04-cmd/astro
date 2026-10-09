@@ -127,7 +127,7 @@ export default function Navbar({ offsetTop = false }: { offsetTop?: boolean }) {
                 alt="Talk Astrologer Sacred Zodiac Logo"
                 fill
                 priority
-                unoptimized
+                sizes="(max-width: 768px) 48px, 56px"
                 className="object-cover object-center"
               />
             </div>
@@ -293,7 +293,8 @@ export default function Navbar({ offsetTop = false }: { offsetTop?: boolean }) {
                                   src="/images/moon phases.png"
                                   alt="Sacred Moon Phases"
                                   fill
-                                  unoptimized
+                                  loading="lazy"
+                                  decoding="async"
                                   className="object-contain object-center"
                                 />
                               </div>
@@ -501,7 +502,8 @@ export default function Navbar({ offsetTop = false }: { offsetTop?: boolean }) {
                             src="/images/moon phases.png"
                             alt="Sacred Moon Phases"
                             fill
-                            unoptimized
+                            loading="lazy"
+                            decoding="async"
                             className="object-contain object-center"
                           />
                         </div>

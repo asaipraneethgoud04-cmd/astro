@@ -11,7 +11,7 @@ export default function HeroSection() {
         loop
         muted
         playsInline
-        preload="auto"
+        preload="metadata"
         className="absolute inset-0 h-full w-full object-cover object-center pointer-events-none"
       >
         <source src="/images/hero%20section%20video.mp4" type="video/mp4" />
@@ -22,7 +22,8 @@ export default function HeroSection() {
           src="/images/hero-constellation-tr.png"
           alt=""
           fill
-          unoptimized
+          priority
+          sizes="(max-width: 768px) 72vw, 520px"
           className="object-contain object-right-top"
         />
       </div>

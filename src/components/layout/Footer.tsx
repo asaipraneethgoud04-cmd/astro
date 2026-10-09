@@ -34,7 +34,8 @@ export default function Footer() {
           src="/images/footer layer.png"
           alt="Cosmic Planetary Alignments"
           fill
-          unoptimized
+          loading="lazy"
+          decoding="async"
           className="object-contain object-center"
         />
       </div>
@@ -45,7 +46,8 @@ export default function Footer() {
           src="/images/footer-corners-left.png"
           alt=""
           fill
-          unoptimized
+          loading="lazy"
+          decoding="async"
           className="object-fill object-left-bottom"
         />
       </div>
@@ -56,7 +58,8 @@ export default function Footer() {
           src="/images/footer-corners-right.png"
           alt=""
           fill
-          unoptimized
+          loading="lazy"
+          decoding="async"
           className="object-fill object-right-bottom"
         />
       </div>
@@ -77,7 +80,9 @@ export default function Footer() {
                   src="/images/logo.png"
                   alt="Talk Astrologer Sacred Zodiac Logo"
                   fill
-                  unoptimized
+                  loading="lazy"
+                  decoding="async"
+                  sizes="44px"
                   className="object-cover object-center"
                 />
               </div>

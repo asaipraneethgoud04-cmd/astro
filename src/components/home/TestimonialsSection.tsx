@@ -1,67 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import { Star, Quote } from "lucide-react";
 import { getAcceptedReviews } from "@/lib/reviews";
-
-function ReviewCard({
-  name,
-  city,
-  quote,
-  pinned = false,
-}: {
-  name: string;
-  city: string;
-  quote: string;
-  pinned?: boolean;
-}) {
-  return (
-    <article className="relative w-full max-w-[360px] pt-5 pb-2 px-2 flex">
-      <div
-        className={`relative w-full rounded-[24px] border bg-gradient-to-b from-white via-[#fdfaf5] to-[#f8f2e7] px-7 pt-8 pb-7 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between text-center group ${pinned
-          ? "border-[#c59b27] shadow-[0_14px_36px_rgba(197,155,39,0.15)] ring-1 ring-[#c59b27]/30 hover:shadow-[0_20px_48px_rgba(107,30,43,0.16)]"
-          : "border-[#e8dac5] shadow-[0_12px_32px_rgba(56,7,14,0.06)] hover:shadow-[0_20px_44px_rgba(107,30,43,0.12)] hover:border-[#c59b27]/70"
-          }`}
-      >
-        {/* Top Centered Elegant Quote Medallion */}
-        <div
-          className={`absolute -top-4 left-1/2 -translate-x-1/2 flex h-9 w-9 items-center justify-center rounded-full text-[#f6e27a] border-2 shadow-[0_4px_12px_rgba(56,7,14,0.25)] transition-transform duration-300 group-hover:scale-110 ${pinned
-            ? "bg-gradient-to-br from-[#c59b27] to-[#8b1827] border-[#f6e27a]"
-            : "bg-gradient-to-br from-[#38070e] to-[#5a111c] border-[#d4af37]"
-            }`}
-          aria-hidden="true"
-        >
-          <Quote className="h-4 w-4 fill-current rotate-180" />
-        </div>
-
-
-        {/* Card Content */}
-        <div>
-          {/* 5-Star Rating */}
-          <div className="mb-4 mt-1 flex items-center justify-center gap-1.5" aria-label="5 star rating">
-            {Array.from({ length: 5 }).map((_, index) => (
-              <Star key={index} className="h-4 w-4 fill-[#d4af37] text-[#d4af37] drop-shadow-xs" />
-            ))}
-          </div>
-
-          {/* Testimonial Quote */}
-          <blockquote className="font-serif italic text-[15px] sm:text-[16px] leading-[1.8] text-[#38070e]/90 px-1">
-            “{quote}”
-          </blockquote>
-        </div>
-
-        {/* Footer: Author Details */}
-        <div className="mt-6 pt-2">
-          <h3 className="font-serif text-xl sm:text-2xl font-bold tracking-wide text-[#38070e] capitalize">
-            {name}
-          </h3>
-          <p className="mt-0.5 text-xs font-semibold uppercase tracking-wider text-[#8b1827]">
-            {city}
-          </p>
-        </div>
-      </div>
-    </article>
-  );
-}
+import TestimonialCard from "./TestimonialCard";
 
 export default async function TestimonialsSection() {
   const reviews = await getAcceptedReviews();
@@ -73,7 +13,7 @@ export default async function TestimonialsSection() {
   });
 
   return (
-    <section className="relative overflow-hidden bg-[#fdfbf7] section-t">
+    <section className="relative overflow-hidden bg-[#fdfbf7] section-t" id="testimonials">
       <div className="site-container">
         <div className="mx-auto header-gap max-w-2xl space-y-3 text-center">
           <h2 className="font-serif text-4xl font-extrabold tracking-tight text-[#38070e] sm:text-5xl lg:text-6xl">
@@ -89,12 +29,14 @@ export default async function TestimonialsSection() {
         {sortedReviews.length > 0 ? (
           <div className="flex flex-wrap items-stretch justify-center gap-x-6 grid-rows-gap sm:gap-x-8">
             {sortedReviews.map((item) => (
-              <ReviewCard
+              <TestimonialCard
                 key={item.id}
                 name={item.name}
                 city={item.city}
                 quote={item.quote}
                 pinned={item.pinned}
+                rating={item.rating ?? 5}
+                service={item.service}
               />
             ))}
           </div>

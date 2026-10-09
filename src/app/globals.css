@@ -179,19 +179,68 @@
   animation: float-gentle 4s ease-in-out infinite;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
+/* Custom scrollbar for primary page body */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
   width: 8px;
 }
-::-webkit-scrollbar-track {
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
   background: #230409;
 }
-::-webkit-scrollbar-thumb {
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
   background: #8b2332;
   border-radius: 4px;
 }
-::-webkit-scrollbar-thumb:hover {
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
   background: #c59b27;
+}
+
+/* Transparent Scrollbars for textareas, inputs, demo preview, and review cards */
+textarea,
+input,
+.scrollbar-transparent,
+.scroll-transparent,
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+textarea::-webkit-scrollbar,
+input::-webkit-scrollbar,
+.scrollbar-transparent::-webkit-scrollbar,
+.scroll-transparent::-webkit-scrollbar,
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background: transparent;
+}
+
+textarea::-webkit-scrollbar-track,
+input::-webkit-scrollbar-track,
+.scrollbar-transparent::-webkit-scrollbar-track,
+.scroll-transparent::-webkit-scrollbar-track,
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+textarea::-webkit-scrollbar-thumb,
+input::-webkit-scrollbar-thumb,
+.scrollbar-transparent::-webkit-scrollbar-thumb,
+.scroll-transparent::-webkit-scrollbar-thumb,
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 9999px;
+  transition: background 0.2s ease;
+}
+
+textarea:hover::-webkit-scrollbar-thumb,
+.scrollbar-transparent:hover::-webkit-scrollbar-thumb,
+.scroll-transparent:hover::-webkit-scrollbar-thumb,
+.custom-scrollbar:hover::-webkit-scrollbar-thumb {
+  background: rgba(197, 155, 39, 0.25);
 }
 
 /* ==========================================================================

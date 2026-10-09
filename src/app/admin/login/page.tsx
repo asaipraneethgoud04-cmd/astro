@@ -24,7 +24,7 @@ export default async function AdminLoginPage() {
               src="/images/logo.png"
               alt="Talk Astrologer Logo"
               fill
-              unoptimized
+              sizes="48px"
               className="object-cover object-center"
             />
           </div>

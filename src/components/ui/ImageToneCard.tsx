@@ -145,14 +145,15 @@ function extractDominantTone(src: string): Promise<ImageTone> {
   });
 }
 
-function useImageTone(src: string) {
+function useImageTone(src: string, isVisible: boolean) {
   const [tone, setTone] = useState<ImageTone>(() => toneCache.get(src) ?? FALLBACK_TONE);
 
   useEffect(() => {
+    if (!isVisible) return;
     let cancelled = false;
     const cached = toneCache.get(src);
     if (cached) {
-      // Already matching initial state or previous run
+      setTone(cached);
       return;
     }
     extractDominantTone(src).then((next) => {
@@ -161,7 +162,7 @@ function useImageTone(src: string) {
     return () => {
       cancelled = true;
     };
-  }, [src]);
+  }, [src, isVisible]);
 
   return tone;
 }
@@ -235,11 +236,34 @@ export default function ImageToneCard({
   iconName,
   className = "",
 }: ImageToneCardProps) {
-  const tone = useImageTone(imageUrl);
+  const articleRef = React.useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    if (isVisible || !articleRef.current) return;
+    if (typeof IntersectionObserver === "undefined") {
+      setIsVisible(true);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "300px" }
+    );
+    observer.observe(articleRef.current);
+    return () => observer.disconnect();
+  }, [isVisible]);
+
+  const tone = useImageTone(imageUrl, isVisible);
   const [imageError, setImageError] = useState(false);
 
   return (
     <article
+      ref={articleRef}
       id={id}
       className={`group relative flex h-full min-w-0 aspect-[3/4] flex-col overflow-hidden rounded-[18px] shadow-[0_16px_36px_rgba(24,14,16,0.16)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_46px_rgba(24,14,16,0.26)] sm:aspect-auto sm:min-h-[440px] sm:rounded-[26px] lg:min-h-[480px] ${className}`}
       style={
@@ -256,10 +280,11 @@ export default function ImageToneCard({
             src={imageUrl}
             alt={imageAlt}
             fill
-            sizes="(max-width: 1024px) 50vw, 33vw"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            loading="lazy"
+            decoding="async"
             className="object-cover object-[center_30%] transition-transform duration-300 group-hover:scale-[1.03]"
             onError={() => setImageError(true)}
-            unoptimized
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center bg-[#241c1a]">

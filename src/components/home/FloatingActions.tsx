@@ -43,6 +43,33 @@ export default function FloatingActions() {
         </span>
       </a>
 
+      {/* Floating Instagram Action */}
+      <a
+        href="https://www.instagram.com/talk_astrologer"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group relative flex h-10 w-10 items-center justify-center rounded-full border-2 border-[#c59b27] bg-[#38070e] text-[#f6e27a] shadow-xl transition-all duration-300 hover:scale-110 hover:bg-[#200408] hover:border-[#f6e27a] hover:shadow-[0_0_15px_rgba(212,175,55,0.4)] sm:h-12 sm:w-12"
+        aria-label="Follow on Instagram"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300 group-hover:scale-110"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+        </svg>
+        <span className="pointer-events-none absolute right-14 whitespace-nowrap rounded border border-[#c59b27]/40 bg-[#230409] px-2.5 py-1 font-serif text-xs text-[#f6e27a] opacity-0 shadow-md transition-opacity group-hover:opacity-100">
+          Follow on Instagram
+        </span>
+      </a>
+
       {/* Floating WhatsApp Action */}
       <a
         href="https://wa.me/12146699699"

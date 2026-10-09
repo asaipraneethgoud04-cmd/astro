@@ -10,14 +10,12 @@ import {
   ShieldCheck,
   Sparkles,
   ArrowRight,
-  CheckCircle2,
   HelpCircle,
   Clock,
   Compass,
   Heart,
   ChevronRight,
   Flame,
-  Star,
   BookOpen,
 } from "lucide-react";
 import {
@@ -208,7 +206,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                 alt={service.title}
                 fill
                 priority
-                unoptimized
+                sizes="(max-width: 1024px) 100vw, 420px"
                 className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
               />
 
@@ -467,46 +465,6 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         </div>
       </section>
 
-      {/* ─────────────────────────────────────────────────────────────
-          6. WHAT IS COVERED IN YOUR CONSULTATION
-      ───────────────────────────────────────────────────────────── */}
-      <section className="site-container section-y">
-        <div className="text-center max-w-3xl mx-auto space-y-3 header-gap">
-          <span className="text-[#a07421] text-xs font-semibold tracking-[0.25em] uppercase flex items-center justify-center gap-2">
-            <CheckCircle2 className="w-3.5 h-3.5 text-[#25D366]" />
-            Session Deliverables
-            <CheckCircle2 className="w-3.5 h-3.5 text-[#25D366]" />
-          </span>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#38070e] tracking-tight">
-            What Your Consultation Includes
-          </h2>
-          <p className="text-xs sm:text-sm text-[#5d474b] max-w-xl mx-auto">
-            Every session is thorough, focused, and directly actionable. Here is
-            what you will experience in your 30 to 45-minute private consultation.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 w-full">
-          {service.consultationIncludes.map((item, idx) => (
-            <div
-              key={idx}
-              className="bg-white rounded-2xl border border-[#ebdcc2] p-5 shadow-xs flex flex-col justify-between space-y-3"
-            >
-              <div>
-                <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#240409] text-[#f6e27a] font-serif text-xs font-bold mb-3 shadow-xs">
-                  {idx + 1}
-                </span>
-                <h3 className="font-serif text-base sm:text-lg font-bold text-[#420813] mb-1.5">
-                  {item.title}
-                </h3>
-                <p className="text-xs text-[#5d474b] leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* ─────────────────────────────────────────────────────────────
           7. TRADITIONAL REMEDIES & SPIRITUAL SHANTI
@@ -562,48 +520,6 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         </div>
       </section>
 
-      {/* ─────────────────────────────────────────────────────────────
-          8. SEEKER TESTIMONIAL & EXPERIENCE
-      ───────────────────────────────────────────────────────────── */}
-      <section className="site-container section-y">
-        <div className="w-full">
-          <div className="rounded-3xl bg-[#240409] text-[#f6eedc] p-7 sm:p-10 relative overflow-hidden shadow-xl">
-            {/* Background Celestial Ornament */}
-            <div className="absolute right-4 top-4 text-5xl font-serif text-[#d4af37]/15 select-none pointer-events-none">
-              ❝
-            </div>
-
-            <div className="relative z-10 space-y-4">
-              <div className="flex items-center gap-1.5 text-[#f6e27a]">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-current" />
-                ))}
-                <span className="text-xs text-[#f5ebd9]/80 ml-2 font-medium">
-                  Verified Seeker Experience
-                </span>
-              </div>
-
-              <blockquote className="font-serif text-base sm:text-lg leading-relaxed text-[#fdfaf4] italic">
-                &ldquo;{service.testimonial.quote}&rdquo;
-              </blockquote>
-
-              <div className="pt-2 border-t border-[#c59b27]/30 flex items-center justify-between text-xs">
-                <div>
-                  <p className="font-bold text-[#f6e27a]">
-                    {service.testimonial.client}
-                  </p>
-                  <p className="text-[#f5ebd9]/70 text-[11px]">
-                    {service.testimonial.location}
-                  </p>
-                </div>
-                <span className="text-[11px] uppercase tracking-wider text-[#d4af37]/80">
-                  {service.title}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ─────────────────────────────────────────────────────────────
           9. FREQUENTLY ASKED QUESTIONS (FAQ)

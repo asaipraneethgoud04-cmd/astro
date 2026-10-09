@@ -221,23 +221,43 @@ export async function submitReview(formData: FormData): Promise<Result> {
 
   const name = text(formData.get("name"), 80);
   const city = text(formData.get("city"), 80);
-  const quote = text(formData.get("quote"), 600);
+  const quote = text(formData.get("quote"), 1000);
+  const ratingRaw = Number(formData.get("rating")) || 5;
+  const rating = Math.min(5, Math.max(1, ratingRaw));
+  const service = text(formData.get("service"), 100);
 
   if (name.length < 2 || city.length < 2) {
     return { ok: false, error: "Please add your name and city." };
   }
-  if (quote.length < 20) {
-    return { ok: false, error: "Please write at least a few sentences about your experience (minimum 20 characters)." };
+  if (quote.length < 15) {
+    return { ok: false, error: "Please write at least a few sentences about your experience (minimum 15 characters)." };
   }
 
   const supabase = createPublicClient();
-  const { error: dbError } = await supabase.from("reviews").insert({
+
+  // Attempt insert with rating and service
+  let { error: dbError } = await supabase.from("reviews").insert({
     name,
     city,
     quote,
+    rating,
+    service: service || null,
     status: "pending",
     pinned: false,
   });
+
+  // Graceful fallback if 'rating' or 'service' columns do not exist in the remote database schema yet
+  if (dbError && (dbError.message?.includes("rating") || dbError.message?.includes("service") || dbError.message?.includes("column"))) {
+    console.warn("[Reviews] Schema column notice, inserting with base columns:", dbError.message);
+    const fallback = await supabase.from("reviews").insert({
+      name,
+      city,
+      quote,
+      status: "pending",
+      pinned: false,
+    });
+    dbError = fallback.error;
+  }
 
   if (dbError) {
     console.error("[Reviews] Database insert error:", dbError.message);

@@ -185,7 +185,7 @@ const controllers = {
   updateAppointmentStatus: async (req, res, id) => {
     try {
       const data = await parseBody(req);
-      const { status, adminNotes } = data;
+      const { status, adminNotes, scheduledTime, sessionMedium, meetingLinkOrInstructions, customNote, sendConfirmationEmail } = data;
 
       const updatePayload = {};
       if (status) updatePayload.status = status;
@@ -199,7 +199,69 @@ const controllers = {
         .single();
 
       if (error) return sendJson(res, 500, { ok: false, error: error.message });
+
+      // If scheduled time provided or explicit confirmation email requested, trigger confirmation email
+      if ((sendConfirmationEmail || (status === "scheduled" && scheduledTime)) && updated && updated.email) {
+        mailer.sendAppointmentConfirmedEmail({
+          clientName: updated.full_name,
+          clientEmail: updated.email,
+          clientPhone: updated.phone,
+          secondName: updated.second_name,
+          service: updated.service,
+          scheduledTime: (scheduledTime || "To be coordinated").trim(),
+          sessionMedium: sessionMedium || "Direct Phone / WhatsApp Call",
+          meetingLinkOrInstructions: meetingLinkOrInstructions ? meetingLinkOrInstructions.trim() : "",
+          customNote: customNote ? customNote.trim() : "",
+        }).catch((e) => console.error("[Backend Server] Confirmation mail dispatch error:", e));
+      }
+
       return sendJson(res, 200, { ok: true, appointment: updated });
+    } catch (err) {
+      return sendJson(res, 400, { ok: false, error: err.message });
+    }
+  },
+
+  // 5b. Confirm Appointment & Dispatch Official Email (Admin)
+  confirmAppointment: async (req, res, id) => {
+    try {
+      const data = await parseBody(req);
+      const { scheduledTime, sessionMedium, meetingLinkOrInstructions, customNote, adminNotes } = data;
+
+      if (!scheduledTime) {
+        return sendJson(res, 400, { ok: false, error: "Scheduled time is required to confirm appointment." });
+      }
+
+      const updatePayload = { status: "scheduled" };
+      if (adminNotes !== undefined) updatePayload.admin_notes = adminNotes;
+
+      const { data: updated, error } = await supabase
+        .from("appointments")
+        .update(updatePayload)
+        .eq("id", id)
+        .select()
+        .single();
+
+      if (error) return sendJson(res, 500, { ok: false, error: error.message });
+
+      if (updated && updated.email) {
+        mailer.sendAppointmentConfirmedEmail({
+          clientName: updated.full_name,
+          clientEmail: updated.email,
+          clientPhone: updated.phone,
+          secondName: updated.second_name,
+          service: updated.service,
+          scheduledTime: scheduledTime.trim(),
+          sessionMedium: sessionMedium || "Direct Phone / WhatsApp Call",
+          meetingLinkOrInstructions: meetingLinkOrInstructions ? meetingLinkOrInstructions.trim() : "",
+          customNote: customNote ? customNote.trim() : "",
+        }).catch((e) => console.error("[Backend Server] Confirmation mail dispatch error:", e));
+      }
+
+      return sendJson(res, 200, {
+        ok: true,
+        appointment: updated,
+        message: "Appointment confirmed and notification email dispatched.",
+      });
     } catch (err) {
       return sendJson(res, 400, { ok: false, error: err.message });
     }
@@ -311,6 +373,11 @@ const server = http.createServer(async (req, res) => {
   const apptMatch = pathname.match(/^\/api\/appointments\/([a-zA-Z0-9-]+)$/);
   if (apptMatch && method === "PATCH") {
     return controllers.updateAppointmentStatus(req, res, apptMatch[1]);
+  }
+
+  const confirmMatch = pathname.match(/^\/api\/appointments\/([a-zA-Z0-9-]+)\/confirm$/);
+  if (confirmMatch && method === "POST") {
+    return controllers.confirmAppointment(req, res, confirmMatch[1]);
   }
 
   if (pathname === "/api/messages" && method === "POST") {

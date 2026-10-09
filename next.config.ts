@@ -45,6 +45,7 @@ const securityHeaders = [
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' data: https://fonts.gstatic.com",
       "img-src 'self' data: blob: https://images.unsplash.com https://*.supabase.co",
+      "media-src 'self' data: blob:",
       "connect-src 'self' https://*.supabase.co wss://*.supabase.co",
       "frame-src 'self' https://www.google.com https://maps.google.com",
       "object-src 'none'",
@@ -57,7 +58,9 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  compress: true,
   experimental: {
+    optimizePackageImports: ["lucide-react"],
     serverActions: {
       allowedOrigins:
         process.env.NODE_ENV === "production"
@@ -73,6 +76,8 @@ const nextConfig: NextConfig = {
     },
   },
   images: {
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 2592000,
     remotePatterns: [
       {
         protocol: "https",

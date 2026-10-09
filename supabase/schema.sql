@@ -13,6 +13,8 @@ create table if not exists public.reviews (
 );
 
 alter table public.reviews add column if not exists pinned boolean not null default false;
+alter table public.reviews add column if not exists rating integer not null default 5 check (rating between 1 and 5);
+alter table public.reviews add column if not exists service text;
 
 alter table public.reviews enable row level security;
 
@@ -46,5 +48,12 @@ create policy "authenticated can moderate reviews"
   using (true)
   with check (status in ('pending', 'accepted', 'rejected'));
 
+drop policy if exists "authenticated can delete reviews" on public.reviews;
+create policy "authenticated can delete reviews"
+  on public.reviews
+  for delete
+  to authenticated
+  using (true);
+
 grant select, insert on public.reviews to anon;
-grant select, insert, update on public.reviews to authenticated;
+grant select, insert, update, delete on public.reviews to authenticated;

@@ -2,11 +2,15 @@
 
 import React from "react";
 import { usePathname } from "next/navigation";
+import dynamic from "next/dynamic";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import FloatingActions from "@/components/home/FloatingActions";
 import PinnedReviewBar from "@/components/layout/PinnedReviewBar";
 import type { PinnedReview } from "@/lib/reviews";
+
+const FloatingActions = dynamic(() => import("@/components/home/FloatingActions"), {
+  ssr: false,
+});
 
 export default function SiteChrome({
   children,

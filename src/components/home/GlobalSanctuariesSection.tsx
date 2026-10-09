@@ -75,8 +75,8 @@ export default function GlobalSanctuariesSection() {
           src="/images/locations-bg.png"
           alt=""
           fill
-          unoptimized
-          priority
+          loading="lazy"
+          decoding="async"
           className="object-cover object-bottom opacity-85"
         />
 
@@ -131,7 +131,8 @@ export default function GlobalSanctuariesSection() {
                   alt={`${city.name} Vedic Astrology Guidance`}
                   fill
                   sizes="(max-width: 640px) 36px, 48px"
-                  unoptimized
+                  loading="lazy"
+                  decoding="async"
                   className="object-cover object-center group-hover:scale-105 transition-transform duration-300"
                 />
               </div>

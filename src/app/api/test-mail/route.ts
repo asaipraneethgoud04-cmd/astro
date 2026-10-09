@@ -93,3 +93,62 @@ export async function GET() {
   report.tests = tests;
   return NextResponse.json(report, { status: 200 });
 }
+
+export async function POST(req: Request) {
+  try {
+    const body = await req.json();
+    const { email, template } = body;
+
+    if (!email || typeof email !== "string" || !email.includes("@")) {
+      return NextResponse.json({ ok: false, error: "Valid recipient email address is required." }, { status: 400 });
+    }
+
+    const {
+      sendAppointmentNotificationEmail,
+      sendContactNotificationEmail,
+      sendAppointmentConfirmedEmail,
+    } = await import("@/lib/mail");
+
+    const sampleAppointment = {
+      fullName: "Praneeth Goud",
+      secondName: "Pooja Sharma",
+      email: email.trim(),
+      phone: "+1 (972) 555-0199",
+      city: "Dallas / Frisco, Texas",
+      service: "Vedic Kundali & Horoscope Reading",
+      message: "Seeking astrological guidance regarding career ventures and family peace.",
+    };
+
+    let result;
+    const choice = (template || "appointment-client").toLowerCase();
+
+    if (choice === "confirmed") {
+      result = await sendAppointmentConfirmedEmail({
+        clientName: "Praneeth Goud",
+        clientEmail: email.trim(),
+        clientPhone: "+1 (972) 555-0199",
+        secondName: "Pooja Sharma",
+        service: "Vedic Kundali & Horoscope Reading",
+        scheduledTime: "Saturday, 11:00 AM CST (Dallas Time)",
+        sessionMedium: "Google Meet / Direct WhatsApp Video",
+        meetingLinkOrInstructions: "https://meet.google.com/ast-ro-vedic",
+        customNote: "Master Vijay Ji recommends keeping your birth date and time documents ready before joining.",
+      });
+    } else if (choice.includes("contact")) {
+      result = await sendContactNotificationEmail({
+        name: "Praneeth Goud",
+        email: email.trim(),
+        phone: "+1 (972) 555-0199",
+        subject: "Vedic Muhurat Guidance",
+        message: "Namaste Master Vijay Ji, seeking auspicious timing for our new enterprise launch.",
+      });
+    } else {
+      result = await sendAppointmentNotificationEmail(sampleAppointment);
+    }
+
+    return NextResponse.json(result);
+  } catch (err: unknown) {
+    const errorMsg = err instanceof Error ? err.message : String(err);
+    return NextResponse.json({ ok: false, error: errorMsg }, { status: 500 });
+  }
+}

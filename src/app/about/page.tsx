@@ -42,7 +42,7 @@ export default function AboutPage() {
             alt="About Page Hero Background with Temple Bells and Diyas"
             fill
             priority
-            unoptimized
+            sizes="100vw"
             className="object-cover object-center opacity-70"
           />
         </div>
@@ -99,7 +99,7 @@ export default function AboutPage() {
                     src="/images/hero-ring-trimmed.png"
                     alt="Celestial Astrological Ring"
                     fill
-                    unoptimized
+                    sizes="(max-width: 1024px) 380px, 440px"
                     className="object-contain drop-shadow-xl"
                     priority
                   />
@@ -111,7 +111,7 @@ export default function AboutPage() {
                   src="/images/hero-hand-trimmed.png"
                   alt="Vedic Palmistry Hand"
                   fill
-                  unoptimized
+                  sizes="(max-width: 1024px) 280px, 310px"
                   className="object-contain object-bottom drop-shadow-2xl"
                   priority
                 />
@@ -176,8 +176,10 @@ export default function AboutPage() {
                   src="/images/about page.png"
                   alt="Ancestral Vedic Study and Heritage"
                   fill
+                  loading="lazy"
+                  decoding="async"
+                  sizes="(max-width: 1024px) 100vw, 500px"
                   className="object-cover"
-                  unoptimized
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#2a060d]/70 via-transparent to-transparent pointer-events-none" />
                 <div className="absolute bottom-4 left-4 right-4 text-white">
@@ -242,6 +244,9 @@ export default function AboutPage() {
                 src="/images/bell 1.png"
                 alt="Sacred Brass Temple Bell"
                 fill
+                loading="lazy"
+                decoding="async"
+                sizes="(max-width: 1024px) 64px, 128px"
                 className="object-contain object-top drop-shadow-md"
               />
             </div>
@@ -258,7 +263,7 @@ export default function AboutPage() {
               </h3>
 
               <p className="text-sm leading-relaxed text-[#4d363a] md:text-base">
-                TalkAstrologer brings more than <strong>22 years of active consultation experience</strong> together with a revered <strong>six-generation ancestral connection.</strong>This heritage reflects a continuing, living dedication to Jyotish and related Indian spiritual traditions.
+                TalkAstrologer brings more than <strong>30+ years of active consultation experience</strong> together with a revered <strong>six-generation ancestral connection.</strong> This heritage reflects a continuing, living dedication to Jyotish and related Indian spiritual traditions.
               </p>
 
               <p className="text-sm leading-relaxed text-[#4d363a] md:text-base">
