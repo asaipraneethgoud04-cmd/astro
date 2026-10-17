@@ -21,7 +21,7 @@ export default async function AdminLoginPage() {
         <div className="flex items-center gap-3 mb-4">
           <div className="relative h-12 w-12 rounded-full overflow-hidden border-2 border-[#c59b27] shrink-0 bg-[#240409] shadow-sm">
             <Image
-              src="/images/logo.png"
+              src="/images/logo.webp"
               alt="Talk Astrologer Logo"
               fill
               sizes="48px"

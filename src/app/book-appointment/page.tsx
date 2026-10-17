@@ -106,7 +106,7 @@ function BookAppointmentForm() {
             <div className="rounded-2xl bg-[#2d1814] p-5 text-[#f7efe4] shadow-md sm:p-6 md:flex md:items-center md:gap-8 lg:block">
               <div className="relative mx-auto mb-4 h-36 w-36 shrink-0 md:order-2 md:mx-0 md:mb-0 md:h-44 md:w-44 lg:mx-auto lg:mb-4 lg:h-36 lg:w-36">
                 <Image
-                  src="/images/book-consultation.png"
+                  src="/images/book-consultation.webp"
                   alt="Astrology consultation emblem"
                   fill
                   priority

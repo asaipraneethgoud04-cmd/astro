@@ -6,7 +6,9 @@
     "dev": "next dev -p 3002",
     "build": "next build",
     "start": "next start -p 3002",
-    "lint": "eslint"
+    "lint": "eslint",
+    "images:webp": "node scripts/convert-to-webp.js",
+    "images:clean": "node scripts/clean-unused-images.js"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",

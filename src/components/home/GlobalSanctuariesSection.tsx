@@ -37,37 +37,37 @@ export const sanctuariesData: SanctuaryCity[] = [
     id: "texas",
     name: "Texas",
     landmark: "Dallas · Houston · Austin",
-    imageUrl: "/images/locations/texas.jpg",
+    imageUrl: "/images/locations/texas.webp",
   },
   {
     id: "california",
     name: "California",
     landmark: "Bay Area · Los Angeles",
-    imageUrl: "/images/locations/california.jpg",
+    imageUrl: "/images/locations/california.webp",
   },
   {
     id: "new-york",
     name: "New York",
     landmark: "NYC · Long Island",
-    imageUrl: "/images/locations/new-york.jpg",
+    imageUrl: "/images/locations/new-york.webp",
   },
   {
     id: "florida",
     name: "Florida",
     landmark: "Miami · Orlando · Tampa",
-    imageUrl: "/images/locations/florida.jpg",
+    imageUrl: "/images/locations/florida.webp",
   },
   {
     id: "new-jersey",
     name: "New Jersey",
     landmark: "Jersey City · Edison",
-    imageUrl: "/images/locations/new-jersey.jpg",
+    imageUrl: "/images/locations/new-jersey.webp",
   },
   {
     id: "illinois",
     name: "Illinois",
     landmark: "Chicago · Naperville",
-    imageUrl: "/images/locations/illinois.jpg",
+    imageUrl: "/images/locations/illinois.webp",
   },
 ];
 
@@ -80,7 +80,7 @@ export default function GlobalSanctuariesSection() {
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         {/* Full celestial backdrop with clouds, zodiac wheels, and stars */}
         <Image
-          src="/images/locations-bg.png"
+          src="/images/locations-bg.webp"
           alt=""
           fill
           loading="lazy"

@@ -140,7 +140,7 @@ export default function ReviewPage() {
         aria-hidden="true"
       >
         <Image
-          src="/images/hero-ring-trimmed.png"
+          src="/images/hero-ring-trimmed.webp"
           alt=""
           fill
           sizes="620px"

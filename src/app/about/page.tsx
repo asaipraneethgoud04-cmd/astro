@@ -38,7 +38,7 @@ export default function AboutPage() {
         {/* Background Image: about page hero.png */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/about page hero.png"
+            src="/images/about page hero.webp"
             alt="About Page Hero Background with Temple Bells and Diyas"
             fill
             priority
@@ -96,7 +96,7 @@ export default function AboutPage() {
               <div className="absolute bottom-0 left-1/2 h-[300px] w-[300px] -translate-x-1/2 sm:h-[380px] sm:w-[380px] md:h-[440px] md:w-[440px] lg:h-[calc(var(--hero-art)*1.03)] lg:w-[calc(var(--hero-art)*1.03)]">
                 <div className="relative h-full w-full animate-spin-celestial">
                   <Image
-                    src="/images/hero-ring-trimmed.png"
+                    src="/images/hero-ring-trimmed.webp"
                     alt="Celestial Astrological Ring"
                     fill
                     sizes="(max-width: 1024px) 380px, 440px"
@@ -108,7 +108,7 @@ export default function AboutPage() {
 
               <div className="pointer-events-none relative z-10 h-full w-[min(72vw,250px)] sm:w-[280px] md:w-[310px] lg:h-(--hero-art) lg:w-[calc(var(--hero-art)*0.64)]">
                 <Image
-                  src="/images/hero-hand-trimmed.png"
+                  src="/images/hero-hand-trimmed.webp"
                   alt="Vedic Palmistry Hand"
                   fill
                   sizes="(max-width: 1024px) 280px, 310px"
@@ -173,7 +173,7 @@ export default function AboutPage() {
             <div className="lg:col-span-5 flex flex-col justify-center gap-5">
               <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border-4 border-[#e5d0ad] bg-[#2d050d]">
                 <Image
-                  src="/images/guruji.jpeg"
+                  src="/images/guruji.webp"
                   alt="Ancestral Vedic Astrologer Guruji - Heritage and Mastery"
                   fill
                   loading="lazy"
@@ -241,7 +241,7 @@ export default function AboutPage() {
             {/* Hanging Temple Bell on the right (bell 1.png) */}
             <div className="pointer-events-none absolute right-2 top-0 h-28 w-14 sm:right-6 sm:h-36 sm:w-16 lg:right-12 lg:h-72 lg:w-32">
               <Image
-                src="/images/bell 1.png"
+                src="/images/bell 1.webp"
                 alt="Sacred Brass Temple Bell"
                 fill
                 loading="lazy"

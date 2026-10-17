@@ -7,7 +7,7 @@ export default function WelcomeSection() {
       {/* Background Zodiac Wheel using user asset - comfortably sized within section */}
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] sm:w-[480px] lg:w-[540px] max-h-[92%] aspect-square pointer-events-none opacity-15">
         <Image
-          src="/images/home page about section bg.png"
+          src="/images/home page about section bg.webp"
           alt="Sacred Sun Zodiac Wheel"
           fill
           loading="lazy"
@@ -33,7 +33,7 @@ export default function WelcomeSection() {
                 {/* Left Container Image */}
                 <div className="absolute inset-0">
                   <Image
-                    src="/images/home page about section.png"
+                    src="/images/home page about section.webp"
                     alt="Vedic Astrology Sacred Heritage"
                     fill
                     loading="lazy"

@@ -266,7 +266,7 @@ export default function Navbar({ offsetTop = false }: { offsetTop?: boolean }) {
           >
             <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full border-2 border-[#d4af37] bg-[#240409] shadow-[0_0_18px_rgba(212,175,55,0.5)] transition-all group-hover:scale-105 group-hover:border-[#f6e27a] group-hover:shadow-[0_0_24px_rgba(246,226,122,0.65)] active:scale-95 md:h-[60px] md:w-[60px] lg:h-[74px] lg:w-[74px]">
               <Image
-                src="/images/astrologo.png"
+                src="/images/astrologo.webp"
                 alt="Talk Astrologer Sacred Zodiac Logo"
                 fill
                 priority
@@ -433,7 +433,7 @@ export default function Navbar({ offsetTop = false }: { offsetTop?: boolean }) {
                             <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center overflow-hidden">
                               <div className="relative w-[130%] h-[160%] -rotate-[16deg] opacity-20 brightness-110 contrast-125 sepia-[0.35] pointer-events-none">
                                 <Image
-                                  src="/images/moon phases.png"
+                                  src="/images/moon phases.webp"
                                   alt="Sacred Moon Phases"
                                   fill
                                   loading="lazy"
@@ -693,7 +693,7 @@ export default function Navbar({ offsetTop = false }: { offsetTop?: boolean }) {
                       <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
                         <div className="relative h-[180%] w-[150%] -rotate-[16deg] opacity-20 brightness-110 contrast-125 sepia-[0.35] pointer-events-none">
                           <Image
-                            src="/images/moon phases.png"
+                            src="/images/moon phases.webp"
                             alt="Sacred Moon Phases"
                             fill
                             loading="lazy"
@@ -838,7 +838,7 @@ export default function Navbar({ offsetTop = false }: { offsetTop?: boolean }) {
               <div className="relative w-32 h-32 sm:w-36 sm:h-36 rounded-full border-3 border-[#d4af37] bg-[#240409] shadow-[0_0_25px_rgba(212,175,55,0.5)] p-1.5 transition-transform hover:scale-105 duration-300">
                 <div className="relative w-full h-full rounded-full overflow-hidden border border-[#f6e27a]/40 bg-[#170205]">
                   <Image
-                    src="/images/astrologo.png"
+                    src="/images/astrologo.webp"
                     alt="Talk Astrologer High Resolution Sacred Emblem"
                     fill
                     priority
@@ -865,7 +865,7 @@ export default function Navbar({ offsetTop = false }: { offsetTop?: boolean }) {
               {/* Actions */}
               <div className="mt-4 flex items-center justify-center gap-2.5">
                 <a
-                  href="/images/astrologo.png"
+                  href="/images/astrologo.webp"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#d4af37] to-[#aa8014] text-[#240409] font-bold text-xs tracking-wider uppercase shadow-md hover:brightness-110 transition-all cursor-pointer"

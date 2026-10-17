@@ -532,10 +532,10 @@ export async function sendAppointmentNotificationEmail(
 
         <!-- 2. WARM IVORY BODY WITH VEDIC SACRED GEOMETRY BACKGROUND -->
         <tr>
-          <td class="content-padding" style="background-color: #FAF5EA; background-image: url('${siteUrl}/images/email/vedic-pattern-bg.png'); background-repeat: repeat; background-position: center top; padding: 32px 26px 24px;">
+          <td class="content-padding" style="background-color: #FAF5EA; background-image: url('${siteUrl}/images/email/vedic-pattern-bg.webp'); background-repeat: repeat; background-position: center top; padding: 32px 26px 24px;">
             
             <!-- Elevated Opaque Consultation Card with Faint Zodiac Watermark (~8% opacity) -->
-            <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #FFFDF8; background-image: url('${siteUrl}/images/email/astrolabe-watermark.png'); background-repeat: no-repeat; background-position: right -20px bottom -20px; background-size: 290px 290px; border-radius: 14px; border: 1.5px solid #E2D1B3; box-shadow: 0 4px 20px rgba(56,7,14,0.06); margin-bottom: 24px;">
+            <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #FFFDF8; background-image: url('${siteUrl}/images/email/astrolabe-watermark.webp'); background-repeat: no-repeat; background-position: right -20px bottom -20px; background-size: 290px 290px; border-radius: 14px; border: 1.5px solid #E2D1B3; box-shadow: 0 4px 20px rgba(56,7,14,0.06); margin-bottom: 24px;">
               <tr>
                 <td style="padding: 28px 24px;">
                   
@@ -976,10 +976,10 @@ export async function sendAppointmentConfirmedEmail(
 
         <!-- 2. WARM IVORY BODY WITH VEDIC SACRED GEOMETRY BACKGROUND -->
         <tr>
-          <td class="content-padding" style="background-color: #FAF5EA; background-image: url('${siteUrl}/images/email/vedic-pattern-bg.png'); background-repeat: repeat; background-position: center top; padding: 32px 26px 24px;">
+          <td class="content-padding" style="background-color: #FAF5EA; background-image: url('${siteUrl}/images/email/vedic-pattern-bg.webp'); background-repeat: repeat; background-position: center top; padding: 32px 26px 24px;">
             
             <!-- Elevated Opaque Consultation Card with Faint Zodiac Watermark (~8% opacity) -->
-            <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #FFFDF8; background-image: url('${siteUrl}/images/email/astrolabe-watermark.png'); background-repeat: no-repeat; background-position: right -20px bottom -20px; background-size: 290px 290px; border-radius: 14px; border: 1.5px solid #E2D1B3; box-shadow: 0 4px 20px rgba(56,7,14,0.06); margin-bottom: 24px;">
+            <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #FFFDF8; background-image: url('${siteUrl}/images/email/astrolabe-watermark.webp'); background-repeat: no-repeat; background-position: right -20px bottom -20px; background-size: 290px 290px; border-radius: 14px; border: 1.5px solid #E2D1B3; box-shadow: 0 4px 20px rgba(56,7,14,0.06); margin-bottom: 24px;">
               <tr>
                 <td style="padding: 28px 24px;">
                   

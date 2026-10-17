@@ -29,7 +29,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
           <div className="flex items-center gap-3">
             <div className="relative h-11 w-11 rounded-full overflow-hidden border-2 border-[#c59b27] shrink-0 bg-[#240409] shadow-inner">
               <Image
-                src="/images/logo.png"
+                src="/images/logo.webp"
                 alt="Talk Astrologer Logo"
                 fill
                 sizes="44px"

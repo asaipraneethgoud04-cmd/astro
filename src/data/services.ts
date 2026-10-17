@@ -15,7 +15,7 @@ export const servicesData: ServiceItem[] = [
     description:
       "Personalized interpretation of birth chart, planetary alignments, and wider astrological blueprint for life guidance.",
     category: "Astrology & Charts",
-    imageUrl: "/images/services/Horoscope.png",
+    imageUrl: "/images/services/Horoscope.webp",
     iconName: "chart",
   },
   {
@@ -24,7 +24,7 @@ export const servicesData: ServiceItem[] = [
     description:
       "Comprehensive Ashta Kuta, Navamsha, and Mangal Dosha synastry to assess lifelong harmony and marital prosperity.",
     category: "Love & Marriage",
-    imageUrl: "/images/services/Kundali.png",
+    imageUrl: "/images/services/Kundali.webp",
     iconName: "marriage",
   },
   {
@@ -33,7 +33,7 @@ export const servicesData: ServiceItem[] = [
     description:
       "Empathetic astrological guidance to bridge parental hesitations, family opposition, and cultural differences for love marriages.",
     category: "Love & Marriage",
-    imageUrl: "/images/services/Love Marriage Specialist.png",
+    imageUrl: "/images/services/Love Marriage Specialist.webp",
     iconName: "couple",
   },
   {
@@ -42,7 +42,7 @@ export const servicesData: ServiceItem[] = [
     description:
       "Vedic career guidance, academic direction, competitive examination timing, and solutions for job stability and promotions.",
     category: "Career & Business",
-    imageUrl: "/images/services/Education.png",
+    imageUrl: "/images/services/Education.webp",
     iconName: "briefcase",
   },
   {
@@ -51,7 +51,7 @@ export const servicesData: ServiceItem[] = [
     description:
       "Traditional Jyotish forecasting of upcoming planetary transits, auspicious windows, and significant life milestones.",
     category: "Astrology & Charts",
-    imageUrl: "/images/services/Fortune teller.png",
+    imageUrl: "/images/services/Fortune teller.webp",
     iconName: "future",
   },
   {
@@ -60,7 +60,7 @@ export const servicesData: ServiceItem[] = [
     description:
       "Classical Hastarekha palmistry analysis decoding major life lines, mount energies, and divine markings.",
     category: "Astrology & Charts",
-    imageUrl: "/images/services/Palm Reading.png",
+    imageUrl: "/images/services/Palm Reading.webp",
     iconName: "palm",
   },
   {
@@ -69,7 +69,7 @@ export const servicesData: ServiceItem[] = [
     description:
       "Intuitive card spread consultations revealing hidden patterns, crossroads, and immediate clarity for love, finance, and career.",
     category: "Astrology & Charts",
-    imageUrl: "/images/services/Tarot Reading.png",
+    imageUrl: "/images/services/Tarot Reading.webp",
     iconName: "numerology",
   },
   {
@@ -78,7 +78,7 @@ export const servicesData: ServiceItem[] = [
     description:
       "Intuitive celestial readings and higher spiritual discernment to illuminate uncertain crossroads and unrevealed truths.",
     category: "Spiritual & Wellness",
-    imageUrl: "/images/services/Psychic.png",
+    imageUrl: "/images/services/Psychic.webp",
     iconName: "psychic",
   },
   {
@@ -87,7 +87,7 @@ export const servicesData: ServiceItem[] = [
     description:
       "Sacred Vedic spiritual reflection, puja guidance, and higher soul consciousness practices to cultivate inner serenity.",
     category: "Spiritual & Wellness",
-    imageUrl: "/images/services/Spiritual reading.png",
+    imageUrl: "/images/services/Spiritual reading.webp",
     iconName: "puja",
   },
 
@@ -98,7 +98,7 @@ export const servicesData: ServiceItem[] = [
     description:
       "Strategic Vedic business counsel, partnership compatibility, launch Muhurat, and remedies for commercial turnaround.",
     category: "Career & Business",
-    imageUrl: "/images/services/Business.png",
+    imageUrl: "/images/services/Business.webp",
     iconName: "finance",
   },
   {
@@ -107,7 +107,7 @@ export const servicesData: ServiceItem[] = [
     description:
       "Ancient Dhana Yoga activations and Lakshmi stotrams to overcome debt traps, cash flow blockages, and financial instability.",
     category: "Career & Business",
-    imageUrl: "/images/services/Financial.png",
+    imageUrl: "/images/services/Financial.webp",
     iconName: "finance",
   },
   {
@@ -116,7 +116,7 @@ export const servicesData: ServiceItem[] = [
     description:
       "Vedic astrological analysis of physical vitality, 6th house roga indications, and sacred Maha Mrityunjaya healing remedies.",
     category: "Spiritual & Wellness",
-    imageUrl: "/images/services/Health.png",
+    imageUrl: "/images/services/Health.webp",
     iconName: "family",
   },
   {
@@ -125,7 +125,7 @@ export const servicesData: ServiceItem[] = [
     description:
       "Confidential Vedic consultation and astrological perspective to navigate marital conflicts, legal separation, and emotional reconciliation.",
     category: "Love & Marriage",
-    imageUrl: "/images/services/Divorce.png",
+    imageUrl: "/images/services/Divorce.webp",
     iconName: "separation",
   },
   {
@@ -134,7 +134,7 @@ export const servicesData: ServiceItem[] = [
     description:
       "Authentic, pure sattvic positive energy alignment and relationship harmonization to soften bitter conflicts and restore love.",
     category: "Love & Marriage",
-    imageUrl: "/images/services/Vashikaran.png",
+    imageUrl: "/images/services/Vashikaran.webp",
     iconName: "heart",
   },
   {
@@ -143,7 +143,7 @@ export const servicesData: ServiceItem[] = [
     description:
       "Traditional shastric remedies and planetary Shanti to clear generational doshas, evil eye (drishti), and recurring karmic blockages.",
     category: "Spiritual & Wellness",
-    imageUrl: "/images/services/Curse removal.png",
+    imageUrl: "/images/services/Curse removal.webp",
     iconName: "dosha",
   },
   {
@@ -152,7 +152,7 @@ export const servicesData: ServiceItem[] = [
     description:
       "Sacred Vedic rituals, protective kavach, and energetic cleansing to dissolve negative entities, psychic disturbances, and heavy auras.",
     category: "Spiritual & Wellness",
-    imageUrl: "/images/services/Evil.png",
+    imageUrl: "/images/services/Evil.webp",
     iconName: "energy",
   },
 ];

@@ -60,7 +60,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Vashikaran Specialist",
     "shortDescription": "Support for questions involving love, relationships, emotional uncertainty and important personal decisions.",
     "category": "Love & Marriage",
-    "imageUrl": "/images/services/Vashikaran.png",
+    "imageUrl": "/images/services/Vashikaran.webp",
     "iconName": "heart",
     "heroTagline": "Align Your Hearts Under the Guiding Light of Ancient Vedic Astrological Wisdom",
     "overview": [
@@ -214,7 +214,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Kundali matching",
     "shortDescription": "Traditional astrological perspectives on compatibility, marriage-related questions and family considerations.",
     "category": "Love & Marriage",
-    "imageUrl": "/images/services/Kundali.png",
+    "imageUrl": "/images/services/Kundali.webp",
     "iconName": "marriage",
     "heroTagline": "Sacred Kundali Milan & Comprehensive Lifelong Synastry Beyond Simple Guna Scores",
     "overview": [
@@ -440,7 +440,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Love Marriage Specialist",
     "shortDescription": "Guidance for people navigating love marriage decisions, family expectations and relationship concerns.",
     "category": "Love & Marriage",
-    "imageUrl": "/images/services/love-marriage.png",
+    "imageUrl": "/images/services/love-marriage.webp",
     "iconName": "couple",
     "heroTagline": "Bridge Hearts and Lineages: Sacred Guidance for Love Marriages & Parental Approval",
     "overview": [
@@ -666,7 +666,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Divorce problem solution",
     "shortDescription": "A confidential space to reflect on difficult relationship periods and seek an astrological perspective.",
     "category": "Love & Marriage",
-    "imageUrl": "/images/services/Divorce.png",
+    "imageUrl": "/images/services/Divorce.webp",
     "iconName": "separation",
     "heroTagline": "Compassionate, Confidential Astrological Counsel During Painful Matrimonial Crossroads",
     "overview": [
@@ -873,7 +873,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Education & Employment",
     "shortDescription": "Astrological perspective for career choices, professional changes, educational decisions and important transitions.",
     "category": "Career & Business",
-    "imageUrl": "/images/services/Education.png",
+    "imageUrl": "/images/services/Education.webp",
     "iconName": "briefcase",
     "heroTagline": "Discover Your True Professional Calling & Unlock Auspicious Timing for Career Breakthroughs",
     "overview": [
@@ -1091,7 +1091,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Business Problem Solution",
     "shortDescription": "Traditional astrological perspective for business decisions, financial concerns and periods requiring careful planning.",
     "category": "Career & Business",
-    "imageUrl": "/images/services/Business.png",
+    "imageUrl": "/images/services/Business.webp",
     "iconName": "finance",
     "heroTagline": "Multiply Prosperity & Secure Enterprises Through Classical Dhana Yoga & Muhurat Science",
     "overview": [
@@ -1273,7 +1273,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Family, Parents & Children",
     "shortDescription": "Supportive consultation for family relationships, parenting concerns and challenges involving parents and children.",
     "category": "Family & Personal",
-    "imageUrl": "/images/services/Health.png",
+    "imageUrl": "/images/services/Health.webp",
     "iconName": "family",
     "heroTagline": "Heal Generational Friction, Protect Elder Health, and Guide Children Toward Joyful Fulfillment",
     "overview": [
@@ -1375,7 +1375,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Fortune Teller",
     "shortDescription": "Traditional interpretation of possible periods, tendencies and themes reflected in the horoscope.",
     "category": "Astrology & Charts",
-    "imageUrl": "/images/services/Fortune teller.png",
+    "imageUrl": "/images/services/Fortune teller.webp",
     "iconName": "future",
     "heroTagline": "Navigate Tomorrow with Strategic Confidence: Detailed Dasha & Transit Timelines for 1 to 5 Years",
     "overview": [
@@ -1575,7 +1575,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Horoscope Reading",
     "shortDescription": "Personalized interpretation of birth information and the wider chart rather than relying on one isolated factor.",
     "category": "Astrology & Charts",
-    "imageUrl": "/images/services/Horoscope.png",
+    "imageUrl": "/images/services/Horoscope.webp",
     "iconName": "chart",
     "heroTagline": "The Master Blueprint of Your Soul: Exhaustive Janma Kundali & Divisional Chart Reading",
     "overview": [
@@ -1769,7 +1769,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Curse Removal",
     "shortDescription": "Context-based interpretation of relevant Doshas and other chart factors, with traditional remedies discussed where appropriate.",
     "category": "Astrology & Charts",
-    "imageUrl": "/images/services/Curse removal.png",
+    "imageUrl": "/images/services/Curse removal.webp",
     "iconName": "dosha",
     "heroTagline": "Dispel Superstitious Fear with Authentic Shastric Diagnosis & Empowering Vedic Remedies",
     "overview": [
@@ -1945,7 +1945,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Vastu Shastra",
     "shortDescription": "Traditional Vastu-based guidance concerning homes, workplaces and living environments.",
     "category": "Family & Personal",
-    "imageUrl": "/images/services/Horoscope.png",
+    "imageUrl": "/images/services/Horoscope.webp",
     "iconName": "vastu",
     "heroTagline": "Harmonize Living Spaces with Sacred Five-Element Vedic Architecture for Health & Abundance",
     "overview": [
@@ -2047,7 +2047,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Tarot Reading",
     "shortDescription": "Traditional numerological interpretation offered as an additional perspective.",
     "category": "Astrology & Charts",
-    "imageUrl": "/images/services/Tarot Reading.png",
+    "imageUrl": "/images/services/Tarot Reading.webp",
     "iconName": "numerology",
     "heroTagline": "Harness the Sacred Cosmic Vibration of Numbers to Elevate Your Name, Brand, and Destiny",
     "overview": [
@@ -2250,7 +2250,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Palm Reading",
     "shortDescription": "Traditional palmistry-based reflection and guidance.",
     "category": "Astrology & Charts",
-    "imageUrl": "/images/services/Palm Reading.png",
+    "imageUrl": "/images/services/Palm Reading.webp",
     "iconName": "palm",
     "heroTagline": "The Living Manuscript of Your Karma: Hastarekha Shastra Insights Etched in Your Hands",
     "overview": [
@@ -2449,7 +2449,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Face & Aura Reading",
     "shortDescription": "Traditional interpretive practices approached respectfully and without presenting them as scientific diagnosis.",
     "category": "Astrology & Charts",
-    "imageUrl": "/images/services/Psychic.png",
+    "imageUrl": "/images/services/Psychic.webp",
     "iconName": "face",
     "heroTagline": "Decode the Radiant Mirror of Your Soul Through Sacred Samudrika Shastra & Subtle Bio-Field Vision",
     "overview": [
@@ -2551,7 +2551,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Psychic Reading",
     "shortDescription": "Reflective intuitive guidance for people seeking another perspective during uncertain times.",
     "category": "Spiritual & Wellness",
-    "imageUrl": "/images/services/Psychic.png",
+    "imageUrl": "/images/services/Psychic.webp",
     "iconName": "psychic",
     "heroTagline": "Pierce Through the Fog of Uncertainty with Piercing Ancestral Intuitive Wisdom",
     "overview": [
@@ -2742,7 +2742,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Spiritual Reading",
     "shortDescription": "Traditional spiritual and puja-related guidance intended to support prayer, reflection and connection with one's spiritual beliefs.",
     "category": "Spiritual & Wellness",
-    "imageUrl": "/images/services/Spiritual reading.png",
+    "imageUrl": "/images/services/Spiritual reading.webp",
     "iconName": "puja",
     "heroTagline": "Connect with the Divine: Authentic Vedic Yajnas, Homas, and Sacred Personal Rituals",
     "overview": [
@@ -2918,7 +2918,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Evil Spirits Removal",
     "shortDescription": "Compassionate discussion of spiritual concerns, with traditional practices or remedies considered according to individual beliefs.",
     "category": "Spiritual & Wellness",
-    "imageUrl": "/images/services/Evil.png",
+    "imageUrl": "/images/services/Evil.webp",
     "iconName": "energy",
     "heroTagline": "Dismantle Negative Influences, Evil Eye (Drishti), and Heavy Spiritual Static with Sacred Vedic Armor",
     "overview": [
@@ -3129,7 +3129,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Inter-caste Marriage Concerns",
     "shortDescription": "Guidance for relationship and family situations involving different cultural or social backgrounds.",
     "category": "Love & Marriage",
-    "imageUrl": "/images/services/love-marriage.png",
+    "imageUrl": "/images/services/love-marriage.webp",
     "iconName": "couple",
     "heroTagline": "Harmonize Diverse Heritage: Align Hearts, Cultures, and Families in Sacred Matrimony",
     "overview": [
@@ -3346,7 +3346,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Overseas / Abroad-related Concerns",
     "shortDescription": "Astrological guidance for questions related to overseas opportunities, relocation or life abroad.",
     "category": "Career & Business",
-    "imageUrl": "/images/services/Fortune teller.png",
+    "imageUrl": "/images/services/Fortune teller.webp",
     "iconName": "abroad",
     "heroTagline": "Navigate Global Relocation, Visa Milestones, and Foreign Prosperity Through Vedic Travel Yogas",
     "overview": [
@@ -3521,7 +3521,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Film & Entertainment Career Concerns",
     "shortDescription": "Astrological perspective for people working toward or navigating careers in film and entertainment.",
     "category": "Career & Business",
-    "imageUrl": "/images/services/Education.png",
+    "imageUrl": "/images/services/Education.webp",
     "iconName": "film",
     "heroTagline": "Ignite Stardom, Creative Genius, and Enduring Mass Appeal Under the Spotlight of Venus and Rahu",
     "overview": [
@@ -3702,7 +3702,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Horoscope Reading",
     "shortDescription": "Personalized interpretation of birth information and the wider chart rather than relying on one isolated factor.",
     "category": "Astrology & Charts",
-    "imageUrl": "/images/services/Horoscope.png",
+    "imageUrl": "/images/services/Horoscope.webp",
     "iconName": "chart",
     "heroTagline": "The Master Blueprint of Your Soul: Exhaustive Janma Kundali & Divisional Chart Reading",
     "overview": [
@@ -3896,7 +3896,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Divorce problem solution",
     "shortDescription": "A confidential space to reflect on difficult relationship periods and seek an astrological perspective.",
     "category": "Love & Marriage",
-    "imageUrl": "/images/services/Divorce.png",
+    "imageUrl": "/images/services/Divorce.webp",
     "iconName": "separation",
     "heroTagline": "Compassionate, Confidential Astrological Counsel During Painful Matrimonial Crossroads",
     "overview": [
@@ -4103,7 +4103,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Evil Spirits Removal",
     "shortDescription": "Compassionate discussion of spiritual concerns, with traditional practices or remedies considered according to individual beliefs.",
     "category": "Spiritual & Wellness",
-    "imageUrl": "/images/services/Evil.png",
+    "imageUrl": "/images/services/Evil.webp",
     "iconName": "energy",
     "heroTagline": "Dismantle Negative Influences, Evil Eye (Drishti), and Heavy Spiritual Static with Sacred Vedic Armor",
     "overview": [
@@ -4314,7 +4314,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Fortune Teller",
     "shortDescription": "Traditional interpretation of possible periods, tendencies and themes reflected in the horoscope.",
     "category": "Astrology & Charts",
-    "imageUrl": "/images/services/Fortune teller.png",
+    "imageUrl": "/images/services/Fortune teller.webp",
     "iconName": "future",
     "heroTagline": "Navigate Tomorrow with Strategic Confidence: Detailed Dasha & Transit Timelines for 1 to 5 Years",
     "overview": [
@@ -4514,7 +4514,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Psychic Reading",
     "shortDescription": "Reflective intuitive guidance for people seeking another perspective during uncertain times.",
     "category": "Spiritual & Wellness",
-    "imageUrl": "/images/services/Psychic.png",
+    "imageUrl": "/images/services/Psychic.webp",
     "iconName": "psychic",
     "heroTagline": "Pierce Through the Fog of Uncertainty with Piercing Ancestral Intuitive Wisdom",
     "overview": [
@@ -4705,7 +4705,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Vashikaran Specialist",
     "shortDescription": "Support for questions involving love, relationships, emotional uncertainty and important personal decisions.",
     "category": "Love & Marriage",
-    "imageUrl": "/images/services/Vashikaran.png",
+    "imageUrl": "/images/services/Vashikaran.webp",
     "iconName": "heart",
     "heroTagline": "Align Your Hearts Under the Guiding Light of Ancient Vedic Astrological Wisdom",
     "overview": [
@@ -4859,7 +4859,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Tarot Reading",
     "shortDescription": "Traditional numerological interpretation offered as an additional perspective.",
     "category": "Astrology & Charts",
-    "imageUrl": "/images/services/Tarot Reading.png",
+    "imageUrl": "/images/services/Tarot Reading.webp",
     "iconName": "numerology",
     "heroTagline": "Harness the Sacred Cosmic Vibration of Numbers to Elevate Your Name, Brand, and Destiny",
     "overview": [
@@ -5062,7 +5062,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Curse Removal",
     "shortDescription": "Context-based interpretation of relevant Doshas and other chart factors, with traditional remedies discussed where appropriate.",
     "category": "Astrology & Charts",
-    "imageUrl": "/images/services/Curse removal.png",
+    "imageUrl": "/images/services/Curse removal.webp",
     "iconName": "dosha",
     "heroTagline": "Dispel Superstitious Fear with Authentic Shastric Diagnosis & Empowering Vedic Remedies",
     "overview": [
@@ -5238,7 +5238,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Business Problem Solution",
     "shortDescription": "Traditional astrological perspective for business decisions, financial concerns and periods requiring careful planning.",
     "category": "Career & Business",
-    "imageUrl": "/images/services/Business.png",
+    "imageUrl": "/images/services/Business.webp",
     "iconName": "finance",
     "heroTagline": "Multiply Prosperity & Secure Enterprises Through Classical Dhana Yoga & Muhurat Science",
     "overview": [
@@ -5420,7 +5420,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Education & Employment",
     "shortDescription": "Astrological perspective for career choices, professional changes, educational decisions and important transitions.",
     "category": "Career & Business",
-    "imageUrl": "/images/services/Education.png",
+    "imageUrl": "/images/services/Education.webp",
     "iconName": "briefcase",
     "heroTagline": "Discover Your True Professional Calling & Unlock Auspicious Timing for Career Breakthroughs",
     "overview": [
@@ -5638,7 +5638,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Kundali matching",
     "shortDescription": "Traditional astrological perspectives on compatibility, marriage-related questions and family considerations.",
     "category": "Love & Marriage",
-    "imageUrl": "/images/services/Kundali.png",
+    "imageUrl": "/images/services/Kundali.webp",
     "iconName": "marriage",
     "heroTagline": "Sacred Kundali Milan & Comprehensive Lifelong Synastry Beyond Simple Guna Scores",
     "overview": [
@@ -5825,7 +5825,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Love Marriage Specialist",
     "shortDescription": "Guidance for people navigating love marriage decisions, family expectations and relationship concerns.",
     "category": "Love & Marriage",
-    "imageUrl": "/images/services/love marriage specialist.png",
+    "imageUrl": "/images/services/Love Marriage Specialist.webp",
     "iconName": "couple",
     "heroTagline": "Bridge Hearts and Lineages: Sacred Guidance for Love Marriages & Parental Approval",
     "overview": [
@@ -6051,7 +6051,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Spiritual Reading",
     "shortDescription": "Traditional spiritual and puja-related guidance intended to support prayer, reflection and connection with one's spiritual beliefs.",
     "category": "Spiritual & Wellness",
-    "imageUrl": "/images/services/Spiritual reading.png",
+    "imageUrl": "/images/services/Spiritual reading.webp",
     "iconName": "puja",
     "heroTagline": "Connect with the Divine: Authentic Vedic Yajnas, Homas, and Sacred Personal Rituals",
     "overview": [
@@ -6227,7 +6227,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Financial Problem Solution",
     "shortDescription": "Ancient Dhana Yoga activations and Lakshmi stotrams to overcome debt traps, cash flow blockages, and financial instability.",
     "category": "Career & Business",
-    "imageUrl": "/images/services/Financial.png",
+    "imageUrl": "/images/services/Financial.webp",
     "iconName": "finance",
     "heroTagline": "Dissolve Debt, Remove Financial Stagnation & Manifest Enduring Lakshmi Prosperity",
     "overview": [
@@ -6397,7 +6397,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     "title": "Health Problem Solution",
     "shortDescription": "Vedic astrological analysis of physical vitality, 6th house roga indications, and sacred Maha Mrityunjaya healing remedies.",
     "category": "Spiritual & Wellness",
-    "imageUrl": "/images/services/Health.png",
+    "imageUrl": "/images/services/Health.webp",
     "iconName": "family",
     "heroTagline": "Harmonize Cosmic Energies for Physical Vitality, Mental Serenity, and Accelerated Recovery",
     "overview": [

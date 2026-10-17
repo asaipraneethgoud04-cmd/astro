@@ -67,7 +67,7 @@ export default function Footer() {
       {/* Background celestial elements */}
       <div className="pointer-events-none absolute inset-0 z-[1] mix-blend-screen opacity-30 brightness-[1.8] contrast-125 saturate-150">
         <Image
-          src="/images/footer layer.png"
+          src="/images/footer layer.webp"
           alt="Cosmic Planetary Alignments"
           fill
           loading="lazy"
@@ -79,7 +79,7 @@ export default function Footer() {
       {/* Bottom-left zodiac decoration */}
       <div className="pointer-events-none absolute bottom-0 left-0 z-0 w-[min(38vw,250px)] aspect-[216/367] translate-y-[6%] -translate-x-[1%] opacity-90">
         <Image
-          src="/images/footer-corners-left.png"
+          src="/images/footer-corners-left.webp"
           alt=""
           fill
           loading="lazy"
@@ -91,7 +91,7 @@ export default function Footer() {
       {/* Bottom-right zodiac decoration */}
       <div className="pointer-events-none absolute bottom-0 right-0 z-0 w-[min(38vw,250px)] aspect-[216/369] translate-y-[6%] translate-x-[1%] opacity-90">
         <Image
-          src="/images/footer-corners-right.png"
+          src="/images/footer-corners-right.webp"
           alt=""
           fill
           loading="lazy"
@@ -115,7 +115,7 @@ export default function Footer() {
                 onDoubleClick={() => window.dispatchEvent(new CustomEvent("open-logo-modal"))}
               >
                 <Image
-                  src="/images/astrologo.png"
+                  src="/images/astrologo.webp"
                   alt="Talk Astrologer Sacred Zodiac Logo"
                   fill
                   loading="lazy"
