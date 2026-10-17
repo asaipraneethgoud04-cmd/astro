@@ -48,23 +48,19 @@ export default function FloatingActions() {
         href="https://www.instagram.com/talk_astrologer"
         target="_blank"
         rel="noopener noreferrer"
-        className="group relative flex h-10 w-10 items-center justify-center rounded-full border-2 border-[#c59b27] bg-[#38070e] text-[#f6e27a] shadow-xl transition-all duration-300 hover:scale-110 hover:bg-[#200408] hover:border-[#f6e27a] hover:shadow-[0_0_15px_rgba(212,175,55,0.4)] sm:h-12 sm:w-12"
+        className="group relative flex h-10 w-10 items-center justify-center rounded-full border-2 border-[#E1306C] bg-gradient-to-tr from-[#FFDC80] via-[#F77737] via-40% to-[#833AB4] shadow-xl transition-all duration-300 hover:scale-110 hover:shadow-[0_0_18px_rgba(225,48,108,0.5)] sm:h-12 sm:w-12"
         aria-label="Follow on Instagram"
       >
+        {/* Instagram Camera Icon */}
         <svg
           viewBox="0 0 24 24"
-          className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300 group-hover:scale-110"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+          className="h-6 w-6 transition-transform duration-300 group-hover:scale-110"
+          fill="white"
           aria-hidden="true"
         >
-          <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+          <path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8Zm4.2 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm5.25-3.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Z" />
         </svg>
+
         <span className="pointer-events-none absolute right-14 whitespace-nowrap rounded border border-[#c59b27]/40 bg-[#230409] px-2.5 py-1 font-serif text-xs text-[#f6e27a] opacity-0 shadow-md transition-opacity group-hover:opacity-100">
           Follow on Instagram
         </span>

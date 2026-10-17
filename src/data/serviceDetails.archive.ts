@@ -66,7 +66,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     heroTagline: "Align Your Hearts Under the Guiding Light of Ancient Vedic Astrological Wisdom",
     overview: [
       "Love and emotional partnerships are among the most sacred dimensions of human experience. When emotional distances grow, misunderstandings occur, or uncertainty clouds your heart, Vedic Jyotish offers a compassionate mirror into the deeper planetary currents shaping your connection.",
-      "Rooted in six generations of ancestral Jyotish from Bangalore, India, our consultations do not offer superficial reassurance or fatalistic judgments. Instead, Guruji examines the exact energetic synastry between two souls—revealing hidden emotional needs, karmic bonds, and the precise timing of harmonious periods.",
+      "Rooted in six generations of ancestral Vedic Jyotish serving seekers across all 50 US states, our consultations do not offer superficial reassurance or fatalistic judgments. Instead, Guruji examines the exact energetic synastry between two souls—revealing hidden emotional needs, karmic bonds, and the precise timing of harmonious periods.",
       "Whether you are single and searching for genuine love, in a committed relationship experiencing strain, or trying to heal from a painful separation, this session provides clarity, peace of mind, and time-tested spiritual remedies."
     ],
     specialistArticle: {
@@ -268,7 +268,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     heroTagline: "Sacred Kundali Milan & Comprehensive Lifelong Synastry Beyond Simple Guna Scores",
     overview: [
       "In the Vedic tradition, marriage is not merely a legal or social agreement—it is a sacred union of two souls, two family lineages, and two unique karmic paths. A true compatibility assessment looks far beyond mechanical online scorecards.",
-      "While popular matching often stops at the 36 Gunas (Ashta Kuta), our ancestral Bangalore lineage conducts an exhaustive evaluation including the Navamsha (D9 chart), Mangal Dosha, longevity (Ayurdaya), mental harmony (Graha Maitri), and progeny promise (Santan Yoga).",
+      "While popular matching often stops at the 36 Gunas (Ashta Kuta), our six-generation ancestral lineage serving clients across all 50 US states conducts an exhaustive evaluation including the Navamsha (D9 chart), Mangal Dosha, longevity (Ayurdaya), mental harmony (Graha Maitri), and progeny promise (Santan Yoga).",
       "Guruji helps prospective brides, grooms, and their families understand the true spiritual and practical dynamics of a prospective union with honesty, respect, and constructive solutions."
     ],
     specialistArticle: {
@@ -1596,7 +1596,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     heroTagline: "Navigate Tomorrow with Strategic Confidence: Detailed Dasha & Transit Timelines for 1 to 5 Years",
     overview: [
       "The future is not a rigid, inescapable fate—it is a sacred unfolding of past karmas intersecting with present free will. In Vedic astrology, knowing the seasonal tides of your life allows you to prepare, build when the winds are favorable, and conserve strength during testing winters.",
-      "Drawing upon six generations of Bangalore Jyotish mastery, Guruji synthesizes your Mahadasha, Antardasha, and planetary transits (Gochar) into an actionable multi-year roadmap. Rather than vague predictions, you receive concrete timelines for career, finances, family, and health milestones.",
+      "Drawing upon six generations of ancestral Vedic Jyotish mastery serving seekers across all 50 US states, Guruji synthesizes your Mahadasha, Antardasha, and planetary transits (Gochar) into an actionable multi-year roadmap. Rather than vague predictions, you receive concrete timelines for career, finances, family, and health milestones.",
       "This consultation is designed for seekers standing at pivotal life junctions who desire proactive strategic clarity rather than reactive anxiety."
     ],
     astrologicalSignificance: {
@@ -1832,7 +1832,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     heroTagline: "Dispel Superstitious Fear with Authentic Shastric Diagnosis & Empowering Vedic Remedies",
     overview: [
       "In modern times, terms like Manglik Dosha, Kaal Sarp Dosha, Pitru Dosha, or Sade Sati are frequently exploited to incite fear, anxiety, and expensive, unnecessary rituals. In authentic Vedic Jyotish, a 'Dosha' simply signifies a karmic knot or energy imbalance that can be smoothed with understanding and righteous action.",
-      "Drawing from six generations of strict ancestral Bangalore tradition, Guruji provides clear, honest, and fear-free Dosha assessments. He first verifies whether a diagnosed Dosha is actually active in your life or cancelled by classical Shastric exceptions.",
+      "Drawing from six generations of strict ancestral Vedic tradition serving families across all 50 US states, Guruji provides clear, honest, and fear-free Dosha assessments. He first verifies whether a diagnosed Dosha is actually active in your life or cancelled by classical Shastric exceptions.",
       "If an authentic imbalance is present, Guruji prescribes ethical, accessible Vedic remedies—such as daily mantras, charitable acts (Danam), dietary disciplines, or traditional pujas—restoring equilibrium and peace of mind."
     ],
     astrologicalSignificance: {
@@ -2186,7 +2186,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     overview: [
       "Long before paper horoscopes were cast, ancient Vedic sages studied Hastarekha Shastra (Vedic Palmistry). Your hands are not static—they are neurological and energetic maps reflecting the subconscious mind, brain neuro-pathways, and past-life karma written in living lines.",
       "Palmistry is an extraordinary standalone diagnostic tool and an invaluable confirmation of your astrological chart. When birth time is uncertain or missing, reading the major lines, planetary mounts, and sacred symbols provides startlingly accurate guidance.",
-      "Trained in Bangalore through six generations of master palmists, Guruji examines both dominant and non-dominant palms to uncover your natural constitution, mental resilience, relationship timing, and forthcoming career shifts."
+      "Rooted in six generations of ancestral master palmistry serving clients across all 50 US states, Guruji examines both dominant and non-dominant palms to uncover your natural constitution, mental resilience, relationship timing, and forthcoming career shifts."
     ],
     astrologicalSignificance: {
       title: "Planetary Mounts & Sacred Markings in Vedic Palmistry",
@@ -2421,7 +2421,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     heroTagline: "Pierce Through the Fog of Uncertainty with Piercing Ancestral Intuitive Wisdom",
     overview: [
       "There are moments in life when logic, spreadsheets, and conventional advice reach their absolute limits. You find yourself at a baffling crossroads, feeling unseen currents pulling you in different directions, or sensing that something critical remains hidden from your view.",
-      "Rooted in six generations of ancestral intuitive lineage from Bangalore, Guruji bridges classical Prashna Kundali (Horary chart of the present moment) with inherited psychic perception (Divya Drishti). This session provides immediate, deep, and direct insight into what is truly unfolding beneath the surface.",
+      "Rooted in six generations of ancestral intuitive lineage serving seekers across all 50 US states, Guruji bridges classical Prashna Kundali (Horary chart of the present moment) with inherited psychic perception (Divya Drishti). This session provides immediate, deep, and direct insight into what is truly unfolding beneath the surface.",
       "Whether you need to confirm an unspoken suspicion, understand an enigmatic person's real intentions, or choose between two life paths, this reflective consultation brings clarity and renewed courage."
     ],
     astrologicalSignificance: {
@@ -2518,7 +2518,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
       location: "Dallas, Texas"
     },
     metaDescription:
-      "Vedic intuitive and psychic guidance by a 6th-generation Bangalore spiritual master. Clear answers for urgent crossroads, hidden motives, and life dilemmas.",
+      "Vedic intuitive and psychic guidance by a 6th-generation spiritual master serving all 50 US states. Clear answers for urgent crossroads, hidden motives, and life dilemmas.",
     keywords: [
       "psychic astrologer texas",
       "intuitive guidance frisco",
@@ -2539,7 +2539,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
     heroTagline: "Connect with the Divine: Authentic Vedic Yajnas, Homas, and Sacred Personal Rituals",
     overview: [
       "In the Vedic Sanatana Dharma tradition, a Puja is not an empty superstition or rote ritual—it is a sophisticated spiritual technology designed to align human consciousness with the cosmic laws of nature (Devatas). Through consecrated fire (Homa), sacred sound vibrations (Mantras), and pure offerings (Dravyas), energetic obstacles dissolve and divine grace flows freely.",
-      "Rooted in authentic South Indian Agamic and Vedic traditions from Bangalore, Guruji provides personalized spiritual guidance and conducts sacred rituals tailored precisely to your family's needs and astrological requirements.",
+      "Rooted in authentic Vedic traditions and serving families across all 50 US states, Guruji provides personalized spiritual guidance and conducts sacred rituals tailored precisely to your family's needs and astrological requirements.",
       "Whether you are seeking blessings for a new home (Griha Pravesh), overcoming persistent health and financial obstacles (Maha Mrityunjaya & Lakshmi Homa), or cultivating deep inner peace through daily worship, this consultation illuminates your spiritual path."
     ],
     astrologicalSignificance: {
@@ -2622,7 +2622,7 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
       },
       {
         q: "Are your pujas conducted according to authentic scriptures?",
-        a: "Yes, strictly according to classical Vedic Shastras by qualified, traditional priests from our ancestral Bangalore lineage."
+        a: "Yes, strictly according to classical Vedic Shastras by qualified, traditional priests from our six-generation ancestral lineage serving clients across all 50 US states."
       },
       {
         q: "What if I am a beginner and don't know Sanskrit?",

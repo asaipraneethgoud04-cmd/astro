@@ -25,7 +25,7 @@ import {
 export const metadata = {
   title: "About Us | TalkAstrologer - 30+ Years & 6 Generations of Ancestral Vedic Wisdom",
   description:
-    "Discover TalkAstrologer. Combining 30+ years of experience with a six-generation ancestral Jyotish lineage from Bangalore, India. Compassionate, human-centered astrology across Texas, all 50 US states, and globally.",
+    "Discover TalkAstrologer. Combining 30+ years of experience with a six-generation ancestral Vedic Jyotish lineage. Compassionate, human-centered astrology across Texas and all 50 US states.",
 };
 
 export default function AboutPage() {
@@ -173,15 +173,15 @@ export default function AboutPage() {
             <div className="lg:col-span-5 flex flex-col justify-center gap-5">
               <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border-4 border-[#e5d0ad] bg-[#2d050d]">
                 <Image
-                  src="/images/about page.png"
-                  alt="Ancestral Vedic Study and Heritage"
+                  src="/images/guruji.jpeg"
+                  alt="Ancestral Vedic Astrologer Guruji - Heritage and Mastery"
                   fill
                   loading="lazy"
                   decoding="async"
                   sizes="(max-width: 1024px) 100vw, 500px"
-                  className="object-cover"
+                  className="object-cover object-[center_15%]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#2a060d]/70 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#2a060d]/80 via-transparent to-transparent pointer-events-none" />
                 <div className="absolute bottom-4 left-4 right-4 text-white">
                   <span className="text-[10px] uppercase tracking-widest text-[#f6e27a] font-semibold block">
                     Heritage & Mastery
@@ -196,7 +196,7 @@ export default function AboutPage() {
               <div className="grid grid-cols-2 items-stretch gap-2.5 sm:gap-3.5">
                 {[
                   { value: "30+", label: "Years", detail: "Of Dedicated Practice" },
-                  { value: "6", label: "Generations", detail: "Lineage from Bangalore, India" },
+                  { value: "6", label: "Generations", detail: "A Legacy of Vedic Wisdom" },
                 ].map((stat) => (
                   <div
                     key={stat.label}
@@ -647,7 +647,7 @@ export default function AboutPage() {
               <h3 className="font-serif text-2xl sm:text-[26px] font-bold text-[#38070e]">
                 Ancestral Roots
               </h3>
-              <p className="text-xs text-[#735a5e]">Bangalore, India • Europe • Australia</p>
+              <p className="text-xs text-[#735a5e]">Six Generations of Vedic Lineage</p>
               <span className="text-[10px] text-[#9e701e] bg-[#faf2de] px-2 py-0.5 rounded-full border border-[#e5cb9b]">
                 English • Hindi • Telugu
               </span>

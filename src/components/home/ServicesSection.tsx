@@ -39,7 +39,6 @@ export default function ServicesSection() {
               imageAlt={service.title}
               title={service.title}
               description={service.description}
-              meta={service.category}
               href={`/services/${service.id}`}
               ctaLabel="Explore Guidance"
               iconName={service.iconName}

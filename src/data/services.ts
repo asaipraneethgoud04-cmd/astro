@@ -8,6 +8,7 @@ export interface ServiceItem {
 }
 
 export const servicesData: ServiceItem[] = [
+  // ── POSITIVE GUIDANCE & ASTROLOGICAL READINGS ──
   {
     id: "horoscope-reading",
     title: "Horoscope Reading",
@@ -18,22 +19,31 @@ export const servicesData: ServiceItem[] = [
     iconName: "chart",
   },
   {
-    id: "divorce-problem-solution",
-    title: "Divorce problem solution",
+    id: "kundali-matching",
+    title: "Kundali matching",
     description:
-      "Confidential Vedic consultation and astrological perspective to navigate marital conflicts, legal separation, and emotional reconciliation.",
+      "Comprehensive Ashta Kuta, Navamsha, and Mangal Dosha synastry to assess lifelong harmony and marital prosperity.",
     category: "Love & Marriage",
-    imageUrl: "/images/services/Divorce.png",
-    iconName: "separation",
+    imageUrl: "/images/services/Kundali.png",
+    iconName: "marriage",
   },
   {
-    id: "evil-spirits-removal",
-    title: "Evil Spirits Removal",
+    id: "love-marriage-specialist",
+    title: "Love Marriage Specialist",
     description:
-      "Sacred Vedic rituals, protective kavach, and energetic cleansing to dissolve negative entities, psychic disturbances, and heavy auras.",
-    category: "Spiritual & Wellness",
-    imageUrl: "/images/services/Evil.png",
-    iconName: "energy",
+      "Empathetic astrological guidance to bridge parental hesitations, family opposition, and cultural differences for love marriages.",
+    category: "Love & Marriage",
+    imageUrl: "/images/services/Love Marriage Specialist.png",
+    iconName: "couple",
+  },
+  {
+    id: "education-employment",
+    title: "Education & Employment",
+    description:
+      "Vedic career guidance, academic direction, competitive examination timing, and solutions for job stability and promotions.",
+    category: "Career & Business",
+    imageUrl: "/images/services/Education.png",
+    iconName: "briefcase",
   },
   {
     id: "fortune-teller",
@@ -45,22 +55,13 @@ export const servicesData: ServiceItem[] = [
     iconName: "future",
   },
   {
-    id: "psychic-reading",
-    title: "Psychic Reading",
+    id: "palm-reading",
+    title: "Palm Reading",
     description:
-      "Intuitive celestial readings and higher spiritual discernment to illuminate uncertain crossroads and unrevealed truths.",
-    category: "Spiritual & Wellness",
-    imageUrl: "/images/services/Psychic.png",
-    iconName: "psychic",
-  },
-  {
-    id: "vashikaran-specialist",
-    title: "Vashikaran Specialist",
-    description:
-      "Authentic, pure sattvic positive energy alignment and relationship harmonization to soften bitter conflicts and restore love.",
-    category: "Love & Marriage",
-    imageUrl: "/images/services/Vashikaran.png",
-    iconName: "heart",
+      "Classical Hastarekha palmistry analysis decoding major life lines, mount energies, and divine markings.",
+    category: "Astrology & Charts",
+    imageUrl: "/images/services/Palm Reading.png",
+    iconName: "palm",
   },
   {
     id: "tarot-reading",
@@ -72,14 +73,25 @@ export const servicesData: ServiceItem[] = [
     iconName: "numerology",
   },
   {
-    id: "curse-removal",
-    title: "Curse Removal",
+    id: "psychic-reading",
+    title: "Psychic Reading",
     description:
-      "Traditional shastric remedies and planetary Shanti to clear generational doshas, evil eye (drishti), and recurring karmic blockages.",
+      "Intuitive celestial readings and higher spiritual discernment to illuminate uncertain crossroads and unrevealed truths.",
     category: "Spiritual & Wellness",
-    imageUrl: "/images/services/Curse removal.png",
-    iconName: "dosha",
+    imageUrl: "/images/services/Psychic.png",
+    iconName: "psychic",
   },
+  {
+    id: "spiritual-reading",
+    title: "Spiritual Reading",
+    description:
+      "Sacred Vedic spiritual reflection, puja guidance, and higher soul consciousness practices to cultivate inner serenity.",
+    category: "Spiritual & Wellness",
+    imageUrl: "/images/services/Spiritual reading.png",
+    iconName: "puja",
+  },
+
+  // ── PROBLEM SOLUTIONS, REMEDIES & HEALING ──
   {
     id: "business-problem-solution",
     title: "Business Problem Solution",
@@ -88,15 +100,6 @@ export const servicesData: ServiceItem[] = [
     category: "Career & Business",
     imageUrl: "/images/services/Business.png",
     iconName: "finance",
-  },
-  {
-    id: "education-employment",
-    title: "Education & Employment",
-    description:
-      "Vedic career guidance, academic direction, competitive examination timing, and solutions for job stability and promotions.",
-    category: "Career & Business",
-    imageUrl: "/images/services/Education.png",
-    iconName: "briefcase",
   },
   {
     id: "financial-problem-solution",
@@ -117,42 +120,45 @@ export const servicesData: ServiceItem[] = [
     iconName: "family",
   },
   {
-    id: "spiritual-reading",
-    title: "Spiritual Reading",
+    id: "divorce-problem-solution",
+    title: "Divorce problem solution",
     description:
-      "Sacred Vedic spiritual reflection, puja guidance, and higher soul consciousness practices to cultivate inner serenity.",
+      "Confidential Vedic consultation and astrological perspective to navigate marital conflicts, legal separation, and emotional reconciliation.",
+    category: "Love & Marriage",
+    imageUrl: "/images/services/Divorce.png",
+    iconName: "separation",
+  },
+  {
+    id: "vashikaran-specialist",
+    title: "Vashikaran Specialist",
+    description:
+      "Authentic, pure sattvic positive energy alignment and relationship harmonization to soften bitter conflicts and restore love.",
+    category: "Love & Marriage",
+    imageUrl: "/images/services/Vashikaran.png",
+    iconName: "heart",
+  },
+  {
+    id: "curse-removal",
+    title: "Curse Removal",
+    description:
+      "Traditional shastric remedies and planetary Shanti to clear generational doshas, evil eye (drishti), and recurring karmic blockages.",
     category: "Spiritual & Wellness",
-    imageUrl: "/images/services/Spiritual reading.png",
-    iconName: "puja",
+    imageUrl: "/images/services/Curse removal.png",
+    iconName: "dosha",
   },
   {
-    id: "kundali-matching",
-    title: "Kundali matching",
+    id: "evil-spirits-removal",
+    title: "Evil Spirits Removal",
     description:
-      "Comprehensive Ashta Kuta, Navamsha, and Mangal Dosha synastry to assess lifelong harmony and marital prosperity.",
-    category: "Love & Marriage",
-    imageUrl: "/images/services/Kundali.png",
-    iconName: "marriage",
-  },
-  {
-    id: "palm-reading",
-    title: "Palm Reading",
-    description:
-      "Classical Hastarekha palmistry analysis decoding major life lines, mount energies, and divine markings.",
-    category: "Astrology & Charts",
-    imageUrl: "/images/services/Palm Reading.png",
-    iconName: "palm",
-  },
-  {
-    id: "love-marriage-specialist",
-    title: "Love Marriage Specialist",
-    description:
-      "Empathetic astrological guidance to bridge parental hesitations, family opposition, and cultural differences for love marriages.",
-    category: "Love & Marriage",
-    imageUrl: "/images/services/Love Marriage Specialist.png",
-    iconName: "couple",
+      "Sacred Vedic rituals, protective kavach, and energetic cleansing to dissolve negative entities, psychic disturbances, and heavy auras.",
+    category: "Spiritual & Wellness",
+    imageUrl: "/images/services/Evil.png",
+    iconName: "energy",
   },
 ];
+
+export const positiveServicesData = servicesData.slice(0, 9);
+export const problemSolutionsData = servicesData.slice(9);
 
 export const navbarServicesColumns = {
   column1: [

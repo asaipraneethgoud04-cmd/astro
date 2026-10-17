@@ -583,11 +583,11 @@ export default function ReviewForm() {
 
             {/* PREVIEW: 1. GRID TESTIMONIAL CARD */}
             {previewMode === "card" ? (
-              <article className="relative w-full pt-5 pb-2 transition-all duration-300 min-w-0 max-w-full overflow-hidden">
-                <div className="relative w-full rounded-[26px] border-2 border-[#c59b27] bg-gradient-to-b from-white via-[#fdfaf5] to-[#f8f2e7] px-6 sm:px-7 pt-9 pb-7 transition-all duration-300 flex flex-col justify-between text-center group shadow-[0_18px_45px_rgba(56,7,14,0.09)] ring-1 ring-[#c59b27]/30 min-w-0 max-w-full overflow-hidden">
-                  {/* Top Quote Medallion */}
+              <article className="relative w-full pt-6 pb-2 transition-all duration-300 min-w-0 max-w-full">
+                <div className="relative w-full rounded-[26px] border-2 border-[#c59b27] bg-gradient-to-b from-white via-[#fdfaf5] to-[#f8f2e7] px-6 sm:px-7 pt-9 pb-7 transition-all duration-300 flex flex-col justify-between text-center group shadow-[0_18px_45px_rgba(56,7,14,0.09)] ring-1 ring-[#c59b27]/30 min-w-0 max-w-full">
+                  {/* Top Quote Medallion on the border line */}
                   <div
-                    className="absolute -top-4 left-1/2 -translate-x-1/2 flex h-9 w-9 items-center justify-center rounded-full text-[#f6e27a] border-2 shadow-[0_4px_12px_rgba(56,7,14,0.25)] bg-gradient-to-br from-[#38070e] to-[#5a111c] border-[#d4af37]"
+                    className="absolute -top-5 left-1/2 -translate-x-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full text-[#f6e27a] border-2 shadow-[0_4px_14px_rgba(56,7,14,0.28)] bg-gradient-to-br from-[#38070e] to-[#5a111c] border-[#fdfaf5] ring-2 ring-[#c59b27]/70"
                     aria-hidden="true"
                   >
                     <Quote className="h-4 w-4 fill-current rotate-180" />

@@ -25,18 +25,18 @@ export default function TestimonialCard({
   return (
     <article className="relative w-full max-w-[360px] pt-6 pb-2 px-2 flex min-w-0">
       <div
-        className={`relative w-full rounded-[24px] border bg-gradient-to-b from-white via-[#fdfaf5] to-[#f8f2e7] px-6 sm:px-7 pt-9 pb-7 transition-all duration-300 flex flex-col justify-between text-center group min-w-0 overflow-hidden ${
+        className={`relative w-full rounded-[24px] border bg-gradient-to-b from-white via-[#fdfaf5] to-[#f8f2e7] px-6 sm:px-7 pt-9 pb-7 transition-all duration-300 flex flex-col justify-between text-center group min-w-0 ${
           pinned
             ? "border-2 border-[#c59b27] shadow-[0_16px_40px_rgba(197,155,39,0.2)] ring-2 ring-[#c59b27]/30 hover:shadow-[0_22px_50px_rgba(107,30,43,0.2)]"
             : "border-[#e8dac5] shadow-[0_12px_32px_rgba(56,7,14,0.06)] hover:shadow-[0_20px_44px_rgba(107,30,43,0.12)] hover:border-[#c59b27]/70"
         }`}
       >
-        {/* Top Centered Elegant Quote Medallion */}
+        {/* Top Centered Elegant Quote Medallion on the border line */}
         <div
-          className={`absolute -top-4 left-1/2 -translate-x-1/2 flex h-9 w-9 items-center justify-center rounded-full text-[#f6e27a] border-2 shadow-[0_4px_12px_rgba(56,7,14,0.25)] transition-transform duration-300 group-hover:scale-110 ${
+          className={`absolute -top-5 left-1/2 -translate-x-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full text-[#f6e27a] border-2 shadow-[0_4px_14px_rgba(56,7,14,0.28)] transition-transform duration-300 group-hover:scale-110 ${
             pinned
-              ? "bg-gradient-to-br from-[#c59b27] to-[#8b1827] border-[#f6e27a]"
-              : "bg-gradient-to-br from-[#38070e] to-[#5a111c] border-[#d4af37]"
+              ? "bg-gradient-to-br from-[#c59b27] via-[#aa8016] to-[#6d1320] border-[#fdfaf5] ring-2 ring-[#c59b27]"
+              : "bg-gradient-to-br from-[#38070e] to-[#5a111c] border-[#fdfaf5] ring-2 ring-[#c59b27]/70"
           }`}
           aria-hidden="true"
         >

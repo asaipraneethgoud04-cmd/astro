@@ -38,7 +38,7 @@ const TRUST_PILLARS = [
   {
     icon: Award,
     title: "30+ Years & 6 Generations",
-    desc: "Bangalore Ancestral Lineage",
+    desc: "Serving All 50 US States",
   },
   {
     icon: ShieldCheck,

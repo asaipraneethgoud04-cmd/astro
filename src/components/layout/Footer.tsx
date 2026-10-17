@@ -1,35 +1,71 @@
+
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Phone, Mail, MapPin, ShieldCheck, Clock } from "lucide-react";
 
-function InstagramIcon({ className }: { className?: string }) {
+const quickLinks = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About Us" },
+  { href: "/services", label: "Sacred Services" },
+  { href: "/book-appointment", label: "Book Appointment" },
+  { href: "/contact", label: "Contact Us" },
+];
+
+const consultationLinks = [
+  { href: "/services/horoscope-reading", label: "Horoscope Reading" },
+  {
+    href: "/services/love-marriage-specialist",
+    label: "Love Marriage Specialist",
+  },
+  { href: "/services/kundali-matching", label: "Kundali matching" },
+  {
+    href: "/services/vashikaran-specialist",
+    label: "Vashikaran Specialist",
+  },
+  {
+    href: "/services/education-employment",
+    label: "Education & Employment",
+  },
+  {
+    href: "/services/business-problem-solution",
+    label: "Business Problem Solution",
+  },
+];
+
+const ADDRESS = "11572 Lenox Ln, Frisco, TX 75033, USA";
+
+// Uses the coordinates from your supplied Google Maps embed.
+const MAPS_DIRECTIONS_URL =
+  "https://www.google.com/maps/dir/?api=1&destination=33.15120657350944%2C-96.89738652432172";
+
+function FooterLinks({
+  links,
+}: {
+  links: { href: string; label: string }[];
+}) {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden="true"
-    >
-      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-    </svg>
+    <ul className="space-y-2 text-sm">
+      {links.map((item) => (
+        <li key={item.href}>
+          <Link
+            href={item.href}
+            className="flex items-center gap-2 font-medium text-[#f5ebd9] transition-colors hover:text-[#f6e27a]"
+          >
+            <span className="text-xs text-[#f6e27a]">◆</span>
+            {item.label}
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 }
 
 export default function Footer() {
   return (
-    <footer className="relative bg-[#20050a] text-[#f5ebd9] border-t border-[#c59b27]/40 overflow-hidden">
-      {/* ─────────────────────────────────────────────────────────────
-          1. BACKGROUND CELESTIAL ELEMENTS (High visibility & luminosity)
-      ───────────────────────────────────────────────────────────── */}
-      {/* Planetary row — subtle celestial background */}
-      <div className="absolute inset-0 z-[1] pointer-events-none mix-blend-screen opacity-30 brightness-[1.8] contrast-125 saturate-150">
+    <footer className="relative overflow-hidden border-t border-[#c59b27]/40 bg-[#20050a] text-[#f5ebd9]">
+      {/* Background celestial elements */}
+      <div className="pointer-events-none absolute inset-0 z-[1] mix-blend-screen opacity-30 brightness-[1.8] contrast-125 saturate-150">
         <Image
           src="/images/footer layer.png"
           alt="Cosmic Planetary Alignments"
@@ -40,7 +76,7 @@ export default function Footer() {
         />
       </div>
 
-      {/* Bottom Left Corner Zodiac Wheel — flush to the corner */}
+      {/* Bottom-left zodiac decoration */}
       <div className="pointer-events-none absolute bottom-0 left-0 z-0 w-[min(38vw,250px)] aspect-[216/367] translate-y-[6%] -translate-x-[1%] opacity-90">
         <Image
           src="/images/footer-corners-left.png"
@@ -52,7 +88,7 @@ export default function Footer() {
         />
       </div>
 
-      {/* Bottom Right Corner Zodiac Wheel — flush to the corner */}
+      {/* Bottom-right zodiac decoration */}
       <div className="pointer-events-none absolute bottom-0 right-0 z-0 w-[min(38vw,250px)] aspect-[216/369] translate-y-[6%] translate-x-[1%] opacity-90">
         <Image
           src="/images/footer-corners-right.png"
@@ -64,18 +100,20 @@ export default function Footer() {
         />
       </div>
 
-      {/* Center scrim for text; corners stay clear so the wheels meet the edges */}
+      {/* Subtle center overlay */}
       <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,rgba(32,5,10,0.22)_0%,transparent_62%)]" />
 
-      {/* ─────────────────────────────────────────────────────────────
-          2. MAIN 4-COLUMN BALANCED FOOTER CONTENT
-      ───────────────────────────────────────────────────────────── */}
-      <div className="site-container pt-8 pb-14 lg:pb-8 relative z-10">
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-x-4 sm:gap-x-6 gap-y-7 lg:gap-8">
-          {/* Column 1: Brand & Heritage */}
-          <div className="col-span-2 md:col-span-1 lg:col-span-1 space-y-3">
+      {/* Main footer content */}
+      <div className="site-container relative z-10 pt-8 pb-14 lg:pb-8">
+        <div className="grid grid-cols-2 gap-x-4 gap-y-7 sm:gap-x-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+          {/* Column 1: Brand and Heritage */}
+          <div className="col-span-2 space-y-3 md:col-span-1">
             <div className="flex items-center gap-3">
-              <div className="relative w-11 h-11 rounded-full overflow-hidden border-2 border-[#f6e27a]/90 shrink-0 bg-[#240409] shadow-[0_0_12px_rgba(246,226,122,0.4)]">
+              <div
+                className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full border-2 border-[#f6e27a]/90 bg-[#240409] shadow-[0_0_12px_rgba(246,226,122,0.4)] cursor-pointer select-none transition-transform hover:scale-105 active:scale-95"
+                title="Double-click to preview Sacred Logo"
+                onDoubleClick={() => window.dispatchEvent(new CustomEvent("open-logo-modal"))}
+              >
                 <Image
                   src="/images/logo.png"
                   alt="Talk Astrologer Sacred Zodiac Logo"
@@ -86,208 +124,161 @@ export default function Footer() {
                   className="object-cover object-center"
                 />
               </div>
-              <h3 className="font-serif text-2xl sm:text-[26px] font-bold tracking-wider text-white">
+
+              <h3 className="font-serif text-2xl font-bold tracking-wider text-white sm:text-[26px]">
                 Talk Astrologer
               </h3>
             </div>
-            <p className="text-sm leading-relaxed text-[#f0e2d3] font-normal">
-              Supportive astrology guidance and positive life insight in Texas and throughout the USA. Rooted in a revered six-generation ancestral Vedic lineage for clarity, peace of mind, and confidence.
+
+            <p className="text-sm font-normal leading-relaxed text-[#f0e2d3]">
+              Supportive astrology guidance and positive life insight in Texas
+              and throughout the USA. Rooted in a revered six-generation
+              ancestral Vedic lineage for clarity, peace of mind, and confidence.
             </p>
-            <div className="pt-1 flex items-center gap-2 text-xs sm:text-[13px] text-[#f6e27a] font-semibold tracking-wide">
-              <ShieldCheck className="w-4 h-4 text-[#f6e27a] shrink-0" />
-              <span>30+ Years & 6 Generations of Ancestral Wisdom</span>
+
+            <div className="flex items-center gap-2 pt-1 text-xs font-semibold tracking-wide text-[#f6e27a] sm:text-[13px]">
+              <ShieldCheck className="h-4 w-4 shrink-0 text-[#f6e27a]" />
+              <span>30+ Years &amp; 6 Generations of Ancestral Wisdom</span>
             </div>
           </div>
 
           {/* Column 2: Quick Links */}
           <div className="col-span-1 space-y-3">
-            <h4 className="font-serif text-lg sm:text-xl font-bold text-[#f6e27a] tracking-wider border-b border-[#c59b27]/50 pb-1.5 inline-block">
+            <h4 className="inline-block border-b border-[#c59b27]/50 pb-1.5 font-serif text-lg font-bold tracking-wider text-[#f6e27a] sm:text-xl">
               Quick Links
             </h4>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link
-                  href="/"
-                  className="text-[#f5ebd9] hover:text-[#f6e27a] transition-colors flex items-center gap-2 font-medium"
-                >
-                  <span className="text-[#f6e27a] text-xs">◆</span> Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/about"
-                  className="text-[#f5ebd9] hover:text-[#f6e27a] transition-colors flex items-center gap-2 font-medium"
-                >
-                  <span className="text-[#f6e27a] text-xs">◆</span> About Us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services"
-                  className="text-[#f5ebd9] hover:text-[#f6e27a] transition-colors flex items-center gap-2 font-medium"
-                >
-                  <span className="text-[#f6e27a] text-xs">◆</span> Sacred Services
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/book-appointment"
-                  className="text-[#f5ebd9] hover:text-[#f6e27a] transition-colors flex items-center gap-2 font-medium"
-                >
-                  <span className="text-[#f6e27a] text-xs">◆</span> Book Appointment
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="text-[#f5ebd9] hover:text-[#f6e27a] transition-colors flex items-center gap-2 font-medium"
-                >
-                  <span className="text-[#f6e27a] text-xs">◆</span> Contact Us
-                </Link>
-              </li>
-            </ul>
+
+            <FooterLinks links={quickLinks} />
           </div>
 
           {/* Column 3: Consultations */}
           <div className="col-span-1 space-y-3">
-            <h4 className="font-serif text-lg sm:text-xl font-bold text-[#f6e27a] tracking-wider border-b border-[#c59b27]/50 pb-1.5 inline-block">
+            <h4 className="inline-block border-b border-[#c59b27]/50 pb-1.5 font-serif text-lg font-bold tracking-wider text-[#f6e27a] sm:text-xl">
               Consultations
             </h4>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link
-                  href="/services/horoscope-reading"
-                  className="text-[#f5ebd9] hover:text-[#f6e27a] transition-colors flex items-center gap-2 font-medium"
-                >
-                  <span className="text-[#f6e27a] text-xs">◆</span> Horoscope Reading
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services/love-marriage-specialist"
-                  className="text-[#f5ebd9] hover:text-[#f6e27a] transition-colors flex items-center gap-2 font-medium"
-                >
-                  <span className="text-[#f6e27a] text-xs">◆</span> Love Marriage Specialist
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services/kundali-matching"
-                  className="text-[#f5ebd9] hover:text-[#f6e27a] transition-colors flex items-center gap-2 font-medium"
-                >
-                  <span className="text-[#f6e27a] text-xs">◆</span> Kundali matching
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services/vashikaran-specialist"
-                  className="text-[#f5ebd9] hover:text-[#f6e27a] transition-colors flex items-center gap-2 font-medium"
-                >
-                  <span className="text-[#f6e27a] text-xs">◆</span> Vashikaran Specialist
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services/education-employment"
-                  className="text-[#f5ebd9] hover:text-[#f6e27a] transition-colors flex items-center gap-2 font-medium"
-                >
-                  <span className="text-[#f6e27a] text-xs">◆</span> Education & Employment
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services/business-problem-solution"
-                  className="text-[#f5ebd9] hover:text-[#f6e27a] transition-colors flex items-center gap-2 font-medium"
-                >
-                  <span className="text-[#f6e27a] text-xs">◆</span> Business Problem Solution
-                </Link>
-              </li>
-            </ul>
+
+            <FooterLinks links={consultationLinks} />
           </div>
 
-          {/* Column 4: Direct Contact (High visibility & clarity) */}
-          <div className="col-span-2 md:col-span-1 lg:col-span-1 space-y-3">
-            <h4 className="font-serif text-lg sm:text-xl font-bold text-[#f6e27a] tracking-wider border-b border-[#c59b27]/50 pb-1.5 inline-block">
+          {/* Column 4: Direct Contact */}
+          <div className="col-span-2 space-y-3 md:col-span-1">
+            <h4 className="inline-block border-b border-[#c59b27]/50 pb-1.5 font-serif text-lg font-bold tracking-wider text-[#f6e27a] sm:text-xl">
               Direct Contact
             </h4>
-            <div className="space-y-2.5 text-sm text-[#f5ebd9]">
-              {/* Address */}
+
+            <div className="space-y-4 text-sm text-[#f5ebd9]">
+              {/* Clickable Address — opens Google Maps */}
               <div className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-[#f6e27a] mt-0.5 shrink-0" />
-                <span className="leading-snug text-[#f5ebd9] font-medium">
-                  11572 Lenox Ln, Frisco, TX 75033, USA
-                </span>
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#f6e27a]" />
+
+                <a
+                  href={MAPS_DIRECTIONS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Get directions to ${ADDRESS}`}
+                  className="font-medium leading-snug text-[#f5ebd9] underline decoration-[#c59b27]/50 underline-offset-4 transition-colors duration-300 hover:text-[#f6e27a] hover:decoration-[#f6e27a]"
+                >
+                  {ADDRESS}
+                </a>
               </div>
 
               {/* Phone */}
               <div className="flex items-center gap-3">
-                <Phone className="w-4 h-4 text-[#f6e27a] shrink-0" />
+                <Phone className="h-4 w-4 shrink-0 text-[#f6e27a]" />
+
                 <a
                   href="tel:+12146699699"
-                  className="hover:text-[#f6e27a] text-[#ffffff] font-bold text-base tracking-wide transition-colors"
+                  className="text-base font-bold tracking-wide text-white transition-colors hover:text-[#f6e27a]"
                 >
                   +1 214 669 9699
                 </a>
               </div>
 
-              {/* Emails - Clearly visible and highlighted */}
+              {/* Email addresses */}
               <div className="flex items-start gap-3">
-                <Mail className="w-4 h-4 text-[#f6e27a] mt-0.5 shrink-0" />
-                <div className="flex flex-col gap-1">
+                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[#f6e27a]" />
+
+                <div className="flex min-w-0 flex-col gap-1">
                   <a
                     href="mailto:myappointment@talkastrologer.com"
-                    className="text-[#ffffff] hover:text-[#f6e27a] text-sm font-semibold transition-colors break-all"
+                    className="break-all text-sm font-semibold text-white transition-colors hover:text-[#f6e27a]"
                   >
                     myappointment@talkastrologer.com
                   </a>
+
                   <a
                     href="mailto:support@talkastrologer.com"
-                    className="text-[#f0e2d3] hover:text-[#f6e27a] text-sm font-medium transition-colors break-all"
+                    className="break-all text-sm font-medium text-[#f0e2d3] transition-colors hover:text-[#f6e27a]"
                   >
                     support@talkastrologer.com
                   </a>
                 </div>
               </div>
 
-              {/* Working Hours */}
+              {/* Working hours */}
               <div className="flex items-start gap-3 pt-1">
-                <Clock className="w-4 h-4 text-[#f6e27a] mt-0.5 shrink-0" />
-                <p className="text-sm text-[#eedcc9] leading-relaxed">
-                  Monday – Sunday, 9:00 AM – 8:00 PM <br />
-                  <span className="text-[#f6e27a] font-medium">Central Time (Texas)</span>
+                <Clock className="mt-0.5 h-4 w-4 shrink-0 text-[#f6e27a]" />
+
+                <p className="text-sm leading-relaxed text-[#eedcc9]">
+                  Monday – Sunday, 9:00 AM – 8:00 PM
+                  <br />
+                  <span className="font-medium text-[#f6e27a]">
+                    Central Time (Texas)
+                  </span>
                 </p>
               </div>
 
-              {/* Social Media */}
+              {/* Instagram */}
               <div className="flex items-center gap-3 pt-2">
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#f6e27a]/80">Follow Us</span>
+                <span className="text-xs font-semibold uppercase tracking-[0.3em] text-[#f6e27a]/80">
+                  Follow Us
+                </span>
+
                 <a
                   href="https://www.instagram.com/talk_astrologer"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center justify-center w-8 h-8 rounded-full border border-[#c59b27]/50 bg-[#240409] hover:bg-gradient-to-br hover:from-[#f09433] hover:via-[#e6683c] hover:to-[#bc1888] hover:border-transparent transition-all duration-300 shadow-[0_0_8px_rgba(212,175,55,0.2)] hover:shadow-[0_0_14px_rgba(225,48,108,0.4)]"
                   aria-label="Follow TalkAstrologer on Instagram"
+                  className="group flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#E1306C] bg-gradient-to-tr from-[#FFDC80] via-[#F77737] via-40% to-[#833AB4] shadow-[0_0_8px_rgba(225,48,108,0.25)] transition-all duration-300 hover:scale-110 hover:shadow-[0_0_14px_rgba(225,48,108,0.5)]"
                 >
-                  <InstagramIcon className="w-4 h-4 text-[#f6e27a] group-hover:text-white transition-colors" />
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="h-4 w-4 text-white transition-transform duration-300 group-hover:scale-110"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle
+                      cx="17.5"
+                      cy="6.5"
+                      r="1"
+                      fill="currentColor"
+                      stroke="none"
+                    />
+                  </svg>
                 </a>
               </div>
             </div>
           </div>
         </div>
 
-        {/* ─────────────────────────────────────────────────────────────
-            3. BOTTOM BAR (Aligned & styled with clearance from floating buttons)
-        ───────────────────────────────────────────────────────────── */}
-        <div className="mt-6 pt-4 border-t border-[#c59b27]/30 flex flex-col lg:flex-row items-center justify-between gap-3 text-xs sm:text-[13px] text-[#eedcc9] pr-0 sm:pr-20 lg:pr-28">
-          <p className="text-center lg:text-left text-[#f5ebd9] font-medium">
+        {/* Bottom bar */}
+        <div className="mt-6 flex flex-col items-center justify-between gap-3 border-t border-[#c59b27]/30 pt-4 pr-0 text-xs text-[#eedcc9] sm:pr-20 sm:text-[13px] lg:flex-row lg:pr-28">
+          <p className="text-center font-medium text-[#f5ebd9] lg:text-left">
             © 2026 TalkAstrologer. All rights reserved.
           </p>
 
-          <p className="text-center lg:text-right text-[#f6e27a] font-medium">
-            Private Vedic consultations · Frisco, Texas & nationwide
+          <p className="text-center font-medium text-[#f6e27a] lg:text-right">
+            Private Vedic consultations · Frisco, Texas &amp; nationwide
           </p>
         </div>
       </div>
     </footer>
   );
 }
+

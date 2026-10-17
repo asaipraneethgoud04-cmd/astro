@@ -316,11 +316,20 @@ function BookAppointmentForm() {
                         <option value="" disabled>
                           Select a consultation
                         </option>
-                        {servicesData.map((service) => (
-                          <option key={service.id} value={service.id}>
-                            {service.title}
-                          </option>
-                        ))}
+                        <optgroup label="Positive Guidance & Astrological Readings">
+                          {servicesData.slice(0, 9).map((service) => (
+                            <option key={service.id} value={service.id}>
+                              {service.title}
+                            </option>
+                          ))}
+                        </optgroup>
+                        <optgroup label="Problem Solutions & Remedial Cleansing">
+                          {servicesData.slice(9).map((service) => (
+                            <option key={service.id} value={service.id}>
+                              {service.title}
+                            </option>
+                          ))}
+                        </optgroup>
                       </select>
                       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-[#8b1827]">
                         <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

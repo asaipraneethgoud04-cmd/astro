@@ -3,8 +3,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
-import { Phone, Menu, X, ChevronDown, Sparkles } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
+import { Phone, Menu, X, ChevronDown, Sparkles, Volume2, VolumeX } from "lucide-react";
 import { navbarServicesColumns } from "@/data/services";
 
 function CornerFiligree({ className }: { className?: string }) {
@@ -67,7 +67,138 @@ export default function Navbar({ offsetTop = false }: { offsetTop?: boolean }) {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
   const servicesDropdownRef = useRef<HTMLDivElement>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [showLogoModal, setShowLogoModal] = useState(false);
+  const clickTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Handle double-click (or two quick taps) on logo to preview
+  const handleLogoClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (clickTimeoutRef.current) {
+      // Second click within 280ms threshold -> Open preview modal
+      clearTimeout(clickTimeoutRef.current);
+      clickTimeoutRef.current = null;
+      setShowLogoModal(true);
+    } else {
+      // First click -> wait to verify if second click arrives
+      clickTimeoutRef.current = setTimeout(() => {
+        clickTimeoutRef.current = null;
+        if (pathname === "/") {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        } else {
+          router.push("/");
+        }
+      }, 280);
+    }
+  };
+
+  const handleLogoDoubleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (clickTimeoutRef.current) {
+      clearTimeout(clickTimeoutRef.current);
+      clickTimeoutRef.current = null;
+    }
+    setShowLogoModal(true);
+  };
+
+  // Keyboard escape & body scroll lock when modal is open
+  useEffect(() => {
+    if (showLogoModal) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") {
+          setShowLogoModal(false);
+        }
+      };
+      window.addEventListener("keydown", handleKeyDown);
+      return () => {
+        document.body.style.overflow = originalOverflow;
+        window.removeEventListener("keydown", handleKeyDown);
+      };
+    }
+  }, [showLogoModal]);
+
+  // Listen to open-logo-modal custom event
+  useEffect(() => {
+    const handleOpenModal = () => setShowLogoModal(true);
+    window.addEventListener("open-logo-modal", handleOpenModal);
+    return () => {
+      window.removeEventListener("open-logo-modal", handleOpenModal);
+      if (clickTimeoutRef.current) {
+        clearTimeout(clickTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    // Check if user previously explicitly muted
+    const storedMuted = typeof window !== "undefined" ? localStorage.getItem("astro_music_user_muted") : null;
+    const isExplicitlyMuted = storedMuted === "true";
+
+    if (!audioRef.current && typeof window !== "undefined") {
+      const audio = new Audio("/audio/ohm.mp3");
+      audio.loop = true;
+      audio.volume = 0.2;
+      audioRef.current = audio;
+
+      audio.onplay = () => setIsPlaying(true);
+      audio.onpause = () => setIsPlaying(false);
+
+      if (!isExplicitlyMuted) {
+        // Attempt autoplay as browser allows
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              setIsPlaying(true);
+            })
+            .catch(() => {
+              // Autoplay policy prevented unmuted audio on load.
+              // Start playing smoothly on the user's first interaction anywhere on the site.
+              setIsPlaying(false);
+              const startOnInteraction = () => {
+                if (localStorage.getItem("astro_music_user_muted") !== "true") {
+                  audio.play().then(() => setIsPlaying(true)).catch(() => { });
+                }
+                window.removeEventListener("pointerdown", startOnInteraction);
+                window.removeEventListener("keydown", startOnInteraction);
+                window.removeEventListener("touchstart", startOnInteraction);
+              };
+              window.addEventListener("pointerdown", startOnInteraction, { once: true });
+              window.addEventListener("keydown", startOnInteraction, { once: true });
+              window.addEventListener("touchstart", startOnInteraction, { once: true });
+            });
+        }
+      }
+    }
+  }, []);
+
+  const toggleMusic = () => {
+    if (!audioRef.current && typeof window !== "undefined") {
+      const audio = new Audio("/audio/ohm.mp3");
+      audio.loop = true;
+      audio.volume = 0.2;
+      audioRef.current = audio;
+      audio.onplay = () => setIsPlaying(true);
+      audio.onpause = () => setIsPlaying(false);
+    }
+
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (isPlaying) {
+      audio.pause();
+      setIsPlaying(false);
+      localStorage.setItem("astro_music_user_muted", "true");
+    } else {
+      audio.play().then(() => setIsPlaying(true)).catch((err) => console.log("Audio play error:", err));
+      localStorage.setItem("astro_music_user_muted", "false");
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -112,23 +243,29 @@ export default function Navbar({ offsetTop = false }: { offsetTop?: boolean }) {
 
   return (
     <header
-      className={`fixed ${offsetTop ? "top-[calc(2.5rem-1px)]" : "top-0"} left-0 right-0 z-50 transition-all duration-300 ${isTransparent
-          ? "bg-transparent border-b border-transparent shadow-none"
-          : "bg-[#240409]/95 backdrop-blur-md border-b border-[#c59b27]/30 shadow-lg"
+      className={`fixed ${offsetTop ? "top-[calc(var(--pinned-bar-h)-1px)]" : "top-0"} left-0 right-0 z-50 transition-all duration-300 ${isTransparent
+        ? "bg-transparent border-b border-transparent shadow-none"
+        : "bg-[#240409]/95 backdrop-blur-md border-b border-[#c59b27]/30 shadow-lg"
         }`}
     >
       <div className="site-container">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 sm:gap-3.5 group">
-            <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border-2 border-[#d4af37] bg-[#240409] shadow-[0_0_15px_rgba(212,175,55,0.45)] transition-all group-hover:scale-105 group-hover:border-[#f6e27a] group-hover:shadow-[0_0_20px_rgba(246,226,122,0.6)] md:h-11 md:w-11 lg:h-14 lg:w-14">
+          <Link
+            href="/"
+            onClick={handleLogoClick}
+            onDoubleClick={handleLogoDoubleClick}
+            title="Click to go Home · Double-click to preview Sacred Logo"
+            className="flex items-center gap-3 sm:gap-3.5 group cursor-pointer select-none"
+          >
+            <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border-2 border-[#d4af37] bg-[#240409] shadow-[0_0_15px_rgba(212,175,55,0.45)] transition-all group-hover:scale-105 group-hover:border-[#f6e27a] group-hover:shadow-[0_0_20px_rgba(246,226,122,0.6)] active:scale-95 md:h-11 md:w-11 lg:h-14 lg:w-14">
               <Image
                 src="/images/logo.png"
                 alt="Talk Astrologer Sacred Zodiac Logo"
                 fill
                 priority
                 sizes="(max-width: 768px) 48px, 56px"
-                className="object-cover object-center"
+                className="object-cover object-center pointer-events-none"
               />
             </div>
             <div className="flex flex-col">
@@ -136,7 +273,7 @@ export default function Navbar({ offsetTop = false }: { offsetTop?: boolean }) {
                 Talk Astrologer
               </span>
               <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-[#d4af37] md:text-[9px] md:tracking-[0.12em] lg:text-[11px] lg:tracking-[0.25em]">
-                Vedic Cosmic Guidance
+                Answers Through Astrology
               </span>
             </div>
           </Link>
@@ -158,8 +295,8 @@ export default function Navbar({ offsetTop = false }: { offsetTop?: boolean }) {
                       type="button"
                       onClick={() => setServicesOpen((prev) => !prev)}
                       className={`relative inline-flex items-center gap-1.5 whitespace-nowrap px-2 py-2 text-[13px] font-medium tracking-wide transition-all duration-200 lg:px-3 lg:text-sm cursor-pointer ${isServicesActive
-                          ? "font-semibold text-[#f6e27a]"
-                          : "text-[#ebd9c8] hover:text-[#f6e27a]"
+                        ? "font-semibold text-[#f6e27a]"
+                        : "text-[#ebd9c8] hover:text-[#f6e27a]"
                         }`}
                       aria-expanded={servicesOpen}
                       aria-haspopup="true"
@@ -417,8 +554,8 @@ export default function Navbar({ offsetTop = false }: { offsetTop?: boolean }) {
                   key={link.name}
                   href={link.href}
                   className={`relative whitespace-nowrap px-2 py-2 text-[13px] font-medium tracking-wide transition-all duration-200 lg:px-3 lg:text-sm ${isActive
-                      ? "font-semibold text-[#f6e27a]"
-                      : "text-[#ebd9c8] hover:text-[#f6e27a]"
+                    ? "font-semibold text-[#f6e27a]"
+                    : "text-[#ebd9c8] hover:text-[#f6e27a]"
                     }`}
                 >
                   {link.name}
@@ -430,11 +567,45 @@ export default function Navbar({ offsetTop = false }: { offsetTop?: boolean }) {
             })}
           </nav>
 
-          {/* Direct Call / Contact CTA */}
-          <div className="hidden lg:flex items-center gap-4">
+          {/* Desktop/Tablet Call & Sacred Mantra CTA */}
+          <div className="hidden md:flex items-center gap-3">
+            {/* Sacred Mantra Audio Player Button */}
+            <button
+              type="button"
+              onClick={toggleMusic}
+              className={`flex items-center gap-2 px-3 py-1.5 sm:py-2 rounded-full border transition-all duration-300 text-xs font-medium cursor-pointer ${isPlaying
+                ? "border-[#c59b27] bg-gradient-to-r from-[#3a0812] to-[#4a0d18] text-[#f6e27a] shadow-[0_0_15px_rgba(212,175,55,0.35)]"
+                : "border-[#c59b27]/40 bg-[#240409]/80 text-[#ebd9c8]/70 hover:border-[#c59b27] hover:text-[#f6e27a]"
+                }`}
+              aria-label={isPlaying ? "om Chanting" : "om Chanting"}
+              title={isPlaying ? "om Chanting" : "om Chanting"}
+            >
+              {isPlaying ? (
+                <>
+                  <Volume2 className="w-3.5 h-3.5 text-[#f6e27a] animate-pulse" />
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-[#f6e27a] hidden lg:inline">
+                    om Chanting
+                  </span>
+                  {/* Animated Equalizer Sound Bars */}
+                  <span className="flex items-end gap-[2px] h-3 pb-0.5" aria-hidden="true">
+                    <span className="w-[2px] bg-[#f6e27a] animate-[pulse_0.7s_ease-in-out_infinite] h-2 rounded-full" />
+                    <span className="w-[2px] bg-[#f6e27a] animate-[pulse_0.5s_ease-in-out_infinite_0.15s] h-3 rounded-full" />
+                    <span className="w-[2px] bg-[#f6e27a] animate-[pulse_0.8s_ease-in-out_infinite_0.3s] h-1.5 rounded-full" />
+                  </span>
+                </>
+              ) : (
+                <>
+                  <VolumeX className="w-3.5 h-3.5 text-[#ebd9c8]/70" />
+                  <span className="text-[11px] font-medium uppercase tracking-wider text-[#ebd9c8]/70 hidden lg:inline">
+                    Mantra Muted
+                  </span>
+                </>
+              )}
+            </button>
+
             <a
               href="tel:+12146699699"
-              className="flex items-center gap-2 px-4 py-2 rounded-full border border-[#c59b27]/60 bg-gradient-to-r from-[#3a0812] to-[#4a0d18] text-[#f6e27a] hover:text-white hover:border-[#f6e27a] hover:shadow-[0_0_15px_rgba(212,175,55,0.4)] transition-all duration-300 text-sm font-medium"
+              className="hidden lg:flex items-center gap-2 px-4 py-2 rounded-full border border-[#c59b27]/60 bg-gradient-to-r from-[#3a0812] to-[#4a0d18] text-[#f6e27a] hover:text-white hover:border-[#f6e27a] hover:shadow-[0_0_15px_rgba(212,175,55,0.4)] transition-all duration-300 text-sm font-medium"
             >
               <div className="w-6 h-6 rounded-full bg-[#c59b27]/20 flex items-center justify-center">
                 <Phone className="w-3.5 h-3.5 text-[#f6e27a]" />
@@ -443,8 +614,25 @@ export default function Navbar({ offsetTop = false }: { offsetTop?: boolean }) {
             </a>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile menu button and audio toggle */}
           <div className="flex md:hidden items-center gap-2">
+            <button
+              type="button"
+              onClick={toggleMusic}
+              className={`p-2 rounded-full border transition-all ${isPlaying
+                ? "text-[#f6e27a] bg-[#3a0812] border-[#c59b27] shadow-[0_0_10px_rgba(212,175,55,0.4)]"
+                : "text-[#ebd9c8]/70 bg-[#240409] border-[#c59b27]/40"
+                }`}
+              aria-label={isPlaying ? "om Chanting" : "om Chanting"}
+              title={isPlaying ? "om Chanting" : "om Chanting"}
+            >
+              {isPlaying ? (
+                <Volume2 className="w-4 h-4 text-[#f6e27a] animate-pulse" />
+              ) : (
+                <VolumeX className="w-4 h-4 text-[#ebd9c8]/70" />
+              )}
+            </button>
+
             <a
               href="tel:+12146699699"
               className="p-2 text-[#f6e27a] rounded-full bg-[#3a0812] border border-[#c59b27]/40"
@@ -476,8 +664,8 @@ export default function Navbar({ offsetTop = false }: { offsetTop?: boolean }) {
                       href={link.href}
                       onClick={() => setMobileMenuOpen(false)}
                       className={`flex-1 px-3 py-2.5 rounded-md text-base font-medium ${isServicesActive
-                          ? "bg-[#3d0a14] text-[#f6e27a] font-semibold border-l-4 border-[#c59b27]"
-                          : "text-[#f0e4d7] hover:bg-[#32060e]"
+                        ? "bg-[#3d0a14] text-[#f6e27a] font-semibold border-l-4 border-[#c59b27]"
+                        : "text-[#f0e4d7] hover:bg-[#32060e]"
                         }`}
                     >
                       {link.name}
@@ -580,8 +768,8 @@ export default function Navbar({ offsetTop = false }: { offsetTop?: boolean }) {
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
                 className={`block px-3 py-2.5 rounded-md text-base font-medium ${pathname === link.href
-                    ? "bg-[#3d0a14] text-[#f6e27a] font-semibold border-l-4 border-[#c59b27]"
-                    : "text-[#f0e4d7] hover:bg-[#32060e]"
+                  ? "bg-[#3d0a14] text-[#f6e27a] font-semibold border-l-4 border-[#c59b27]"
+                  : "text-[#f0e4d7] hover:bg-[#32060e]"
                   }`}
               >
                 {link.name}
@@ -596,6 +784,101 @@ export default function Navbar({ offsetTop = false }: { offsetTop?: boolean }) {
               <Phone className="w-4 h-4" />
               Speak to Astrologer Now
             </a>
+          </div>
+        </div>
+      )}
+
+      {/* Sacred Logo Preview Modal (Triggered on Double-Click) */}
+      {showLogoModal && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Talk Astrologer Logo Preview"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md transition-opacity duration-300"
+          onClick={() => setShowLogoModal(false)}
+        >
+          <div
+            className="relative w-full max-w-md sm:max-w-lg rounded-3xl bg-gradient-to-b from-[#2d050d] via-[#1c0307] to-[#120104] border-2 border-[#d4af37]/70 p-6 sm:p-8 text-center shadow-[0_0_60px_rgba(212,175,55,0.35)] overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Ornate corner filigrees */}
+            <CornerFiligree className="top-1 left-1" />
+            <CornerFiligree className="top-1 right-1 -scale-x-100" />
+            <CornerFiligree className="bottom-1 left-1 -scale-y-100" />
+            <CornerFiligree className="bottom-1 right-1 -scale-x-100 -scale-y-100" />
+
+            {/* Glowing backdrop halo */}
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.18)_0%,transparent_70%)]" />
+
+            {/* Close Button */}
+            <button
+              type="button"
+              onClick={() => setShowLogoModal(false)}
+              className="absolute top-4 right-4 z-30 inline-flex items-center justify-center w-9 h-9 rounded-full bg-[#3d0811]/90 border border-[#d4af37]/60 text-[#f6e27a] hover:bg-[#d4af37] hover:text-[#240409] hover:scale-105 transition-all shadow-md cursor-pointer"
+              aria-label="Close Logo Preview"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            {/* Modal Content */}
+            <div className="relative z-10 flex flex-col items-center">
+              {/* Badge */}
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#3b0811] border border-[#d4af37]/50 text-[#f6e27a] text-xs font-semibold tracking-wider uppercase mb-5 shadow-xs">
+                <Sparkles className="w-3.5 h-3.5 text-[#f6e27a]" />
+                <span>Sacred Brand Emblem</span>
+              </div>
+
+              {/* High-Resolution Emblem Container */}
+              <div className="relative w-48 h-48 sm:w-60 sm:h-60 rounded-full border-4 border-[#d4af37] bg-[#240409] shadow-[0_0_35px_rgba(212,175,55,0.55)] p-2 my-2 transition-transform hover:scale-105 duration-300">
+                <div className="relative w-full h-full rounded-full overflow-hidden border border-[#f6e27a]/40 bg-[#170205]">
+                  <Image
+                    src="/images/logo.png"
+                    alt="Talk Astrologer High Resolution Sacred Emblem"
+                    fill
+                    priority
+                    sizes="(max-width: 640px) 240px, 280px"
+                    className="object-cover object-center"
+                  />
+                </div>
+              </div>
+
+              {/* Brand Typography */}
+              <h3 className="mt-5 font-serif text-2xl sm:text-3xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-[#fff4b8] via-[#e8c85c] to-[#c59b27] drop-shadow-sm">
+                Talk Astrologer
+              </h3>
+              <p className="mt-1 text-xs sm:text-sm font-semibold tracking-[0.25em] text-[#d4af37] uppercase">
+                Answers Through Astrology
+              </p>
+
+              <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent my-4" />
+
+              <p className="text-xs sm:text-sm text-[#ebd9c8]/90 max-w-sm leading-relaxed">
+                Revered six-generation Jyotish emblem embodying celestial planetary alignment, divine peace, and auspicious cosmic wisdom.
+              </p>
+
+              {/* Actions */}
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+                <a
+                  href="/images/logo.png"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-[#d4af37] to-[#aa8014] text-[#240409] font-bold text-xs tracking-wider uppercase shadow-md hover:brightness-110 transition-all cursor-pointer"
+                >
+                  Open Full Image ↗
+                </a>
+                <button
+                  type="button"
+                  onClick={() => setShowLogoModal(false)}
+                  className="px-5 py-2 rounded-full border border-[#d4af37]/60 bg-[#240409] text-[#f6e27a] font-semibold text-xs tracking-wider uppercase hover:bg-[#3d0811] transition-all cursor-pointer"
+                >
+                  Close
+                </button>
+              </div>
+
+              <p className="mt-4 text-[10px] text-[#d4af37]/70 italic">
+                Tip: Double-click the logo anytime to preview this emblem.
+              </p>
+            </div>
           </div>
         </div>
       )}

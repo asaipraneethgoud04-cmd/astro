@@ -68,8 +68,10 @@ const nextConfig: NextConfig = {
           : [
             "localhost",
             "localhost:3000",
+            "localhost:3002",
             "127.0.0.1",
             "127.0.0.1:3000",
+            "127.0.0.1:3002",
             "TalkAstrologer",
             "www.TalkAstrologer",
           ],

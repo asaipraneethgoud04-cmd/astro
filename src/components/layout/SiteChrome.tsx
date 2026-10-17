@@ -32,8 +32,11 @@ export default function SiteChrome({
       {hasPinned ? <PinnedReviewBar reviews={pinnedReviews} /> : null}
       <Navbar offsetTop={hasPinned} />
       <main
-        className={`flex-grow ${hasPinned ? "pt-10" : ""}`}
-        style={{ "--chrome-top": hasPinned ? "2.5rem" : "0px" } as React.CSSProperties}
+        className="flex-grow"
+        style={{
+          "--chrome-top": hasPinned ? "var(--pinned-bar-h)" : "0px",
+          paddingTop: hasPinned ? "var(--pinned-bar-h)" : "0px",
+        } as React.CSSProperties}
       >
         {children}
       </main>

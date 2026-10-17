@@ -28,7 +28,7 @@ export default function HomePage() {
       {/* 6. Begin Your Journey to Clarity (CTA banner with 3 buttons) */}
       <CtaBannerSection />
 
-      {/* 7. Our Global Sanctuaries (8 city locations) */}
+      {/* 7. Our Locations (6 highlighted US states) */}
       <GlobalSanctuariesSection />
     </div>
   );

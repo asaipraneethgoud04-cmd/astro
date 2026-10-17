@@ -68,7 +68,7 @@ export default function PinnedReviewBar({ reviews }: { reviews: PinnedReview[] }
       <aside
         role="region"
         aria-label="Featured Client Reviews"
-        className="fixed inset-x-0 top-0 z-[60] h-10 border-b border-[#c59b27]/35 bg-[#240409]/98 shadow-[0_2px_12px_rgba(0,0,0,0.5)] backdrop-blur-md"
+        className="fixed inset-x-0 top-0 z-[60] h-16 sm:h-[4.5rem] lg:h-20 border-b border-[#c59b27]/35 bg-[#240409]/98 shadow-[0_2px_12px_rgba(0,0,0,0.5)] backdrop-blur-md"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
@@ -76,9 +76,9 @@ export default function PinnedReviewBar({ reviews }: { reviews: PinnedReview[] }
           {/* ─────────────────────────────────────────────────────────────
               1. CREATIVE INDICATION: Glowing Badge + Dynamic Gold Stars
           ───────────────────────────────────────────────────────────── */}
-          <div className="flex items-center gap-1.5 shrink-0 z-10">
-            <span className="inline-flex items-center gap-1 rounded-full border border-[#c59b27]/60 bg-gradient-to-r from-[#38070e] to-[#240409] px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-[#f6e27a] shadow-[0_0_10px_rgba(212,175,55,0.25)] sm:text-[10px]">
-              <Quote className="h-2.5 w-2.5 fill-[#f6e27a] text-[#f6e27a] shrink-0" />
+          <div className="flex items-center gap-2 sm:gap-2.5 shrink-0 z-10">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-[#c59b27]/60 bg-gradient-to-r from-[#38070e] to-[#240409] px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-[#f6e27a] shadow-[0_0_12px_rgba(212,175,55,0.3)] sm:px-3 sm:py-1.5 sm:text-xs">
+              <Quote className="h-3 w-3 fill-[#f6e27a] text-[#f6e27a] shrink-0 sm:h-3.5 sm:w-3.5" />
               <span className="hidden xs:inline">
                 {reviews[index]?.rating ?? 5}★ Client Review
               </span>
@@ -89,22 +89,21 @@ export default function PinnedReviewBar({ reviews }: { reviews: PinnedReview[] }
 
             {/* Dynamic Gold Stars */}
             <div
-              className="hidden sm:flex items-center gap-0.5 text-[#f6e27a] shrink-0"
+              className="hidden sm:flex items-center gap-1 text-[#f6e27a] shrink-0"
               aria-label={`${reviews[index]?.rating ?? 5} out of 5 stars`}
             >
               {[1, 2, 3, 4, 5].map((starIdx) => (
                 <Star
                   key={starIdx}
-                  className={`h-2.5 w-2.5 ${
-                    starIdx <= (reviews[index]?.rating ?? 5)
-                      ? "fill-[#f6e27a] text-[#f6e27a] drop-shadow-xs"
-                      : "text-[#f6e27a]/30 fill-transparent"
-                  }`}
+                  className={`h-3.5 w-3.5 lg:h-4 lg:w-4 ${starIdx <= (reviews[index]?.rating ?? 5)
+                    ? "fill-[#f6e27a] text-[#f6e27a] drop-shadow-xs"
+                    : "text-[#f6e27a]/30 fill-transparent"
+                    }`}
                 />
               ))}
             </div>
 
-            <span className="hidden md:inline-block text-xs text-[#c59b27]/40 font-light select-none">
+            <span className="hidden md:inline-block text-sm text-[#c59b27]/40 font-light select-none">
               |
             </span>
           </div>
@@ -112,7 +111,7 @@ export default function PinnedReviewBar({ reviews }: { reviews: PinnedReview[] }
           {/* ─────────────────────────────────────────────────────────────
               2. REVIEW CONTENT: Snippet + Clickable to Expand Multi-Line
           ───────────────────────────────────────────────────────────── */}
-          <div className="relative flex-1 h-full mx-2 sm:mx-3 overflow-hidden">
+          <div className="relative flex-1 h-full mx-2 sm:mx-4 overflow-hidden">
             {reviews.map((review, slideIndex) => {
               const isCurrent = slideIndex === index;
               return (
@@ -128,23 +127,22 @@ export default function PinnedReviewBar({ reviews }: { reviews: PinnedReview[] }
                   role="button"
                   tabIndex={isCurrent ? 0 : -1}
                   aria-label={`Read full review by ${review.name}: “${review.quote}”`}
-                  className={`absolute inset-0 flex items-center justify-center cursor-pointer group transition-all duration-700 ${
-                    isCurrent
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 pointer-events-none translate-y-1"
-                  }`}
+                  className={`absolute inset-0 flex items-center justify-center cursor-pointer group transition-all duration-700 ${isCurrent
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 pointer-events-none translate-y-1"
+                    }`}
                   title="Click to view full review and details"
                 >
-                  <div className="flex items-center gap-1.5 sm:gap-2 max-w-full min-w-0 text-xs sm:text-[13px] text-[#fdfaf4] overflow-hidden">
-                    <span className="truncate min-w-0 font-serif italic text-white group-hover:text-[#f6e27a] transition-colors break-all">
+                  <div className="flex items-center gap-2 sm:gap-3 max-w-full min-w-0 text-[#fdfaf4] overflow-hidden">
+                    <span className="truncate min-w-0 font-serif italic text-sm sm:text-base lg:text-[17px] text-white group-hover:text-[#f6e27a] transition-colors">
                       “{review.quote}”
                     </span>
-                    <span className="hidden md:inline shrink-0 font-medium text-[#ecd9c6]/80 text-xs whitespace-nowrap">
+                    <span className="hidden md:inline shrink-0 font-medium text-[#ecd9c6]/90 text-xs sm:text-sm lg:text-[15px] whitespace-nowrap">
                       — {review.name}, {review.city}
                     </span>
-                    <span className="inline-flex items-center gap-0.5 rounded px-1.5 py-0.5 bg-[#f6e27a]/15 text-[#f6e27a] text-[10px] font-semibold tracking-normal shrink-0 border border-[#c59b27]/40 group-hover:bg-[#f6e27a] group-hover:text-[#240409] transition-all whitespace-nowrap">
+                    <span className="inline-flex items-center gap-1 rounded-md px-2 py-0.5 sm:px-2.5 sm:py-1 bg-[#f6e27a]/15 text-[#f6e27a] text-xs sm:text-[13px] font-semibold tracking-normal shrink-0 border border-[#c59b27]/40 group-hover:bg-[#f6e27a] group-hover:text-[#240409] transition-all whitespace-nowrap shadow-xs">
                       <span>Read full</span>
-                      <ExternalLink className="w-2.5 h-2.5" />
+                      <ExternalLink className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                     </span>
                   </div>
                 </div>
@@ -155,27 +153,27 @@ export default function PinnedReviewBar({ reviews }: { reviews: PinnedReview[] }
           {/* ─────────────────────────────────────────────────────────────
               3. RIGHT SLIDE CONTROLS: Previous / Next & Counter
           ───────────────────────────────────────────────────────────── */}
-          <div className="flex items-center gap-1 shrink-0 z-10">
+          <div className="flex items-center gap-1.5 shrink-0 z-10">
             {several ? (
               <>
                 <button
                   type="button"
                   onClick={() => go(-1)}
                   aria-label="Previous client review"
-                  className="p-1 rounded text-[#ecd9c6]/70 hover:text-[#f6e27a] hover:bg-white/10 transition-colors"
+                  className="p-1.5 sm:p-2 rounded-full text-[#ecd9c6]/80 hover:text-[#f6e27a] hover:bg-white/10 transition-colors"
                 >
-                  <ChevronLeft className="w-3.5 h-3.5" />
+                  <ChevronLeft className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
                 </button>
-                <span className="text-[10px] font-medium text-[#ecd9c6]/80 tabular-nums min-w-[24px] text-center">
+                <span className="text-xs sm:text-sm font-semibold text-[#ecd9c6]/90 tabular-nums min-w-[28px] sm:min-w-[34px] text-center">
                   {index + 1}/{reviews.length}
                 </span>
                 <button
                   type="button"
                   onClick={() => go(1)}
                   aria-label="Next client review"
-                  className="p-1 rounded text-[#ecd9c6]/70 hover:text-[#f6e27a] hover:bg-white/10 transition-colors"
+                  className="p-1.5 sm:p-2 rounded-full text-[#ecd9c6]/80 hover:text-[#f6e27a] hover:bg-white/10 transition-colors"
                 >
-                  <ChevronRight className="w-3.5 h-3.5" />
+                  <ChevronRight className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
                 </button>
               </>
             ) : null}
@@ -236,11 +234,10 @@ export default function PinnedReviewBar({ reviews }: { reviews: PinnedReview[] }
                 {[1, 2, 3, 4, 5].map((starIdx) => (
                   <Star
                     key={starIdx}
-                    className={`w-4 h-4 ${
-                      starIdx <= (selectedReview.rating ?? 5)
-                        ? "fill-[#f6e27a] text-[#f6e27a] drop-shadow-sm"
-                        : "text-[#f6e27a]/30 fill-transparent"
-                    }`}
+                    className={`w-4 h-4 ${starIdx <= (selectedReview.rating ?? 5)
+                      ? "fill-[#f6e27a] text-[#f6e27a] drop-shadow-sm"
+                      : "text-[#f6e27a]/30 fill-transparent"
+                      }`}
                   />
                 ))}
               </div>
@@ -366,11 +363,10 @@ export function AdminPinnedSlideshow({ reviews }: { reviews: PinnedReview[] }) {
                   {[1, 2, 3, 4, 5].map((starIdx) => (
                     <Star
                       key={starIdx}
-                      className={`w-3.5 h-3.5 ${
-                        starIdx <= (review.rating ?? 5)
-                          ? "fill-[#f6e27a] text-[#f6e27a]"
-                          : "text-[#f6e27a]/30 fill-transparent"
-                      }`}
+                      className={`w-3.5 h-3.5 ${starIdx <= (review.rating ?? 5)
+                        ? "fill-[#f6e27a] text-[#f6e27a]"
+                        : "text-[#f6e27a]/30 fill-transparent"
+                        }`}
                     />
                   ))}
                 </div>
@@ -404,11 +400,10 @@ export function AdminPinnedSlideshow({ reviews }: { reviews: PinnedReview[] }) {
                   aria-selected={slideIndex === index}
                   aria-label={`${review.name}, ${review.city}`}
                   onClick={() => setIndex(slideIndex)}
-                  className={`h-1.5 rounded-full transition-all ${
-                    slideIndex === index
-                      ? "w-5 bg-[#f6e27a]"
-                      : "w-1.5 bg-[#f6e27a]/35 hover:bg-[#f6e27a]/70"
-                  }`}
+                  className={`h-1.5 rounded-full transition-all ${slideIndex === index
+                    ? "w-5 bg-[#f6e27a]"
+                    : "w-1.5 bg-[#f6e27a]/35 hover:bg-[#f6e27a]/70"
+                    }`}
                 />
               ))}
             </div>
