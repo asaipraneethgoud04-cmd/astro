@@ -26,7 +26,7 @@ export default function HeroSection() {
     <section className="relative overflow-hidden bg-[#38070e] text-white page-top section-b min-h-[620px] lg:min-h-[calc(100svh-var(--chrome-top,0px))] flex items-center">
       {/* 1st Layer (Bottom / Background): Responsive Hero Video */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        {/* Mobile Video (Vertical / Portrait optimized for < 768px) */}
+        {/* Mobile Video (Vertical / Portrait optimized for < 768px - Increased Brightness) */}
         <video
           ref={mobileVideoRef}
           autoPlay
@@ -34,7 +34,7 @@ export default function HeroSection() {
           muted
           playsInline
           preload="auto"
-          className="block md:hidden h-full w-full object-cover object-center pointer-events-none brightness-105 contrast-105"
+          className="block md:hidden h-full w-full object-cover object-center pointer-events-none brightness-155 contrast-110 saturate-105"
         >
           <source src="/images/hero-mobile-video.mp4" type="video/mp4" />
         </video>
@@ -52,20 +52,20 @@ export default function HeroSection() {
           <source src="/images/hero-video.mp4" type="video/mp4" />
         </video>
 
-        {/* Responsive Scrim: subtle vertical gradient on mobile (10% lighter for more video visibility), left-to-right gradient on desktop */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1c0206]/75 via-[#1c0206]/35 to-[#1c0206]/50 md:bg-gradient-to-r md:from-[#1a0206]/75 md:via-[#1a0206]/25 md:to-transparent pointer-events-none" />
+        {/* Responsive Scrim: ultra-light on mobile so video remains clear and bright; horizontal gradient on desktop */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#140104]/45 via-transparent to-[#140104]/25 md:bg-gradient-to-r md:from-[#1a0206]/75 md:via-[#1a0206]/25 md:to-transparent pointer-events-none" />
       </div>
 
-      {/* 2nd Layer (Middle): Lord Shiva Image */}
+      {/* 2nd Layer (Middle): Lord Shiva Image (Vibrant & Radiant on Mobile & Desktop) */}
       <div className="pointer-events-none absolute inset-0 z-[2] flex items-center justify-center sm:justify-start overflow-hidden">
-        <div className="relative h-[80%] sm:h-[90%] w-[90%] max-h-[700px] sm:max-h-[800px] max-w-[500px] sm:max-w-[680px] -ml-0 sm:ml-0 lg:ml-2 xl:ml-6 opacity-55 sm:opacity-60 lg:opacity-70 transition-all duration-300">
+        <div className="relative h-[80%] sm:h-[90%] w-[90%] max-h-[700px] sm:max-h-[800px] max-w-[500px] sm:max-w-[680px] -ml-0 sm:ml-0 lg:ml-2 xl:ml-6 opacity-60 sm:opacity-65 lg:opacity-75 transition-all duration-300 mix-blend-screen sm:mix-blend-normal">
           <Image
             src="/images/shiv.webp"
             alt="Lord Shiva Sacred Presence"
             fill
             priority
             sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 680px"
-            className="object-contain object-bottom sm:object-right select-none drop-shadow-[0_0_30px_rgba(235,50,20,0.25)] translate-y-[8%] sm:translate-y-[5%] sm:translate-x-[60px]"
+            className="object-contain object-bottom sm:object-right select-none brightness-155 contrast-110 drop-shadow-[0_0_30px_rgba(246,226,122,0.35)] -translate-x-[25%] sm:translate-x-[60px] translate-y-[8%] sm:translate-y-[5%]"
           />
         </div>
       </div>
