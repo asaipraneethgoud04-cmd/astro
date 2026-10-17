@@ -110,17 +110,17 @@ export default function Footer() {
           <div className="col-span-2 space-y-3 md:col-span-1">
             <div className="flex items-center gap-3">
               <div
-                className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full border-2 border-[#f6e27a]/90 bg-[#240409] shadow-[0_0_12px_rgba(246,226,122,0.4)] cursor-pointer select-none transition-transform hover:scale-105 active:scale-95"
+                className="relative h-16 w-16 sm:h-[74px] sm:w-[74px] shrink-0 overflow-hidden rounded-full border-2 border-[#f6e27a]/90 bg-[#240409] shadow-[0_0_18px_rgba(246,226,122,0.5)] cursor-pointer select-none transition-transform hover:scale-105 active:scale-95"
                 title="Double-click to preview Sacred Logo"
                 onDoubleClick={() => window.dispatchEvent(new CustomEvent("open-logo-modal"))}
               >
                 <Image
-                  src="/images/logo.png"
+                  src="/images/astrologo.png"
                   alt="Talk Astrologer Sacred Zodiac Logo"
                   fill
                   loading="lazy"
                   decoding="async"
-                  sizes="44px"
+                  sizes="(max-width: 640px) 64px, 74px"
                   className="object-cover object-center"
                 />
               </div>

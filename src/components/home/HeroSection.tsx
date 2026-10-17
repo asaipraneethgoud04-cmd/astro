@@ -26,12 +26,12 @@ export default function HeroSection() {
       <div className="pointer-events-none absolute inset-0 z-[2] flex items-center justify-start overflow-hidden">
         <div className="relative h-[90%] w-[90%] max-h-[800px] max-w-[680px] -ml-6 sm:ml-0 lg:ml-2 xl:ml-6 opacity-50 sm:opacity-60 lg:opacity-70 transition-all duration-300">
           <Image
-            src="/images/shiva.png"
+            src="/images/shiv.png"
             alt="Lord Shiva Sacred Presence"
             fill
             priority
             sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 680px"
-            className="object-contain object-right select-none drop-shadow-[0_0_25px_rgba(235,50,20,0.2)] translate-x-[60px]"
+            className="object-contain object-right select-none drop-shadow-[0_0_25px_rgba(235,50,20,0.2)] translate-x-[60px] translate-y-[5%]"
           />
         </div>
       </div>
