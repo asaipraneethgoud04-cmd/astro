@@ -393,7 +393,9 @@ const controllers = {
 // EXPRESS ROUTES
 // ============================================================================
 
-// 1. Health
+// 1. Health & Root
+app.get("/", controllers.healthCheck);
+app.get("/health", controllers.healthCheck);
 app.get("/api/health", controllers.healthCheck);
 
 // 2. Appointments
@@ -426,13 +428,12 @@ app.use((err, req, res, next) => {
 });
 
 // ============================================================================
-// SERVER INITIALIZATION
+// SERVER INITIALIZATION (Always listen for Hostinger / Phusion Passenger / PM2)
 // ============================================================================
 
-if (require.main === module) {
-  app.listen(PORT, () => {
-    console.log(`[TalkAstrologer Backend] Express server running on port ${PORT}`);
-  });
-}
+const host = "0.0.0.0";
+const server = app.listen(PORT, host, () => {
+  console.log(`[TalkAstrologer Backend] Express server running on port ${PORT}`);
+});
 
-module.exports = { app, server: app, controllers };
+module.exports = { app, server, controllers };
