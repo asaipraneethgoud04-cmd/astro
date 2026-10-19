@@ -7,12 +7,15 @@
     "build": "next build",
     "start": "next start -p 3002",
     "lint": "eslint",
+    "backend": "node backend/server.js",
     "images:webp": "node scripts/convert-to-webp.js",
     "images:clean": "node scripts/clean-unused-images.js"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",
     "@supabase/supabase-js": "^2.117.2",
+    "cors": "^2.8.6",
+    "express": "^5.3.0",
     "lucide-react": "^1.48.0",
     "next": "^16.3.8",
     "nodemailer": "^10.0.15",

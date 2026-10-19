@@ -8,7 +8,7 @@ This directory contains the standalone Node.js backend suite for **TalkAstrologe
 
 ```
 backend/
-├── server.js    # Pure Node.js HTTP REST API Server
+├── server.js    # Express.js HTTP REST API Server
 ├── mailer.js    # Centralized Hostinger Nodemailer Service
 └── README.md    # Documentation & Quick Start Guide
 ```
@@ -26,6 +26,8 @@ This tests both `myappointment@talkastrologer.com` and `support@talkastrologer.c
 
 ### 2. Run the Standalone API Server:
 ```bash
+npm run backend
+# or
 node backend/server.js
 ```
 The server will start on `http://localhost:5000` (or `PORT` defined in environment).

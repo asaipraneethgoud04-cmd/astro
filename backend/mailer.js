@@ -19,8 +19,12 @@ const fs = require("fs");
 function loadEnv() {
   try {
     const envPaths = [
+      path.join(__dirname, ".env"),
+      path.join(__dirname, ".env.local"),
       path.join(__dirname, "..", ".env.local"),
       path.join(__dirname, "..", ".env"),
+      path.join(process.cwd(), ".env.local"),
+      path.join(process.cwd(), ".env"),
     ];
     for (const p of envPaths) {
       if (fs.existsSync(p)) {
