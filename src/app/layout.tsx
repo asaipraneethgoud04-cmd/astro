@@ -1,30 +1,8 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Cinzel, Outfit } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import SiteChrome from "@/components/layout/SiteChrome";
 import { getPinnedReviews } from "@/lib/reviews";
-
-const cormorant = Cormorant_Garamond({
-  variable: "--font-serif",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-});
-
-const cinzel = Cinzel({
-  variable: "--font-cinzel",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-  display: "swap",
-});
-
-const outfit = Outfit({
-  variable: "--font-outfit",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  display: "swap",
-});
 
 const shivaraja = localFont({
   variable: "--font-shivaraja",
@@ -63,7 +41,7 @@ export default async function RootLayout({
   const pinnedReviews = await getPinnedReviews();
 
   return (
-    <html lang="en" className={`${cormorant.variable} ${cinzel.variable} ${outfit.variable} ${shivaraja.variable}`} suppressHydrationWarning>
+    <html lang="en" className={shivaraja.variable} suppressHydrationWarning>
       <body
         className="min-h-screen flex flex-col bg-[#fdfaf4] text-[#2a1114] antialiased"
         suppressHydrationWarning
