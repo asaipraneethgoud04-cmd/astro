@@ -46,7 +46,7 @@ const securityHeaders = [
       "font-src 'self' data: https://fonts.gstatic.com",
       "img-src 'self' data: blob: https://images.unsplash.com https://*.supabase.co",
       "media-src 'self' data: blob:",
-      "connect-src 'self' https://*.supabase.co wss://*.supabase.co",
+      "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.talkastrologer.com http://localhost:5000 http://127.0.0.1:5000",
       "frame-src 'self' https://www.google.com https://maps.google.com",
       "object-src 'none'",
       "frame-ancestors 'self'",
@@ -64,17 +64,26 @@ const nextConfig: NextConfig = {
     serverActions: {
       allowedOrigins:
         process.env.NODE_ENV === "production"
-          ? ["TalkAstrologer", "www.TalkAstrologer"]
+          ? [
+              "talkastrologer.com",
+              "www.talkastrologer.com",
+              "api.talkastrologer.com",
+              "TalkAstrologer",
+              "www.TalkAstrologer",
+            ]
           : [
-            "localhost",
-            "localhost:3000",
-            "localhost:3002",
-            "127.0.0.1",
-            "127.0.0.1:3000",
-            "127.0.0.1:3002",
-            "TalkAstrologer",
-            "www.TalkAstrologer",
-          ],
+              "localhost",
+              "localhost:3000",
+              "localhost:3002",
+              "127.0.0.1",
+              "127.0.0.1:3000",
+              "127.0.0.1:3002",
+              "talkastrologer.com",
+              "www.talkastrologer.com",
+              "api.talkastrologer.com",
+              "TalkAstrologer",
+              "www.TalkAstrologer",
+            ],
     },
   },
   images: {
