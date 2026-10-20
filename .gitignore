@@ -16,7 +16,7 @@
 # next.js
 /.next/
 /out/
-out.zip
+*.zip
 
 # production
 /build
@@ -50,6 +50,9 @@ scratch_*.js
 *.env.*
 env
 **/env
+env.local
+**/env.local
+*.local
 !*.env.example
 
 # vercel
