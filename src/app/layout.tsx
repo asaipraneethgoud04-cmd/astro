@@ -11,7 +11,7 @@ const shivaraja = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://TalkAstrologer"),
+  metadataBase: new URL("https://talkastrologer.com"),
   title: "TalkAstrologer | Six Generations of Ancestral Vedic Astrology | Texas, USA",
   description:
     "Rooted in a revered six-generation ancestral Vedic lineage. Supportive astrology guidance, horoscope reading, marriage compatibility, career direction, and spiritual wellness in Texas and across the USA.",

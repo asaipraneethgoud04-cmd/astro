@@ -68,8 +68,6 @@ const nextConfig: NextConfig = {
               "talkastrologer.com",
               "www.talkastrologer.com",
               "api.talkastrologer.com",
-              "TalkAstrologer",
-              "www.TalkAstrologer",
             ]
           : [
               "localhost",
@@ -81,8 +79,6 @@ const nextConfig: NextConfig = {
               "talkastrologer.com",
               "www.talkastrologer.com",
               "api.talkastrologer.com",
-              "TalkAstrologer",
-              "www.TalkAstrologer",
             ],
     },
   },

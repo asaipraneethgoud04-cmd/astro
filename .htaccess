@@ -54,7 +54,19 @@ Options -Indexes
     RewriteRule ^(service|our-services)/?$ /services [R=301,L]
 
     # ------------------------------------------------------------------
-    # D. PROXY EVERYTHING ELSE TO NEXT.JS (keeps method, body, cookies)
+    # D. SERVE STATIC FILES DIRECTLY (Avoids unnecessary proxying and 503s)
+    # ------------------------------------------------------------------
+    # 1. Existing file or directory in current location
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # 2. Existing file inside public/ folder
+    RewriteCond %{DOCUMENT_ROOT}/public/$1 -f
+    RewriteRule ^(.*)$ public/$1 [L]
+
+    # ------------------------------------------------------------------
+    # E. PROXY EVERYTHING ELSE TO NEXT.JS (keeps method, body, cookies)
     #    mod_proxy adds X-Forwarded-Host/For automatically.
     # ------------------------------------------------------------------
     <IfModule mod_headers.c>
