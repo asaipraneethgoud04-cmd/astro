@@ -2,7 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, Mail, MapPin, ShieldCheck, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, ShieldCheck, Clock, Compass } from "lucide-react";
 
 const quickLinks = [
   { href: "/", label: "Home" },
@@ -10,6 +10,7 @@ const quickLinks = [
   { href: "/services", label: "Sacred Services" },
   { href: "/book-appointment", label: "Book Appointment" },
   { href: "/contact", label: "Contact Us" },
+  { href: "/sitemap", label: "Site Map" },
 ];
 
 const consultationLinks = [
@@ -268,10 +269,43 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-6 flex flex-col items-center justify-between gap-3 border-t border-[#c59b27]/30 pt-4 pr-0 text-xs text-[#eedcc9] sm:pr-20 sm:text-[13px] lg:flex-row lg:pr-28">
+        <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-[#c59b27]/30 pt-5 pr-0 text-xs text-[#eedcc9] sm:pr-20 sm:text-[13px] lg:flex-row lg:pr-28">
           <p className="text-center font-medium text-[#f5ebd9] lg:text-left">
             © 2026 TalkAstrologer. All rights reserved.
           </p>
+
+          {/* Legal Links & Prominent Sitemap Button */}
+          <div className="flex flex-wrap items-center justify-center gap-x-3.5 gap-y-2 text-xs text-[#eedcc9]">
+            <Link
+              href="/terms"
+              className="transition-colors hover:text-[#f6e27a]"
+            >
+              Terms
+            </Link>
+            <span className="text-[#c59b27]/50">•</span>
+            <Link
+              href="/privacy-policy"
+              className="transition-colors hover:text-[#f6e27a]"
+            >
+              Privacy Policy
+            </Link>
+            <span className="text-[#c59b27]/50">•</span>
+            <Link
+              href="/disclaimer"
+              className="transition-colors hover:text-[#f6e27a]"
+            >
+              Disclaimer
+            </Link>
+            <span className="text-[#c59b27]/50">•</span>
+            <Link
+              href="/sitemap"
+              id="footer-sitemap-btn"
+              className="inline-flex items-center gap-1.5 rounded-full border border-[#f6e27a]/70 bg-gradient-to-r from-[#c59b27]/25 to-[#f6e27a]/20 px-3.5 py-1 text-xs font-semibold text-[#f6e27a] shadow-[0_0_12px_rgba(246,226,122,0.25)] transition-all duration-300 hover:scale-105 hover:border-[#f6e27a] hover:bg-[#f6e27a] hover:text-[#20050a] hover:shadow-[0_0_18px_rgba(246,226,122,0.5)] active:scale-95"
+            >
+              <Compass className="h-3.5 w-3.5 text-current animate-pulse" />
+              <span>Site Map</span>
+            </Link>
+          </div>
 
           <p className="text-center font-medium text-[#f6e27a] lg:text-right">
             Private Vedic consultations · Frisco, Texas &amp; nationwide
